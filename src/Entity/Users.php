@@ -41,6 +41,21 @@ class Users
      */
     private $pseudo;
 
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $cp;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="string", length=60)
+     */
+    private $ville;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +117,42 @@ class Users
     public function setPseudo(string $pseudo): self
     {
         $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getCp(): ?int
+    {
+        return $this->cp;
+    }
+
+    public function setCp(int $cp): self
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
 
         return $this;
     }
