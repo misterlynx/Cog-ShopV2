@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ * @UniqueEntity(fields={"pseudonyme"}, message="There is already an account with this pseudonyme")
  */
 class Users implements UserInterface
 {
@@ -20,7 +22,7 @@ class Users implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $username;
+    private $pseudonyme;
 
     /**
      * @ORM\Column(type="json")
@@ -56,7 +58,7 @@ class Users implements UserInterface
     /**
      * @ORM\Column(type="smallint")
      */
-    private $cp;
+    private $dp;
 
     /**
      * @ORM\Column(type="text")
@@ -64,18 +66,25 @@ class Users implements UserInterface
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=60)
-     */
-    private $ville;
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
-    private $token;
+    private $ville;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getPseudonyme(): ?string
+    {
+        return $this->pseudonyme;
+    }
+
+    public function setPseudonyme(string $pseudonyme): self
+    {
+        $this->pseudonyme = $pseudonyme;
+
+        return $this;
     }
 
     /**
@@ -85,27 +94,8 @@ class Users implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->username;
+        return (string) $this->pseudonyme;
     }
-
-    public function setUsername(string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    // public function getPseudo(): string
-    // {
-    //     return (string) $this->username;
-    // }
-
-    // public function setPseudo(string $username): self
-    // {
-    //     $this->username = $username;
-
-    //     return $this;
-    // }
 
     /**
      * @see UserInterface
@@ -206,14 +196,14 @@ class Users implements UserInterface
         return $this;
     }
 
-    public function getCp(): ?int
+    public function getDp(): ?int
     {
-        return $this->cp;
+        return $this->dp;
     }
 
-    public function setCp(int $cp): self
+    public function setDp(int $dp): self
     {
-        $this->cp = $cp;
+        $this->dp = $dp;
 
         return $this;
     }
@@ -238,18 +228,6 @@ class Users implements UserInterface
     public function setVille(string $ville): self
     {
         $this->ville = $ville;
-
-        return $this;
-    }
-
-    public function getToken(): ?string
-    {
-        return $this->token;
-    }
-
-    public function setToken(string $token): self
-    {
-        $this->token = $token;
 
         return $this;
     }

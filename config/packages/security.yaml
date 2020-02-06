@@ -6,13 +6,15 @@ security:
 
 
 
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
                 class: App\Entity\Users
-                property: username
+                property: pseudonyme
+        # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)
@@ -22,11 +24,12 @@ security:
             security: false
         main:
             anonymous: lazy
+            
+            logout:
+                path: app_logout
             guard:
                 authenticators:
                     - App\Security\UsersAuthenticator
-            logout:
-                path: app_logout
                 # where to redirect after logout
                 # target: app_any_route
 
@@ -41,7 +44,9 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
     role_hierarchy:
-        ROLE_ADMIN:         [ROLE_USER, ROLE_ADMIN]
-        ROLE_USER:          ROLE_USER
+        ROLE_ADMIN:         [IS_AUTHENTICATED_ANONYMOUSLY, ROLE_USER, ROLE_ADMIN]
+        ROLE_USER:          [ROLE_USER]
+        ROLE_GHOST:         [IS_AUTHENTICATED_ANONYMOUSLY]

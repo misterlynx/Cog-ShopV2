@@ -46,13 +46,13 @@ class UsersAuthenticator extends AbstractFormLoginAuthenticator implements Passw
     public function getCredentials(Request $request)
     {
         $credentials = [
-            'username' => $request->request->get('username'),
+            'pseudonyme' => $request->request->get('pseudonyme'),
             'password' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
         $request->getSession()->set(
             Security::LAST_USERNAME,
-            $credentials['username']
+            $credentials['pseudonyme']
         );
 
         return $credentials;
@@ -65,11 +65,11 @@ class UsersAuthenticator extends AbstractFormLoginAuthenticator implements Passw
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(Users::class)->findOneBy(['username' => $credentials['username']]);
+        $user = $this->entityManager->getRepository(Users::class)->findOneBy(['pseudonyme' => $credentials['pseudonyme']]);
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Username could not be found.');
+            throw new CustomUserMessageAuthenticationException('Pseudonyme could not be found.');
         }
 
         return $user;
@@ -95,7 +95,7 @@ class UsersAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        return new RedirectResponse($this->urlGenerator->generate('app_login'));
+        return new RedirectResponse($this->urlGenerator->generate('acceuil'));
     }
 
     protected function getLoginUrl()
@@ -103,4 +103,3 @@ class UsersAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         return $this->urlGenerator->generate('app_login');
     }
 }
-//Damn Daniel
