@@ -31,7 +31,9 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            $randomBytes = random_bytes(10);
+            $randomString = bin2hex($randomBytes);
+            $user->setToken($randomString);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();

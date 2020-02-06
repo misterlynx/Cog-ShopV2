@@ -56,6 +56,11 @@ class Users
      */
     private $ville;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $token;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -153,6 +158,18 @@ class Users
     public function setVille(string $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(string $token): self
+    {
+        $this->token = $token;
 
         return $this;
     }
