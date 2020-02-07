@@ -1,20 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'cog_shop/sidebarP.html.twig' %}
 
 {% block title %}Hello AdministrationController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Alexandre/Desktop/Cog-shop/src/Controller/AdministrationController.php'|file_link(0) }}">src/Controller/AdministrationController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Alexandre/Desktop/Cog-shop/templates/administration/index.html.twig'|file_link(0) }}">templates/administration/index.html.twig</a></code></li>
-    </ul>
+{{ render(controller('App\\Controller\\CogShopController::headerP')) }}
+<div class="row">
+  <div class="col-3">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Infos</a>
+      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Historiques des commandes</a>
+      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Modifier Pages</a>
+      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Options</a>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+      <h1>Vos informations : <br>
+      Pseudonyme: {{ app.user.pseudonyme }} <br>
+      Nom : {{ app.user.nom }} <br>
+      Prénom : {{ app.user.prenom }} <br>
+      Date De Naissance : {{ app.user.datenaissance|date("d/m/Y") }} <br>
+      Département : {{ app.user.dp }} <br>
+      Adresse : {{ app.user.adresse }} <br>
+      Ville : {{ app.user.ville }} <br>
+      Email : {{ app.user.email }} <br>
+      </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+      <table id="commands">
+      <thead>
+      <th>
+      nom
+      </th>
+      </thead>
+      <tbody>
+      <td>
+      </td>
+      </tbody>
+      </table>
+      </div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+    </div>
+  </div>
 </div>
 {% endblock %}

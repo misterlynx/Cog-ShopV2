@@ -108,6 +108,13 @@ class CogShopController extends AbstractController
                 
         ]);
         }
+
+    public function headerP(){
+        return $this->render('cog_shop/headerP.html.twig' , [
+                    
+        ]);
+        }
+       
    
 
 }
