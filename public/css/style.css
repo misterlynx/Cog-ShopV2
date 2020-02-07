@@ -1,0 +1,8 @@
+/* Navbar personalise */
+.sb-sidenav-footer, #searchButton {
+    background-color: #cb9d32 !important;
+}
+
+.navbar, .sb-sidenav-menu, #footer {
+    background-color: black !important;
+}

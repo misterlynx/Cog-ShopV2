@@ -29,4 +29,11 @@ class CogShopController extends AbstractController
             
         ]);
         }
+    public function footer(){
+        return $this->render('cog_shop/footer.html.twig' , [
+            
+        ]);
+        }
+   
+
 }

@@ -1,12 +1,12 @@
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <nav class="sb-sidenav accordion sb-sidenav-dark mx-auto" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav" >
-                    <a class="nav-link text-center" href="index.html" >
+                    <a class="nav-link text-center pb-5" href="index.html" >
                             <img src="images/CodShop.png" alt="Logo" style="width: 100%; ">
                     </a>
-                    <a class="nav-link" href="#" >
+                    <a class="nav-link mx-auto pt-5" href="#">
                         {# <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div> #}
                         About
                         {# <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> #}
@@ -14,7 +14,7 @@
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a></nav>
                     </div>
-                    <a class="nav-link" href="#" >
+                    <a class="nav-link mx-auto" href="#">
                         {# <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div> #}
                         Histoire
                         {# <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> #}
@@ -38,10 +38,11 @@
                         </nav>
                     </div> #}
                     {# <div class="sb-sidenav-menu-heading">Addons</div> #}
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link mx-auto" href="#">
                         {# <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div> #}
                         Shop</a>
-                    <a class="nav-link" href="tables.html">
+                        
+                    <a class="nav-link mx-auto" href="#">
                         {# <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div> #}
                         Contact</a>
                 </div>
@@ -50,30 +51,30 @@
                 <div class="small">Logged in as:</div>
                 Client
             </div>
-        </nav>
+        </nav>{#End navbar #}
     </div>
             
     <div id="layoutSidenav_content">
-        <main>
+        {# <main>
             <div class="container-fluid">
                 <h1 class="mt-4">Welcome to Cod Shop</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Let's do this!</li>
                 </ol>   
             </div>
-        </main>
+        </main> #}
 
-        <footer class="py-4 bg-dark mt-auto">
+        <footer class="py-4 bg-dark mt-auto" id="footer">
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between small">
                     <div class="text-muted">Copyright &copy; Your Website 2019</div>
-                    <div >
+                    <div>
                         <a href="#" class="text-warning">Privacy Policy</a>
                         &middot;
-                        <a href="#"class="text-warning">Terms &amp; Conditions</a>
+                        <a href="#" class="text-warning">Terms &amp; Conditions</a>
                     </div>
                 </div>
             </div>
         </footer>
-    </div> {# fin layout sidenav-content#}
-</div>
+    </div>{#  fin layout sidenav-content #}
+</div> {# fin layoutSidenav #}
