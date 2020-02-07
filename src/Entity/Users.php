@@ -3,22 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-<<<<<<< HEAD
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
-
-/**
- * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
- * @UniqueEntity(fields={"pseudonyme"}, message="There is already an account with this pseudonyme")
- */
-class Users implements UserInterface
-=======
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
 class Users
->>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
 {
     /**
      * @ORM\Id()
@@ -28,25 +17,6 @@ class Users
     private $id;
 
     /**
-<<<<<<< HEAD
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $pseudonyme;
-
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
-
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
-    private $password;
-
-    /**
-=======
->>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
@@ -67,11 +37,6 @@ class Users
     private $datenaissance;
 
     /**
-<<<<<<< HEAD
-     * @ORM\Column(type="smallint")
-     */
-    private $dp;
-=======
      * @ORM\Column(type="string", length=255)
      */
     private $pseudo;
@@ -80,7 +45,6 @@ class Users
      * @ORM\Column(type="smallint")
      */
     private $cp;
->>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
 
     /**
      * @ORM\Column(type="text")
@@ -88,11 +52,7 @@ class Users
     private $adresse;
 
     /**
-<<<<<<< HEAD
-     * @ORM\Column(type="string", length=100)
-=======
      * @ORM\Column(type="string", length=60)
->>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
      */
     private $ville;
 
@@ -101,91 +61,6 @@ class Users
         return $this->id;
     }
 
-<<<<<<< HEAD
-    public function getPseudonyme(): ?string
-    {
-        return $this->pseudonyme;
-    }
-
-    public function setPseudonyme(string $pseudonyme): self
-    {
-        $this->pseudonyme = $pseudonyme;
-
-        return $this;
-    }
-
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUsername(): string
-    {
-        return (string) $this->pseudonyme;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'MEMBRE';
-
-        return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
-    public function hasRole($role)
-    {
-        if (in_array($role, $this->getRoles())) {
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function getPassword(): string
-    {
-        return (string) $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function getSalt()
-    {
-        // not needed when using the "bcrypt" algorithm in security.yaml
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
-
-=======
->>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
     public function getNom(): ?string
     {
         return $this->nom;
@@ -234,16 +109,6 @@ class Users
         return $this;
     }
 
-<<<<<<< HEAD
-    public function getDp(): ?int
-    {
-        return $this->dp;
-    }
-
-    public function setDp(int $dp): self
-    {
-        $this->dp = $dp;
-=======
     public function getPseudo(): ?string
     {
         return $this->pseudo;
@@ -264,7 +129,6 @@ class Users
     public function setCp(int $cp): self
     {
         $this->cp = $cp;
->>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
 
         return $this;
     }

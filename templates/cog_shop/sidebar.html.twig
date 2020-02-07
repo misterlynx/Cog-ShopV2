@@ -2,11 +2,7 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu text-center">
             <div class="nav pb-5">
-<<<<<<< HEAD
-                <img src="images/CogShop.png" alt="Logo" style="width: 100%; ">
-=======
                 <img src="images/CogShop.png" alt="Logo" style="width: 80%; " class="mx-auto">
->>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
                 <a class="nav-link mx-auto pt-5" href="{{ path('accueil') }}"> Accueil</a>
                 <a class="nav-link mx-auto" href="{{ path('apropos') }}">A propos</a>
                 <a class="nav-link mx-auto" href="{{ path('histoire') }}">Histoire</a>
@@ -24,20 +20,19 @@
                 <a class="nav-link mx-auto pr-1" href="{{ path('contact') }}">Contact</a>
             </div>
         </div>
-<<<<<<< HEAD
         {% if app.user %}
             <div class="sb-sidenav-footer" id="sidefooter">
             <div class="small">Bienvenue: </div>
                 <section class="font-weight-bold">{{ app.user.pseudonyme }}</section> 
+            <div class="small">Bienvenue</div>
+            <section class="font-weight-bold">{{ app.user.pseudonyme }}</section>
         {% else %}
             <div class="sb-sidenav-footer" id="sidefooter">
             <div class="small"><a href="{{ path('app_login') }}">Connectez-vous</a></div>
-        {% endif %}
-=======
+        {% endif %} 
         <div class="sb-sidenav-footer" id="sidefooter">
             <div class="small">Logged in as:</div>
             Client
->>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
         </div>
     </nav>
 </div>
