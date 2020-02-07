@@ -21,10 +21,14 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pseudonyme', TextType::class, [
-                'label' => 'Pseudonyme:',
-                'required' => true,
-            ])
+            ->add('pseudonyme', TextType::class, array(
+                'attr' => array(
+                    'placeholder' => 'Entrer votre pseudo...',
+                    'label' => 'Pseudonyme:',
+                    'required' => true,
+                )
+            ))
+
             ->add('nom', TextType::class, [
                 'label' => 'Nom:',
                 'required' => true,
