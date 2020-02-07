@@ -6,3 +6,25 @@
 .navbar, .sb-sidenav-menu, #footer {
     background-color: black !important;
 }
+
+.nav, .navbar-brand{
+    font-family: 'Playfair Display SC', serif;
+    font-size: x-large;
+}
+
+#MonCompte, #placeholderSearch, #footer{
+    font-family: 'Playfair Display SC', serif;
+    font-size: medium;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link {
+    color: white;
+}
+
+a:hover{
+    color: #cb9d32 !important;
+}
+
+#sidefooter{
+    font-family: 'Playfair Display SC', serif;
+}

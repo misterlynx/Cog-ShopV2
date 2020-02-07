@@ -10,9 +10,9 @@ class CogShopController extends AbstractController
     /**
      * @Route("/", name="accueil")
      */
-    public function index()
+    public function accueil()
     {
-        return $this->render('cog_shop/index.html.twig', [
+        return $this->render('cog_shop/accueil.html.twig', [
             
         ]);
     }
