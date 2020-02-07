@@ -51,3 +51,4 @@ class RegistrationController extends AbstractController
         ]);
     }
 }
+$token = '(thC"4/mmS_{dzJ';
