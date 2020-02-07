@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+<<<<<<< HEAD
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -11,6 +12,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @UniqueEntity(fields={"pseudonyme"}, message="There is already an account with this pseudonyme")
  */
 class Users implements UserInterface
+=======
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ */
+class Users
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
 {
     /**
      * @ORM\Id()
@@ -20,6 +28,7 @@ class Users implements UserInterface
     private $id;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $pseudonyme;
@@ -36,6 +45,8 @@ class Users implements UserInterface
     private $password;
 
     /**
+=======
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
@@ -56,9 +67,20 @@ class Users implements UserInterface
     private $datenaissance;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="smallint")
      */
     private $dp;
+=======
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pseudo;
+
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $cp;
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
 
     /**
      * @ORM\Column(type="text")
@@ -66,7 +88,11 @@ class Users implements UserInterface
     private $adresse;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string", length=100)
+=======
+     * @ORM\Column(type="string", length=60)
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
      */
     private $ville;
 
@@ -75,6 +101,7 @@ class Users implements UserInterface
         return $this->id;
     }
 
+<<<<<<< HEAD
     public function getPseudonyme(): ?string
     {
         return $this->pseudonyme;
@@ -157,6 +184,8 @@ class Users implements UserInterface
         // $this->plainPassword = null;
     }
 
+=======
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
     public function getNom(): ?string
     {
         return $this->nom;
@@ -205,6 +234,7 @@ class Users implements UserInterface
         return $this;
     }
 
+<<<<<<< HEAD
     public function getDp(): ?int
     {
         return $this->dp;
@@ -213,6 +243,28 @@ class Users implements UserInterface
     public function setDp(int $dp): self
     {
         $this->dp = $dp;
+=======
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getCp(): ?int
+    {
+        return $this->cp;
+    }
+
+    public function setCp(int $cp): self
+    {
+        $this->cp = $cp;
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
 
         return $this;
     }

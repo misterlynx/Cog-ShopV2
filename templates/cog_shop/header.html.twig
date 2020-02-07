@@ -1,5 +1,9 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark ">
+<<<<<<< HEAD
     <a class="navbar-brand text-center" href="#">COG SHOP</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+=======
+    <a class="navbar-brand text-center" href="index.html">COG SHOP</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
     ><!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline mx-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
@@ -14,12 +18,18 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+<<<<<<< HEAD
             {% if app.user.roles('MEMBRE') %}
                 <a class="dropdown-item" href="{{ ('member') }}">Mon compte</a>
             {% elseif app.user.roles('ADMIN') %}
                 <a class="dropdown-item" href="{{ ('administration') }}">Mon compte</a>
             {% endif %}
                 <a class="dropdown-item" href="#">Panier</a><a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
+=======
+                <a class="dropdown-item" href="#">Mon compte</a><a class="dropdown-item" href="#">Panier</a><a class="dropdown-item" href="#">Login</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="login.html">Logout</a>
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
             </div>
         </li>
     </ul>

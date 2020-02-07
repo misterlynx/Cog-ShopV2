@@ -5,22 +5,34 @@ namespace App\Form;
 use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+<<<<<<< HEAD
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+=======
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+<<<<<<< HEAD
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+=======
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+<<<<<<< HEAD
             ->add('pseudonyme', TextType::class, array(
                 'attr' => array(
                     'placeholder' => 'Entrer votre pseudo...',
@@ -29,6 +41,12 @@ class RegistrationFormType extends AbstractType
                 )
             ))
 
+=======
+            ->add('username', TextType::class, [
+                'label' => 'pseudonyme',
+                'required' => true,
+            ])
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
             ->add('nom', TextType::class, [
                 'label' => 'Nom:',
                 'required' => true,
@@ -42,7 +60,11 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Date de naissance:',
                 'required' => true,
             ))
+<<<<<<< HEAD
             ->add('dp', NumberType::class, [
+=======
+            ->add('cp', NumberType::class, [
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
                 'label' => 'Code Postal',
             ])
             ->add('adresse', TextType::class, [
@@ -90,4 +112,8 @@ class RegistrationFormType extends AbstractType
             'data_class' => Users::class,
         ]);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556

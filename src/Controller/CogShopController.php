@@ -102,12 +102,15 @@ class CogShopController extends AbstractController
             
         ]);
         }
+<<<<<<< HEAD
 
     public function header2(){
         return $this->render('cog_shop/header2.html.twig' , [
                 
         ]);
         }
+=======
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
    
 
 }

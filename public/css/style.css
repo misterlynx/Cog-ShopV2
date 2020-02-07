@@ -29,3 +29,17 @@ a:hover{
     font-family: 'Playfair Display SC', serif;
     color: #271d0b;
 }
+#row{
+    position: relative;
+}
+
+#robe{
+    position: absolute;
+    top: 68.5%;
+    left: 16.5%;
+    transform: translate(-50%,-50%);
+    
+}
+main{
+    background-color: #271d0b;
+}

@@ -6,7 +6,10 @@
 /config/secrets/prod/prod.decrypt.private.php
 /var/
 /vendor/
+<<<<<<< HEAD
 /Migrations/
+=======
+>>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
