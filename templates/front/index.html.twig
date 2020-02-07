@@ -3,5 +3,7 @@
 {% block title %}Page d'acceuil test !{% endblock %}
 
 {% block body %}
-<a href="{{ path( 'app_register' ) }}"><button type="submit">Inscription</a> 
+<a href="{{ path( 'app_register' ) }}"><button type="submit">Inscription</a></button>
+
+<p> Bonjour {{ app.user.pseudonyme }}, vous avez actuellement le role {{ app.user.roles[0] }}</p>
 {% endblock %}
