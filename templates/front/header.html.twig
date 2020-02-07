@@ -1,9 +1,0 @@
-
-{% if app.user and app.user.hasRole('ADMIN')  %}
-    <a href="{{ path('administration') }}"><button type="submit">Mon Compte Admin</a></button>
-{% elseif app.user and app.user.hasRole('MEMBRE') %}
-    <a href="{{ path('member') }}"><button type="submit">Mon Compte Membre</a></button>
-{% else %}
-    <a href="{{ path('app_register') }}"><button type="submit">Inscription</a></button>
-{% endif %}
-
