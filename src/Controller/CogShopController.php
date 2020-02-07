@@ -17,7 +17,26 @@ class CogShopController extends AbstractController
         ]);
     }
 
-      
+    /**
+     * @Route("/CogShop-a-propos", name="apropos")
+     */
+    public function apropos()
+    {
+        return $this->render('cog_shop/apropos.html.twig', [
+            
+        ]);
+    }
+
+    /**
+     * @Route("/CogShop-histoire", name="historie")
+     */
+    public function histoire()
+    {
+        return $this->render('cog_shop/histoire.html.twig', [
+            
+        ]);
+    }
+
     public function header(){
         return $this->render('cog_shop/header.html.twig' , [
             

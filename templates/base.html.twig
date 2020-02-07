@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -21,6 +21,7 @@
         {#Header#}
         {{ render(controller('App\\Controller\\CogShopController::header')) }}
         
+        {#Sidebar#}
         <div id="layoutSidenav">
             {{ render(controller('App\\Controller\\CogShopController::sidebar')) }}
 
@@ -29,6 +30,7 @@
                     {% block body %}{% endblock %}
                 </main>
 
+                {#Sidebar#}
                 {{ render(controller('App\\Controller\\CogShopController::footer')) }}
             </div>
         </div>
