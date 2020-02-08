@@ -39,12 +39,12 @@ class Users
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $pseudo;
+    private $pseudonyme;
 
     /**
      * @ORM\Column(type="smallint")
      */
-    private $cp;
+    private $dp;
 
     /**
      * @ORM\Column(type="text")
@@ -109,26 +109,26 @@ class Users
         return $this;
     }
 
-    public function getPseudo(): ?string
+    public function getPseudonyme(): ?string
     {
-        return $this->pseudo;
+        return $this->pseudonyme;
     }
 
-    public function setPseudo(string $pseudo): self
+    public function setPseudonyme(string $pseudonyme): self
     {
-        $this->pseudo = $pseudo;
+        $this->pseudonyme = $pseudonyme;
 
         return $this;
     }
 
-    public function getCp(): ?int
+    public function getDp(): ?int
     {
-        return $this->cp;
+        return $this->dp;
     }
 
-    public function setCp(int $cp): self
+    public function setDp(int $dp): self
     {
-        $this->cp = $cp;
+        $this->dp = $dp;
 
         return $this;
     }

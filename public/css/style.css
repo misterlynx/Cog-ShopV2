@@ -40,6 +40,12 @@ a:hover{
     transform: translate(-50%,-50%);
     
 }
+#layoutAuthentication_content{
+    background: url("../images/lightwall.jpg") no-repeat, linear-gradient( lightgray,grey);
+    background-size: 100%;
+}
+
 main{
     background-color: #271d0b;
 }
+

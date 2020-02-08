@@ -23,43 +23,64 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('pseudonyme', TextType::class, array(
                 'attr' => array(
-                    'placeholder' => 'Entrer votre pseudo...',
-                    'label' => 'Pseudonyme:',
-                    'required' => true,
-                )
+                    'placeholder' => 'Choisisez votre pseudo...',
+                    ),
+                'label' => 'Pseudonyme:',
+                'required' => true
             ))
 
-            ->add('nom', TextType::class, [
+            ->add('nom', TextType::class, array(
+                'attr' => array(
+                    'placeholder' => 'Entrer votre nom...',
+                    ),
                 'label' => 'Nom:',
-                'required' => true,
-            ])
-            ->add('prenom', TextType::class, [
-                'label' => 'Prénom',
-            ])
+                'required' => true
+            ))
+            ->add('prenom', TextType::class, array(
+                'attr' => array(
+                    'placeholder' => 'Entrer votre prenom...',
+                    ),
+                'label' => 'Prénom:'
+            ))
             ->add('datenaissance', DateType::class, array(
                 'widget' => 'choice',
                 'years' => range(date('Y'), date('Y')-160),
                 'label' => 'Date de naissance:',
                 'required' => true,
             ))
-            ->add('dp', NumberType::class, [
-                'label' => 'Code Postal',
-            ])
+            ->add('dp', NumberType::class, array(
+                'attr' => array(
+                    'placeholder' => 'Entrer votre departement...',
+                    ),
+                'label' => 'Departement:'
+            ))
             ->add('adresse', TextType::class, [
-                'label' => 'Adresse',
+                'attr' => array(
+                    'placeholder' => 'Entrer votre adresse...',
+                    ),
+                'label' => 'Adresse:',
             ])
             ->add('ville', TextType::class, [
-                'label' => 'Ville',
+                'attr' => array(
+                    'placeholder' => 'Entrer votre ville...',
+                ),
+                'label' => 'Ville:',
             ])
             ->add('email', EmailType::class, [
+                'attr' => array(
+                    'placeholder' => 'Entrer votre email...',
+                ),
                 'label' => 'Adresse-mail:',
                 'required' => true,
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
+                'attr' => array(
+                    'placeholder' => 'Entrer votre mot de passe...',
+                ),
                 'mapped' => false,
-                'label' => 'Mot de passe',
+                'label' => 'Mot de passe:',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Entrer un mot de passe valide',
