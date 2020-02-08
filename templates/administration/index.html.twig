@@ -1,5 +1,4 @@
 {% extends 'cog_shop/sidebarP.html.twig' %}
-
 {% block title %}Panel Admin{% endblock %}
 
 {% block body %}
@@ -26,7 +25,23 @@
       Ville : {{ app.user.ville }} <br>
       Email : {{ app.user.email }} <br>
       </div>
-      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Bonjour</div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+      {% for table in Table %}
+            <tr>
+                <td>{{ Table.id }}</td>
+                <td>{{ Table.pseudonyme }}</td>
+                <td>{{ Table.roles }}</td>
+                <td>{{ Table.nom }}</td>
+                <td>{{ Table.prenom }}</td>
+                <td>{{ Table.email }}</td>
+                <td>{{ Table.datenaissance|date('d/m/Y') }}</td>
+               <td>{{ Table.dp }}</td>
+                <td>{{ Table.adresse }}</td>
+                <td>{{ Table.ville }}</td>
+            </tr>
+                {% else %}
+{% endfor %}
+      </div>
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">Bonsoir</div>
       <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">Saluit</div>
     </div>

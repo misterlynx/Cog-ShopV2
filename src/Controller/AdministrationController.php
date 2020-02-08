@@ -4,21 +4,23 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\UsersRepository;
-use App\Repository\VetementsRepository;
 
 class AdministrationController extends AbstractController
 {
     /**
      * @Route("/administration", name="administration")
      */
-    public function administration(VetementsRepository $vetementsRepository, UsersRepository $usersRepository)
+    public function administration(UsersRepository $usersRepository, EntityManagerInterface $em)
     {
-        $users = $usersRepository->findAll();
-        $usera = is_array($users);
+
+        $repository = $em->getRepository(UsersRepository::class);
+        $Table = $repository->findAll();
 
         return $this->render('administration/index.html.twig', [
             'controller_name' => 'AdministrationController',
+            'Table' => $Table,
         ]);
     }
 }
