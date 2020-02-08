@@ -19,15 +19,11 @@
     <body class="sb-nav-fixed">
 
         {#Header#}
-<<<<<<< HEAD
         {% if app.user %}
             {{ render(controller('App\\Controller\\CogShopController::header')) }}
         {% else %}
             {{ render(controller('App\\Controller\\CogShopController::header2')) }}
         {% endif %}
-=======
-        {{ render(controller('App\\Controller\\CogShopController::header')) }}
->>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
         
         {#Sidebar#}
         <div id="layoutSidenav">
