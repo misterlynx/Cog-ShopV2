@@ -32,10 +32,10 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $user->setRoles(["MEMBRE"]);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $user->setRoles(["ROLE_MEMBRE"]);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
             // do anything else you need here, like send an email
 
@@ -45,6 +45,8 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 'main' // firewall name in security.yaml
             );
+
+            $this->addFlash('success', 'Votre inscription était bien prise en compte.' );
         }
 
         return $this->render('registration/register.html.twig', [

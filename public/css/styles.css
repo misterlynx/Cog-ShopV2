@@ -160,7 +160,7 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: white;
   text-decoration: none;
   background-color: transparent;
 }
@@ -9966,6 +9966,7 @@ h3 {
     border-color: #dee2e6;
   }
 }
+
 html,
 body {
   height: 100%;

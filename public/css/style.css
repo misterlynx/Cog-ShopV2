@@ -55,7 +55,7 @@ main{
     border-color:#cb9d32;
 }
 
-/* .socialIcons{
+/* #socialIcons{
     background-color: white;
     border-radius: 50%;
     border: 1x solid grey;
@@ -64,6 +64,10 @@ main{
     font-size: 15px;
     margin-right: 15px;
 } */
+
+.socialIcons{
+    color: white !important;
+}
 
 #socialiconsbg{
     background-color: black;
