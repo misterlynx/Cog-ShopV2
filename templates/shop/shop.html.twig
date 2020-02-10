@@ -4,29 +4,5 @@
 
 
 {% block body %}
-    <section class="container-fluid">
-    {% for produit in produits %}
-        <div class="row">
-            <div class="col-3">
-                <table id="shop" class="card" name="shop" style="width: 25rem; height: 40rem;">
-                    <thead class="border border-dark">
-                        <tr>
-                            <th><img src="{{ produit.img }}" class="card-img-top" alt="imageDuProduit"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="card-body">
-                        <tr>
-                            <td class="card-title">{{ produit.nom }}  <hr></td>
-                        </tr>
-                        <tr>
-                            <td class="card-text text-right">{{ produit.prix }} €<br>
-                            <a href="#" class="btn btn-primary">Voir le détail du produit</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    
-    {% endfor %}
-</section>
+    <h1>shop</h1>
 {% endblock %}

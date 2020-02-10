@@ -29,16 +29,24 @@ class ShopController extends AbstractController
         $produit = $produitRepo->findOneBy(array(
             'id' => $id
         ) );
+       
 
         // Si pas de produits, rediriger vers une autre page avec un msg : Produit non existant
-
+            // if (!$produit) {
+            //     throw $this->createNotFoundException(
+            //         'No products found for id '.$id
+            //     );
+            // }
+        
+            if (!$produit) {
+                $this->addFlash('danger', "Le produit demandé ne existe pas!");
+            return $this->redirectToRoute('shop');  
+            }
+          
         // Le slug du produit est il le meme que dan l'URL ?? Si non, rediriger sur la page actuelle, mais avec le bon slug
 
 
-
-        // $em = $this->getDoctrine()->getManager();
-        // $produit = $em->getRepository(Produit::class);
-        dump($produit);die;
+        // dump($produit);die;
         
         return $this->render('shop/produit.html.twig', [
             'produit' => $produit
