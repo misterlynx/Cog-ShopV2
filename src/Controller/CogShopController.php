@@ -76,6 +76,7 @@ class CogShopController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/CogShop-accessoires", name="accessoires")
      */
