@@ -61,6 +61,11 @@ class Produit
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $taille;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +175,18 @@ class Produit
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getTaille(): ?string
+    {
+        return $this->taille;
+    }
+
+    public function setTaille(string $taille): self
+    {
+        $this->taille = $taille;
 
         return $this;
     }
