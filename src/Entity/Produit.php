@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\VetementsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProduitRepository")
  */
-class Vetements
+class Produit
 {
     /**
      * @ORM\Id()
@@ -15,7 +15,7 @@ class Vetements
      * @ORM\Column(type="integer")
      */
     private $id;
-
+    
     /**
      * @ORM\Column(type="text")
      */
@@ -50,6 +50,16 @@ class Vetements
      * @ORM\Column(type="integer")
      */
     private $active;
+
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -136,6 +146,30 @@ class Vetements
     public function setActive(int $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getType(): ?int
+    {
+        return $this->type;
+    }
+
+    public function setType(int $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
