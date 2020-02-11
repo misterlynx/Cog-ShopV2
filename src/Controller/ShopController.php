@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class ShopController extends AbstractController
 {
     /**
-     * @Route("/shop/{type_str}", name="shop", requirements={"type_str"="homme|femme|accessoires"})
+     * @Route("/shop/{type_str}", name="shop", requirements={"type_str"="homme|femme|accessoires|all"})
      */
     public function shop($type_str, ProduitRepository $produitRepo)
     {
