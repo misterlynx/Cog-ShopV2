@@ -7,17 +7,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Produit;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\BrowserKit\Request;
 
 class ShopController extends AbstractController
 {
     /**
      * @Route("/shop/{type}", name="shop")
      */
-    public function shop($type)
+    public function shop($type, Request $request, ProduitRepository $produitRepo )
     {
+        $limit = 4; 
+        $page = $request->query->get('page') ?? 1;
+        $page = $page <1 ? 1 : $page;
+        $offset = ($page - 1) * $limit;
+
+        $produit = $produitRepo->findBy(
+            array('active' => 1),
+            array('date' => 'DESC'),
+            $limit,
+            $offset
+        ); 
         
         return $this->render('shop/shop.html.twig', [
-            'controller_name' => 'ShopController',
+            'produit' => $produit,
         ]);
     }
 

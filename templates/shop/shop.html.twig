@@ -5,6 +5,7 @@
 {% block body %}
     <h2>Shop</h2>
             <section class="container-fluid">
+            {{ knp_pagination_render(produits) }}
                 <div class="row">
                     <div class="col-3">
                     <div class="card" id="shop" name="shop" style="width: 25rem; height: 40rem;">
