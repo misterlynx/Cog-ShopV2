@@ -210,26 +210,14 @@ class Users implements UserInterface
         return $this;
     }
 
-    public function getPseudo(): ?string
+    public function getDp(): ?int
     {
-        return $this->pseudo;
+        return $this->dp;
     }
 
-    public function setPseudo(string $pseudo): self
+    public function setDp(int $dp): self
     {
-        $this->pseudo = $pseudo;
-
-        return $this;
-    }
-
-    public function getCp(): ?int
-    {
-        return $this->cp;
-    }
-
-    public function setCp(int $cp): self
-    {
-        $this->cp = $cp;
+        $this->dp = $dp;
 
         return $this;
     }

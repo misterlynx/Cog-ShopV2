@@ -1,34 +1,63 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>*
+<head>
+<title>
+	{% block title %}Cog Shop
+	{% endblock %}
+</title>
 
-        <title>{% block title %}Cog Shop{% endblock %}</title>
+<meta name="Content-Type" content="UTF-8">
+<meta name="Content-Language" content="fr">
+<meta name="Description" content="Cog-shop est une boutique en ligne de vêtements de créateur, steampunk et néo-victorien.  ">
+<meta name="Keywords" content="e-commerce, steampunk, victorien, vêtements, clothes, boutique, shop, cog, e-shop, ">
+<meta name="Author" content="wf3 groupe3">
+<meta name="Reply-To" content="t.datchy@laposte.net">
+<meta name="Revisit-After" content="1 day">
+<meta name="Robots" content="all">
+<meta name="Distribution" content="global">
+<meta name="Geography" content="strasbourg, france, 67">
+<meta name="Category" content="shopping">
 
-        <!-- Bootstrap CSS -->
-        {% block stylesheets %}
-            <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-            <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC&display=swap" rel="stylesheet"> 
-            <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        {% endblock %}
+<!-- Primary Meta Tags -->
+<title>Cog-Shop</title>
+<meta name="title" content="Cog-Shop">
+<meta name="description" content="Cog-Shop, boutique en ligne Steampunk et Néo-victorien, vente en ligne de vêtements Steampunk en France métropolitaine..">
 
-    </head>
-    <body class="sb-nav-fixed">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://wf3cogshop.ovh/">
+<meta property="og:title" content="Cog-Shop">
+<meta property="og:description" content="Cog-Shop, boutique en ligne Steampunk et Néo-victorien, vente en ligne de vêtements Steampunk en France métropolitaine..">
+<meta property="og:image" content="">
 
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="http://wf3cogshop.ovh/">
+<meta property="twitter:title" content="Cog-Shop">
+<meta property="twitter:description" content="Cog-Shop, boutique en ligne Steampunk et Néo-victorien, vente en ligne de vêtements Steampunk en France métropolitaine..">
+<meta property="twitter:image" content="">
+
+
+<!-- Bootstrap CSS -->
+{% block stylesheets %}
+	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous"/>
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+
+</head>
+  <body class="sb-nav-fixed">
+        
         {#Header#}
-<<<<<<< HEAD
         {% if app.user %}
             {{ render(controller('App\\Controller\\CogShopController::header')) }}
         {% else %}
             {{ render(controller('App\\Controller\\CogShopController::header2')) }}
         {% endif %}
-=======
         {{ render(controller('App\\Controller\\CogShopController::header')) }}
->>>>>>> 0ee15bcd22fa8a71d74aa60fee7d7622c6b75556
-        
+
+      
         {#Sidebar#}
         <div id="layoutSidenav">
             {{ render(controller('App\\Controller\\CogShopController::sidebar')) }}

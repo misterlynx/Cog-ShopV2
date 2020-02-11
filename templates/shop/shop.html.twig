@@ -3,5 +3,19 @@
 {% block title %}Cog Shop Shopping{% endblock %}
 
 {% block body %}
-
+    <h2>Shop</h2>
+            <section class="container-fluid">
+                <div class="row">
+                    <div class="col-3">
+                    <div class="card" id="shop" name="shop" style="width: 25rem; height: 40rem;">
+                        <img src="{{ produit.img }}" class="card-img-top border border-dark" alt="image produit">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ produit.nom }}</h4>
+                            <p class="card-text">{{ produit.prix }} €</p>
+                            <a href="#" class="btn btn-primary">Voir le détail du produit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 {% endblock %}
