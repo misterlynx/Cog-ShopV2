@@ -40,22 +40,19 @@ a:hover{
     transform: translate(-50%,-50%);
     
 }
-<<<<<<< HEAD
-main , body{
-=======
 #layoutAuthentication_content{
     background: url("../images/lightwall.jpg") no-repeat;
     background-size: 100%;
 }
 
 main{
-    background-color: white;
+    background-color:#271d0b;
+    color: white;
 }
 
-/* .main-accueil{
->>>>>>> 17631cc04b06e48e591d8c0a9b6cd359e6d1b787
+.main-accueil{
     background-color: #271d0b;
-} */
+} 
 
 .btn-warning{
     color:#212529;
@@ -76,17 +73,6 @@ main{
 .socialIcons{
     color: white !important;
 }
-<<<<<<< HEAD
-#btn{ 
-    background-color:  black !important;
-    color: white;
-    font-family: 'Playfair Display SC', serif;
-}
-#card-text ,h2{
-    font-family: 'Playfair Display SC', serif;
-    font-size: xx-large;
-}
-=======
 
 #socialiconsbg{
     background-color: black;
@@ -99,4 +85,3 @@ i:hover{
 
 
 
->>>>>>> 17631cc04b06e48e591d8c0a9b6cd359e6d1b787
