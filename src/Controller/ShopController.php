@@ -11,20 +11,19 @@ use Doctrine\ORM\EntityManagerInterface;
 class ShopController extends AbstractController
 {
     /**
-     * @Route("/shop/{type}", name="shop")
+     * @Route("/shop/{type_str}", name="shop", requirements={"type_str"="homme|femme|accessoires"})
      */
-    public function shop($type)
+    public function shop($type_str, ProduitRepository $produitRepo)
     {
-        
         return $this->render('shop/shop.html.twig', [
-            'controller_name' => 'ShopController',
+            'produits' => $produitRepo->findProductsByType($type_str),
         ]);
     }
 
     /**
-     * @Route("/shop/produit/{id}-{slug}", name="produit")
+     * @Route("/shop/{type_str}/{id}-{slug}", name="produit")
      */
-    public function produit($id, $slug, ProduitRepository $produitRepo, EntityManagerInterface $em)
+    public function produit($type_str, $id, $slug, ProduitRepository $produitRepo, EntityManagerInterface $em)
     {
         $produit = $produitRepo->findOneBy(array(
             'id' => $id
@@ -45,6 +44,12 @@ class ShopController extends AbstractController
           
         // Le slug du produit est il le meme que dan l'URL ?? Si non, rediriger sur la page actuelle, mais avec le bon slug
 
+        if ($slug != $produit->getSlug()) {
+            return $this->redirectToRoute('produit', array(
+                'id' => $id,
+                'slug' => $produit->getSlug()
+            ));
+        }
 
         // dump($produit);die;
         

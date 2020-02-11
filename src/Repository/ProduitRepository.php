@@ -19,6 +19,26 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
+    public function getType($type_str) {
+        if ($type_str == 'homme') {
+            $type = 0;
+        }elseif($type_str == 'femme'){
+            $type = 1;
+        }else {
+            $type = 2;
+        }
+        return $type;
+    }
+
+    public function findProductsByType($type_str)
+    {
+        $type = $this->getType($type_str);
+        return $this->findBy([
+            'type' => $type,
+            'active' => '1',
+        ]);
+    }
+
     // /**
     //  * @return Produit[] Returns an array of Produit objects
     //  */

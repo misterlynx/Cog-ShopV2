@@ -1,8 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Cog Shop Shopping{% endblock %}
-
+{% block title %}Cog Shop Vetements {% endblock %}
 
 {% block body %}
-    <h1>shop</h1>
+<h2 class="text-light text-center py-5">Shop</h2>
+<section class="container-fluid">
+    <div class="row">
+    {% for produit in produits  %}
+        <div class="col-3 mb-3">
+            <table id="shop" class="card" name="shop" style="width: 25rem; height: 43rem;">
+                <thead class="border border-dark">
+                    <tr>
+                        <th><img src="../images/{{ produit.img }}" class="card-img-top" alt="imageDuProduit"></th>
+                    </tr>
+                </thead>
+                <tbody class="card-body p-0 text-center">
+                    <tr class="d-flex flex-column justify-content-center">
+                       
+                        <td class="card-title m-0 p-0" id="card-title">{{ produit.nom }}<br><hr></td>
+                         <td class="card-text m-0 p-0 " id="card-text">{{ produit.prix }} €<br></br></td>
+                       <td><a href="#" class="btn " id="btn" >Détail du produit</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        {% endfor %} 
+   </div> 
+</section>
 {% endblock %}

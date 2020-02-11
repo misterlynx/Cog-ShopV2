@@ -7,7 +7,7 @@
     background-color: black !important;
 }
 
-.nav, .navbar-brand{
+.nav, .navbar-brand, #card-title{
     font-family: 'Playfair Display SC', serif;
     font-size: x-large;
 }
@@ -40,40 +40,15 @@ a:hover{
     transform: translate(-50%,-50%);
     
 }
-#layoutAuthentication_content{
-    background: url("../images/lightwall.jpg") no-repeat;
-    background-size: 100%;
-}
-
-main{
+main , body{
     background-color: #271d0b;
 }
-
-.btn-warning{
-    color:#212529;
-    background-color:#cb9d32;
-    border-color:#cb9d32;
-}
-
-/* #socialIcons{
-    background-color: white;
-    border-radius: 50%;
-    border: 1x solid grey;
-    padding:11px;
+#btn{ 
+    background-color:  black !important;
     color: white;
-    font-size: 15px;
-    margin-right: 15px;
-} */
-
-.socialIcons{
-    color: white !important;
+    font-family: 'Playfair Display SC', serif;
 }
-
-#socialiconsbg{
-    background-color: black;
+#card-text ,h2{
+    font-family: 'Playfair Display SC', serif;
+    font-size: xx-large;
 }
-
-i:hover{
-    color: #cb9d32 !important;
-}
-
