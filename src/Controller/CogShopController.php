@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\UsersRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 class CogShopController extends AbstractController
 {
@@ -51,6 +53,11 @@ class CogShopController extends AbstractController
             
         ]);
         }
+    public function sidebarP(){
+        return $this->render('cog_shop/sidebarP.html.twig' , [
+                
+        ]);
+        }
     public function footer(){
         return $this->render('cog_shop/footer.html.twig' , [
             
@@ -68,7 +75,4 @@ class CogShopController extends AbstractController
                     
         ]);
         }
-       
-   
-
 }

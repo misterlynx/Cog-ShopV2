@@ -38,16 +38,25 @@ a:hover{
     top: 68.5%;
     left: 16.5%;
     transform: translate(-50%,-50%);
+<<<<<<< HEAD
 }
 
 main , body{
     background-color: #271d0b;
 }
 
+=======
+    
+}
+main , body{
+    background-color: #271d0b;
+}
+>>>>>>> 92d42db7e30cc41e1066de60a6265d6e1a53700f
 #btn{ 
     background-color:  black !important;
     color: white;
     font-family: 'Playfair Display SC', serif;
+<<<<<<< HEAD
 }
 
 #card-text ,h2{
@@ -58,4 +67,10 @@ main , body{
 #layoutAuthentication_content{
     background: url("../images/lightwall.jpg") no-repeat;
     background-size: 100%;
+=======
+}
+#card-text ,h2{
+    font-family: 'Playfair Display SC', serif;
+    font-size: xx-large;
+>>>>>>> 92d42db7e30cc41e1066de60a6265d6e1a53700f
 }

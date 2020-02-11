@@ -4,8 +4,12 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Repository\UsersRepository;
+use App\Form\RegistrationFormType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
 {
@@ -15,7 +19,7 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('admin_dispatch');
+            return $this->redirectToRoute('redirect');
         }
 
         // get the login error if there is one
@@ -25,6 +29,62 @@ class SecurityController extends AbstractController
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
+
+    /**
+     * @Route("/password-update", name="password_update")
+     */
+    public function password_update(
+        Request $request, 
+        UsersRepository $usersRepo,
+        UserPasswordEncoderInterface $passwordEncoder
+    ) {
+
+        $user = $this->getUser();
+        $success = "Votre mot de passe a bien été modifié.";
+
+        if (!$user) {
+            $email = $request->query->get('email');
+
+            $user = $usersRepo->findOneBy( array( 'email' => $email ) );
+
+            if (!$user) {
+                throw new \Exception("Page interdite !");
+            }
+
+            $success = "Votre mot de passe a bien été modifié. Vous pouvez maintenant l'utiliser pour vous conecter";
+        }
+
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form
+            ->remove('nom')
+            ->remove('prenom')
+            ->remove('codepostal')
+            ->remove('adresse')
+            ->remove('ville')
+            ->remove('email')
+        ;
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('password')->getData()
+                )
+            );
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $this->addFlash('success', $success);
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->render('security/password_update.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
 
     /**
      * @Route("/logout", name="app_logout")

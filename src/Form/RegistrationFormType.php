@@ -74,7 +74,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Adresse-mail:',
                 'required' => true,
             ])
-            ->add('plainPassword', RepeatedType::class, [
+            ->add('password', RepeatedType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'type' =>PasswordType::class,
