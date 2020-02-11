@@ -24,21 +24,29 @@
       Email : {{ app.user.email }} <br>
       </div>
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-      {% for command in Commands %}
-        <table id="table_id" class="display">
-    <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Prenom</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ app.user.nom }}</td>
-            <td>{{ app.user.prenom }}</td>
-        </tr>
-    </tbody>
-</table>
+        <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Nom</th>
+                                                <th>Prénom</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                         {% for command in Commands %}
+                                            <tr>
+                                                <td>{{ app.user.nom }}</td>
+                                                <td>{{ app.user.prenom }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
       {% endfor %}
       </div>
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">Bonsoir</div>
