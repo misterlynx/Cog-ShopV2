@@ -7,7 +7,7 @@
     background-color: black !important;
 }
 
-.nav, .navbar-brand{
+.nav, .navbar-brand, #card-title{
     font-family: 'Playfair Display SC', serif;
     font-size: x-large;
 }
@@ -40,6 +40,15 @@ a:hover{
     transform: translate(-50%,-50%);
     
 }
-main{
+main , body{
     background-color: #271d0b;
+}
+#btn{ 
+    background-color:  black !important;
+    color: white;
+    font-family: 'Playfair Display SC', serif;
+}
+#card-text ,h2{
+    font-family: 'Playfair Display SC', serif;
+    font-size: xx-large;
 }
