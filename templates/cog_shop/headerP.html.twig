@@ -1,16 +1,12 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark ">
-    <a class="navbar-brand text-center" href="{{ ('accueil') }}">COG SHOP</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+    <a class="navbar-brand text-center" href="{{ path('accueil') }}">COG SHOP</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
     <!-- Navbar-->
     <ul class="navbar-nav ml-auto ml-md-0" id="MonCompte">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            {% if app.user.roles('ROLE_MEMBRE') %}
-                <a class="dropdown-item" href="{{ ('member') }}">Mon compte</a>
-            {% elseif app.user.roles('ROLE_ADMIN') %}
-                <a class="dropdown-item" href="{{ ('administration') }}">Mon compte</a>
-            {% endif %}
-                <a class="dropdown-item" href="#">Panier</a><a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
+            <a class="dropdown-item" href="{{ path('accueil') }}">Accueil</a>
+            <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
             </div>
         </li>
     </ul>

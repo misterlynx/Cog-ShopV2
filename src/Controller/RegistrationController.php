@@ -33,9 +33,9 @@ class RegistrationController extends AbstractController
             );
 
             $user->setRoles(["ROLE_MEMBRE"]);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             // do anything else you need here, like send an email
 
