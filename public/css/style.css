@@ -7,7 +7,7 @@
     background-color: black !important;
 }
 
-.nav, .navbar-brand{
+.nav, .navbar-brand, #card-title{
     font-family: 'Playfair Display SC', serif;
     font-size: x-large;
 }
@@ -29,6 +29,7 @@ a:hover{
     font-family: 'Playfair Display SC', serif;
     color: #271d0b;
 }
+
 #row{
     position: relative;
 }
@@ -38,49 +39,36 @@ a:hover{
     top: 68.5%;
     left: 16.5%;
     transform: translate(-50%,-50%);
-    
 }
+
+main , body{
+    background-color: #271d0b;
+}
+
+#btn{ 
+    background-color:  black !important;
+    color: white;
+    font-family: 'Playfair Display SC', serif;
+}
+
+#card-text ,h2{
+    font-family: 'Playfair Display SC', serif;
+    font-size: xx-large;
+}
+
 #layoutAuthentication_content{
     background: url("../images/lightwall.jpg") no-repeat;
     background-size: 100%;
 }
 
-main{
-    background-color: white;
+#layoutAuthentication_content.backgroundContact{
+    background-image: url("../images/unnamed.jpg ");
 }
 
-/* .main-accueil{
-    background-color: #271d0b;
+#layoutAuthentication_content.backgroundLogin{
+    background-image: url("../images/lock.jpg ");
+}
+/* #layoutAuthentication_content.backgroundContact{
+    background-image: url("../images/unnamed.jpg ");
 } */
-
-.btn-warning{
-    color:#212529;
-    background-color:#cb9d32;
-    border-color:#cb9d32;
-}
-
-/* #socialIcons{
-    background-color: white;
-    border-radius: 50%;
-    border: 1x solid grey;
-    padding:11px;
-    color: white;
-    font-size: 15px;
-    margin-right: 15px;
-} */
-
-.socialIcons{
-    color: white !important;
-}
-
-#socialiconsbg{
-    background-color: black;
-}
-
-i:hover{
-    color: #cb9d32 !important;
-}
-
-
-
 

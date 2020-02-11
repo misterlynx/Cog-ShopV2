@@ -20,8 +20,12 @@
         e.preventDefault();
         $("body").toggleClass("sb-sidenav-toggled");
     });
+
 })(jQuery);
 
 $(document).ready(function() {
     $('#shop').DataTable();
 } );
+
+
+

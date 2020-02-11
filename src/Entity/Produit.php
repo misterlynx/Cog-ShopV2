@@ -53,6 +53,9 @@ class Produit
 
     /**
      * @ORM\Column(type="smallint")
+     * 1 = homme
+     * 2 = femme
+     * 3 = accessoire
      */
     private $type;
 
