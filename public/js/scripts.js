@@ -23,9 +23,6 @@
 
 })(jQuery);
 
-$(document).ready(function() {
-    $('#shop').DataTable();
-} );
 
 
 
