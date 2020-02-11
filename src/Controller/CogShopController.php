@@ -18,7 +18,7 @@ class CogShopController extends AbstractController
     }
 
     /**
-     * @Route("/CogShop-a-propos", name="apropos")
+     * @Route("/a-propos", name="apropos")
      */
     public function apropos()
     {
@@ -28,7 +28,7 @@ class CogShopController extends AbstractController
     }
 
     /**
-     * @Route("/CogShop-histoire", name="histoire")
+     * @Route("/histoire", name="histoire")
      */
     public function histoire()
     {
@@ -37,15 +37,7 @@ class CogShopController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/CogShop-contact", name="contact")
-     */
-    public function contact()
-    {
-        return $this->render('contact/contact.html.twig', [
-            
-        ]);
-    }
+    
     
 
     public function header(){

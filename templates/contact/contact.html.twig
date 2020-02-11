@@ -3,89 +3,63 @@
 {% block title %}Cog Shop Contact{% endblock %}
 
 {% block body %}
-<div class="container py-5">
-	<div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="well well-sm">
-          <form class="form-horizontal mx-auto" action="{{ path('contact') }}" method="post">
-          <fieldset>
-            <legend class="text-center">Contact us</legend>
-    
+    <div class="container mt-5" >
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-7 mt-5">
+                <div class="card shadow-lg border-0 rounded-lg mt-5 mb-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Contact Us</h3></div>
+                        <div class="card-body">
 
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    {# <button type="button" class="close" data="">
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span></button>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+
+                            {{ form_start(contactForm) }}
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ form_row(contactForm.nom) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ form_row(contactForm.prenom) }}
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ form_row(contactForm.sujet) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ form_row(contactForm.email) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            {{ form_row(contactForm.message)  }}
+                                        </div>
+                                    </div>
+                                    
+                                               
+                                </div>
+                            {{ form_end(contactForm) }}
+                        </div>
                     
-                    </button> #}
-                    </div>
-                {% endfor %}
-            {% endfor %}
-
-
-            <!-- Name input-->
-            <div class="form-group">
-              <label class="col-lg-3 control-label" for="name">Name</label>
-              <div class="col-lg-9">
-                <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
-              </div>
-            </div>
-    
-            <!-- Email input-->
-            <div class="form-group">
-              <label class="col-lg-3 control-label" for="email">Your E-mail</label>
-              <div class="col-lg-9">
-                <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
-              </div>
-            </div>
-    
-            <!-- Message body -->
-            <div class="form-group">
-              <label class="col-lg-3 control-label" for="message">Your message</label>
-              <div class="col-lg-9">
-                <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
-              </div>
-            </div>
-    
-            <!-- Form actions -->
-            <div class="form-group">
-              <div class="col-lg-12 text-right">
-                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-              </div>
-            </div>
-          </fieldset>
-          </form>
-        </div>
-      </div>
-	</div>
-</div>
-
-
-
-<section id="cover" class="min-vh-100">
-    <div id="cover-caption">
-        <div class="container">
-            <div class="row text-white">
-                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
-                    <h1 class="display-4 py-2 text-truncate">Center my form.</h1>
-                    <div class="px-2">
-                        <form action="" class="justify-content-center">
-                            <div class="form-group">
-                                <label class="sr-only">Name</label>
-                                <input type="text" class="form-control" placeholder="Jane Doe">
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only">Email</label>
-                                <input type="text" class="form-control" placeholder="jane.doe@example.com">
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg">Launch</button>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
+    
 {% endblock %}

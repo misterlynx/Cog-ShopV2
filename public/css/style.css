@@ -46,8 +46,12 @@ a:hover{
 }
 
 main{
-    background-color: #271d0b;
+    background-color: white;
 }
+
+/* .main-accueil{
+    background-color: #271d0b;
+} */
 
 .btn-warning{
     color:#212529;
@@ -76,4 +80,7 @@ main{
 i:hover{
     color: #cb9d32 !important;
 }
+
+
+
 

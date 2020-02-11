@@ -26,9 +26,7 @@ class ShopController extends AbstractController
      */
     public function produit($id, $slug, ProduitRepository $produitRepo, EntityManagerInterface $em)
     {
-        $produit = $produitRepo->findOneBy(array(
-            'id' => $id
-        ) );
+        $produit = $produitRepo->find($id);
        
 
         // Si pas de produits, rediriger vers une autre page avec un msg : Produit non existant
@@ -40,13 +38,20 @@ class ShopController extends AbstractController
         
             if (!$produit) {
                 $this->addFlash('danger', "Le produit demandé ne existe pas!");
-            return $this->redirectToRoute('shop');  
+                return $this->redirectToRoute('shop');  
             }
+
+            
           
         // Le slug du produit est il le meme que dan l'URL ?? Si non, rediriger sur la page actuelle, mais avec le bon slug
-
-
-        // dump($produit);die;
+            
+            if ($slug != $produit->getSlug()) {
+                return $this->redirectToRoute('produit', array(
+                    'id' => $id,
+                    'slug' => $produit->getSlug()
+                ));               
+            }
+        
         
         return $this->render('shop/produit.html.twig', [
             'produit' => $produit
