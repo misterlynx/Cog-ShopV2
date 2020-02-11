@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+    <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                {# <main id="background-register"> #}
+                    <div class="container mt-5" >
+                        <div class="row justify-content-center mt-5">
+                            <div class="col-md-7 mt-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5 mb-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Inscription</h3></div>
+                                        <div class="card-body">
+
+                                        {{ form_start(registrationForm) }}
+                                            <div class="form-row">
+                                                {# <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.pseudonyme) }}
+                                                    </div>
+                                                </div> #}
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.nom) }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.prenom) }}
+                                                    </div>
+                                                </div>
+
+                                                {# <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.datenaissance) }}
+                                                    </div>
+                                                </div> #}
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.adresse) }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.codepostal) }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.ville)  }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.email) }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.plainPassword.first) }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.plainPassword.second) }}
+                                                    </div>
+                                                </div>
+
+                                                {# <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.agreeTerms) }}
+                                                    </div>
+                                                </div> #}
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <button class="btn btn btn-warning btn-block mx-auto">S'inscrire !</button>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card-footer text-center text-warning">
+                                        <div class="small"><a href="{{ path('app_login') }}" class="text-dark">Have an account? Go to login</a></div>
+                                    </div>
+                                {{ form_end(registrationForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {# </main> #}
+            </div>
+        </div>
+   
+
+{% endblock %}
