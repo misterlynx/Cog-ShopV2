@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
- * @UniqueEntity(fields={"pseudonyme"}, message="There is already an account with this pseudonyme")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class Users implements UserInterface
 {
@@ -22,7 +22,7 @@ class Users implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $pseudonyme;
+    private $email;
 
     /**
      * @ORM\Column(type="json")
@@ -45,25 +45,17 @@ class Users implements UserInterface
      */
     private $prenom;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $email;
+    
+
+    // /**
+    //  * @ORM\Column(type="datetime")
+    //  */
+    // private $datenaissance;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=5)
      */
-    private $datenaissance;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $pseudo;
-
-    /**
-     * @ORM\Column(type="smallint")
-     */
-    private $cp;
+    private $codepostal;
 
     /**
      * @ORM\Column(type="text")
@@ -71,7 +63,7 @@ class Users implements UserInterface
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string", length=100)
      */
     private $ville;
 
@@ -80,17 +72,17 @@ class Users implements UserInterface
         return $this->id;
     }
 
-    public function getPseudonyme(): ?string
-    {
-        return $this->pseudonyme;
-    }
+    // public function getPseudonyme(): ?string
+    // {
+    //     return $this->pseudonyme;
+    // }
 
-    public function setPseudonyme(string $pseudonyme): self
-    {
-        $this->pseudonyme = $pseudonyme;
+    // public function setPseudonyme(string $pseudonyme): self
+    // {
+    //     $this->pseudonyme = $pseudonyme;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * A visual identifier that represents this user.
@@ -99,7 +91,7 @@ class Users implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->pseudonyme;
+        return (string) $this->email;
     }
 
     /**
@@ -109,7 +101,7 @@ class Users implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'MEMBRE';
+        $roles[] = 'ROLE_MEMBRE';
 
         return array_unique($roles);
     }
@@ -198,26 +190,26 @@ class Users implements UserInterface
         return $this;
     }
 
-    public function getDatenaissance(): ?\DateTimeInterface
+    // public function getDatenaissance(): ?\DateTimeInterface
+    // {
+    //     return $this->datenaissance;
+    // }
+
+    // public function setDatenaissance(\DateTimeInterface $datenaissance): self
+    // {
+    //     $this->datenaissance = $datenaissance;
+
+    //     return $this;
+    // }
+
+    public function getCodepostal(): ?int
     {
-        return $this->datenaissance;
+        return $this->codepostal;
     }
 
-    public function setDatenaissance(\DateTimeInterface $datenaissance): self
+    public function setCodepostal(int $codepostal): self
     {
-        $this->datenaissance = $datenaissance;
-
-        return $this;
-    }
-
-    public function getDp(): ?int
-    {
-        return $this->dp;
-    }
-
-    public function setDp(int $dp): self
-    {
-        $this->dp = $dp;
+        $this->codepostal = $codepostal;
 
         return $this;
     }

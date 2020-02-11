@@ -6,21 +6,21 @@
 
     <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Register</h3></div>
+                {# <main id="background-register"> #}
+                    <div class="container mt-5" >
+                        <div class="row justify-content-center mt-5">
+                            <div class="col-md-7 mt-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5 mb-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Inscription</h3></div>
                                         <div class="card-body">
 
                                         {{ form_start(registrationForm) }}
                                             <div class="form-row">
-                                                <div class="col-md-6">
+                                                {# <div class="col-md-6">
                                                     <div class="form-group">
                                                         {{ form_row(registrationForm.pseudonyme) }}
                                                     </div>
-                                                </div>
+                                                </div> #}
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -34,21 +34,21 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                {# <div class="col-md-6">
                                                     <div class="form-group">
                                                         {{ form_row(registrationForm.datenaissance) }}
                                                     </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        {{ form_row(registrationForm.dp) }}
-                                                    </div>
-                                                </div>
+                                                </div> #}
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         {{ form_row(registrationForm.adresse) }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.codepostal) }}
                                                     </div>
                                                 </div>
 
@@ -66,32 +66,39 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        {{ form_row(registrationForm.plainPassword) }}
+                                                        {{ form_row(registrationForm.plainPassword.first) }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        {{ form_row(registrationForm.plainPassword.second) }}
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                {# <div class="col-md-12">
                                                     <div class="form-group">
                                                         {{ form_row(registrationForm.agreeTerms) }}
                                                     </div>
+                                                </div> #}
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <button class="btn btn btn-warning btn-block mx-auto">S'inscrire !</button>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <button class="btn btn btn-success btn-block text-center">S'inscrire !</button>
-                                                </div>
-                                           
                                         </div>
                                     </div>
-                                    <div class="card-footer text-center">
-                                        <div class="small"><a href="{{ path('app_login') }}">Have an account? Go to login</a></div>
+                                    
+                                    <div class="card-footer text-center text-warning">
+                                        <div class="small"><a href="{{ path('app_login') }}" class="text-dark">Have an account? Go to login</a></div>
                                     </div>
                                 {{ form_end(registrationForm) }}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </main>
+                {# </main> #}
             </div>
         </div>
-    <h1>Inscription</h1>
+   
 
 {% endblock %}
