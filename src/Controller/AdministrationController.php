@@ -15,13 +15,11 @@ class AdministrationController extends AbstractController
      */
     public function administration(UsersRepository $usersRepository, EntityManagerInterface $em)
     {
-
-        $repository = $em->getRepository(UsersRepository::class);
-        $Table = $repository->findAll();
+        $Commands = $usersRepository->findAll();
 
         return $this->render('administration/index.html.twig', [
             'controller_name' => 'AdministrationController',
-            'Table' => $Table,
+            'Commands' => $Commands,
         ]);
     }
 }

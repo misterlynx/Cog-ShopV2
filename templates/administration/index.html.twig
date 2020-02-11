@@ -1,9 +1,8 @@
-{% extends 'cog_shop/sidebarP.html.twig' %}
+{% extends "baseP.html.twig" %}
 
-{% block title %}Hello AdministrationController!{% endblock %}
+{% block title %}Panel Admin{% endblock %}
 
 {% block body %}
-{{ render(controller('App\\Controller\\CogShopController::headerP')) }}
 <div class="row">
   <div class="col-3">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -17,42 +16,35 @@
     <div class="tab-content" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
       <h1>Vos informations : <br>
-      Pseudonyme: {{ app.user.pseudonyme }} <br>
       Nom : {{ app.user.nom }} <br>
       Prénom : {{ app.user.prenom }} <br>
-      Date De Naissance : {{ app.user.datenaissance|date("d/m/Y") }} <br>
-      Département : {{ app.user.dp }} <br>
+      Code Postal : {{ app.user.codepostal }} <br>
       Adresse : {{ app.user.adresse }} <br>
       Ville : {{ app.user.ville }} <br>
       Email : {{ app.user.email }} <br>
       </div>
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-       <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
-                        <h1 class="mt-4">Tables</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.</div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                            nom
-                                            </tr>
-                                        </tbody>
-                                    </table>
+      {% for command in Commands %}
+        <table id="table_id" class="display">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ app.user.nom }}</td>
+            <td>{{ app.user.prenom }}</td>
+        </tr>
+    </tbody>
+</table>
+      {% endfor %}
       </div>
-      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">Bonsoir</div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">Saluit</div>
     </div>
   </div>
 </div>
+</body>
 {% endblock %}
