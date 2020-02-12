@@ -17,7 +17,7 @@
 }
 
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {
-    color: white;
+    color: antiquewhite;
 }
 
 a:hover{
@@ -38,39 +38,43 @@ a:hover{
     top: 68.5%;
     left: 16.5%;
     transform: translate(-50%,-50%);
-<<<<<<< HEAD
 }
 
 main , body{
     background-color: #271d0b;
 }
 
-=======
-    
-}
-main , body{
-    background-color: #271d0b;
-}
->>>>>>> 92d42db7e30cc41e1066de60a6265d6e1a53700f
-#btn{ 
+#btnshop{ 
     background-color:  black !important;
-    color: white;
+    color: antiquewhite;
     font-family: 'Playfair Display SC', serif;
-<<<<<<< HEAD
 }
 
-#card-text ,h2{
+#card-text ,h4{
     font-family: 'Playfair Display SC', serif;
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 #layoutAuthentication_content{
     background: url("../images/lightwall.jpg") no-repeat;
     background-size: 100%;
-=======
 }
-#card-text ,h2{
+h2{
+    color:  antiquewhite;
+    font-family: 'Playfair Display SC', serif;
+}
+#h2single{
+    color: black;
+    font-family: 'Playfair Display SC', serif;
+}
+#h1single{
+    font-family: 'Playfair Display SC', serif;
+}
+#psingle{
+    font-family: 'Playfair Display SC', serif;
+    font-size: large;
+}
+#psingleprix{
     font-family: 'Playfair Display SC', serif;
     font-size: xx-large;
->>>>>>> 92d42db7e30cc41e1066de60a6265d6e1a53700f
 }
