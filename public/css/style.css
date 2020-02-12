@@ -1,4 +1,3 @@
-/* Navbar personalise */
 .sb-sidenav-footer, #searchButton {
     background-color: #cb9d32 !important;
 }
@@ -18,7 +17,7 @@
 }
 
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {
-    color: white;
+    color: antiquewhite;
 }
 
 a:hover{
@@ -29,6 +28,7 @@ a:hover{
     font-family: 'Playfair Display SC', serif;
     color: #271d0b;
 }
+
 #row{
     position: relative;
 }
@@ -38,12 +38,21 @@ a:hover{
     top: 68.5%;
     left: 16.5%;
     transform: translate(-50%,-50%);
-    
 }
+
 main , body{
     background-color: #271d0b;
 }
-#btn{ 
+
+#layoutAuthentication_content{
+    background: url("../images/lightwall.jpg") no-repeat;
+    background-size: 100%;
+}
+h2{
+    color:  antiquewhite;
+    font-family: 'Playfair Display SC', serif;
+}
+#btnshop{ 
     background-color:  black !important;
     color: white;
     font-family: 'Playfair Display SC', serif;
