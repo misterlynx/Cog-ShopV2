@@ -15,7 +15,7 @@ class ShopController extends AbstractController
      */
     public function shop($type_str, Request $request, ProduitRepository $produitRepo )
     {
-        $limit = 4; 
+        $limit = 8; 
         $page = $request->query->get('page') ?? 1;
         $page = $page <1 ? 1 : $page;
         $offset = ($page - 1) * $limit;
