@@ -17,6 +17,7 @@ class ShopController extends AbstractController
     {
         return $this->render('shop/shop.html.twig', [
             'produits' => $produitRepo->findProductsByType($type_str),
+            'type_str' => $type_str
         ]);
     }
 
