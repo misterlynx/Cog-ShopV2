@@ -1,4 +1,3 @@
-/* Navbar personalise */
 .sb-sidenav-footer, #searchButton {
     background-color: #cb9d32 !important;
 }
@@ -18,7 +17,7 @@
 }
 
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {
-    color: white;
+    color: antiquewhite;
 }
 
 a:hover{
@@ -47,13 +46,18 @@ main , body{
 
 #btnshop{ 
     background-color:  black !important;
-    color: white;
+    color: antiquewhite;
     font-family: 'Playfair Display SC', serif;
 }
 
 #card-text ,h2{
     font-family: 'Playfair Display SC', serif;
     font-size: xx-large;
+}
+
+#card-text ,h4{
+    font-family: 'Playfair Display SC', serif;
+    font-size: x-large;
 }
 
 #layoutAuthentication_content{
@@ -74,6 +78,20 @@ main , body{
 
 h2{
     color:  antiquewhite;
+    font-family: 'Playfair Display SC', serif;
+}
+#h2single{
+    color: black;
+    font-family: 'Playfair Display SC', serif;
+}
+#h1single{
+    font-family: 'Playfair Display SC', serif;
+}
+#psingle{
+    font-family: 'Playfair Display SC', serif;
+    font-size: large;
+}
+#psingleprix{
     font-family: 'Playfair Display SC', serif;
 }
 

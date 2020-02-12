@@ -5,26 +5,26 @@ namespace App\Controller;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Produit;
 use Doctrine\ORM\EntityManagerInterface;
 
 class ShopController extends AbstractController
 {
     /**
-     * @Route("/shop/{type_str}", name="shop", requirements={"type_str"="homme|femme|accessoires|all"})
+     * @Route("/shop/{type_str}", name="shop", requirements={"type_str"="homme|femme|accessoires|produits"})
      */
     public function shop($type_str, ProduitRepository $produitRepo)
     {
         return $this->render('shop/shop.html.twig', [
             'produits' => $produitRepo->findProductsByType($type_str),
-            'type_str' => $type_str
+            'type_str' => $type_str,
         ]);
+        
     }
 
     /**
-     * @Route("/shop/{type_str}/{id}-{slug}", name="produit")
+     * @Route("/shop/{type_str}/{id}-{slug}", name="produit_single")
      */
-    public function produit($type_str, $id, $slug, ProduitRepository $produitRepo, EntityManagerInterface $em)
+    public function produit_single($type_str, $id, $slug, ProduitRepository $produitRepo, EntityManagerInterface $em)
     {
         $produit = $produitRepo->find($id);
        
@@ -38,7 +38,9 @@ class ShopController extends AbstractController
         
             if (!$produit) {
                 $this->addFlash('danger', "Le produit demandé ne existe pas!");
-                return $this->redirectToRoute('shop');  
+                return $this->redirectToRoute('shop',array (
+                    'type_str' => 'produits'
+                ));  
             }
 
             
@@ -46,16 +48,17 @@ class ShopController extends AbstractController
         // Le slug du produit est il le meme que dan l'URL ?? Si non, rediriger sur la page actuelle, mais avec le bon slug
             
             if ($slug != $produit->getSlug()) {
-                return $this->redirectToRoute('produit', array(
+                return $this->redirectToRoute('produit_single', array(
                     'id' => $id,
-                    'slug' => $produit->getSlug()
+                    'slug' => $produit->getSlug(),
+                    'type_str' => $produit->getTypeStr()
                 ));               
             }
         
-        
-        return $this->render('shop/produit.html.twig', [
+        return $this->render('shop/produit_single.html.twig', [
             'produit' => $produit
         ]);
+       
     }
 
    

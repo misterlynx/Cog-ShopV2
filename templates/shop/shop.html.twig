@@ -3,20 +3,32 @@
 {% block title %}CogShop Vetements {{ type_str }} {% endblock %}
 
 {% block body %}
-    <h2 class="text-light text-center py-5">{{ type_str }}</h2>
+    <h2 class="text-light text-center py-5">{{ type_str|title }}</h2>
     <section class="container-fluid">  
         <div class="row">
-        {% for produit in produits  %}
-            <div class="col-md-3 mb-3">
-                <div class="card" id="shop" name="shop">
-                    <img src="{{ asset('images/' ~ produit.img ) }}" class="card-img-top border border-dark" alt="image produit">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">{{ produit.nom }}</h4>
-                        <p class="card-text text-right" id="card-text">{{ produit.prix }} €</p>
-                        <a href="#" class="btn btn" id="btnshop">Détail du produit</a>
+            {% for produit in produits  %}
+                <div class=" col-sm-12 col-md-6 col-lg-3 mb-3">
+                    <div class="card" id="shop" name="shop">
+                        <img src="{{ asset('images/' ~ produit.img ) }}" class="card-img-top border border-dark" alt="image produit">
+                        <div class="card-body ">
+                            <h4 class="card-title text-center">{{ produit.nom }}</h4>
+                            <p class="card-text text-right" id="card-text">{{ produit.prix }} €</p>
+                            <a href="{{ path('produit_single', { type_str: produit.typeStr, id:produit.id, slug:produit.slug}) }}" class="btn btn" id="btnshop">Détail du produit</a>
+                            <!-- panier qui bouge  -->
+                            <a href="#" class="pl-5" ><svg width="70" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><style>
+
+                                .line-cart1 {animation:line-cart1-arrow 1s infinite;}
+                                @keyframes line-cart1-arrow {
+                                    0%{transform: translate3d(0, -4px, 0);}
+                                    50%{transform: translate3d(0, 0, 0);}
+                                    100%{transform: translate3d(0, -4px, 0);}
+                                }
+                            
+                            </style><path d="M7 9.7793H21.027L22.9752 23.8063M70.9009 23.8063H93.5L84.9279 65.8874H28.8198L22.9752 23.8063M22.9752 23.8063H42.8468" stroke="rgba(203,157,50,1)" stroke-width="4.0px"></path><path class="line-cart1" d="M56.8739 9V50.3018M56.8739 50.3018L45.1847 38.6126M56.8739 50.3018L68.5631 38.6126" stroke="rgba(203,157,50,1)" stroke-width="4.0px" stroke-linecap="round" style="animation-duration: 1.3s;"></path><circle cx="32.7162" cy="82.1487" r="8.57207" fill="#fff" stroke="rgba(203,157,50,1)" stroke-width="4.0px"></circle><circle cx="84.1486" cy="82.1487" r="8.57207" fill="#fff" stroke="rgba(203,157,50,1)" stroke-width="4.0px"></circle></svg></a>
+                            <!-- fin du panier qui bouge -->
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </section>

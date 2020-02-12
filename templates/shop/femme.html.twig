@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{#{produit.nom}#}{% endblock %}
+
+{% block body %}
+<h2 class="text-light text-center">Femme</h2>
+<section class="container-fluid">
+    {#{% for produit in produit  %}#}
+    <div class="row">
+        <div class="col-3">
+            <table id="shop" class="card" name="shop" style="width: 25rem; height: 43rem;">
+                <thead class="border border-dark">
+                    <tr>
+                        <th><img src="{#{{ produit.img }}#}images/corset-bordeaux.jpg" class="card-img-top" alt="imageDuProduit"></th>
+                    </tr>
+                </thead>
+                <tbody class="card-body p-0 text-center">
+                    <tr class="d-flex flex-column justify-content-center">
+                       
+                        <td class="card-title m-0 p-0" id="card-title">{#{{ produit.nom }}#} corset bordeaux <br><hr></td>
+                         <td class="card-text m-0 p-0 " id="card-text">{#{{ produit.prix }}#} 120€<br></br></td>
+                       <td><a href="#" class="btn " id="btn" >Détail du produit</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    
+    
+    {#{% endfor %}#}
+</div>
+</section>
+{% endblock %}
