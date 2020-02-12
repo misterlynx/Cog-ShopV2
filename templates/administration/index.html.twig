@@ -30,17 +30,17 @@
               <th>Prénom</th>
             </tr>
           </thead>
+          {% for inscrit in inscrit %}
           <tbody>
-          {% for command in Commands %}
             <tr>
-              <td>{{ app.user.nom }}</td>
-              <td>{{ app.user.prenom }}</td>
+              <td>{{ inscrit.nom }}</td>
+              <td>{{ inscrit.prenom }}</td>
             </tr>
+          {% endfor %}
           </tbody>
           </table>
             </div>
           </div>
-    {% endfor %}
   </div>
   <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
   <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>

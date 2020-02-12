@@ -16,6 +16,7 @@ class ShopController extends AbstractController
      */
     public function shop($type_str, ProduitRepository $produitRepo, Request $request)
     {
+
         $s = $request->query->get('s');
         if ($s) {
             $produits = $produitRepo->findProducts($s);
