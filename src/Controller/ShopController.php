@@ -6,16 +6,24 @@ use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class ShopController extends AbstractController
 {
     /**
      * @Route("/shop/{type_str}", name="shop", requirements={"type_str"="homme|femme|accessoires|produits"})
      */
-    public function shop($type_str, ProduitRepository $produitRepo)
+    public function shop($type_str, ProduitRepository $produitRepo, Request $request)
     {
+
+        $s = $request->query->get('s');
+        if ($s) {
+            $produits = $produitRepo->findProducts($s);
+        }else {
+            $produits = $produitRepo->findProductsByType($type_str);
+        }
         return $this->render('shop/shop.html.twig', [
-            'produits' => $produitRepo->findProductsByType($type_str),
+            'produits' => $produits,
             'type_str' => $type_str,
         ]);
         
