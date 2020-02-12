@@ -32,6 +32,18 @@ class ProduitRepository extends ServiceEntityRepository
         return $type;
     }
 
+    public function findProducts($s)
+    {
+        $produits = $this->createQueryBuilder("p")
+        ->where('p.nom LIKE :search')
+        ->setParameter('search', "%$s%")
+        ->getQuery()
+        ->getResult();
+
+        return $produits;
+        
+    }
+
     public function findProductsByType($type_str)
     {
         $type = $this->getType($type_str);
