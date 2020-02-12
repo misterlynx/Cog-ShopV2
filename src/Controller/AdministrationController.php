@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\UsersRepository;
+use App\Repository\ProduitRepository;
 
 class AdministrationController extends AbstractController
 {
@@ -17,9 +18,10 @@ class AdministrationController extends AbstractController
     {
         $inscrit = $usersRepository->findAll();
 
-        return $this->render('administration/index.html.twig', [
+        return $this->render('administration/administration.html.twig', [
             'controller_name' => 'AdministrationController',
             'inscrit' => $inscrit,
         ]);
     }
+
 }
