@@ -15,7 +15,7 @@
                             <p class="card-text text-right" id="card-text">{{ produit.prix }} €</p>
                             <a href="{{ path('produit_single', { type_str: produit.typeStr, id:produit.id, slug:produit.slug}) }}" class="btn btn" id="btnshop">Détail du produit</a>
                             <!-- panier qui bouge  -->
-                            <a href="#" class="pl-5" ><svg width="70" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><style>
+                            <a href="{{ path('cart_add', {'id': produit.id}) }}" class="pl-5" ><svg width="70" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><style>
 
                                 .line-cart1 {animation:line-cart1-arrow 1s infinite;}
                                 @keyframes line-cart1-arrow {
