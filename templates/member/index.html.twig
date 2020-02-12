@@ -1,0 +1,24 @@
+{% extends "baseP.html.twig" %}
+
+{% block title %}Panel Membre{% endblock %}
+
+{% block body %}
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Infos</a>
+  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Paramêtres</a>
+</div>
+<div class="tab-content" id="v-pills-tabContent">
+  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+    <h1>Vos informations : <br>
+        Nom : {{ app.user.nom }} <br>
+        Prénom : {{ app.user.prenom }} <br>
+        Code Postal : {{ app.user.codepostal }} <br>
+        Adresse : {{ app.user.adresse }} <br>
+        Ville : {{ app.user.ville }} <br>
+        Email : {{ app.user.email }} <br>
+  </div>
+  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+    A Venir !
+  </div>
+</div>
+{% endblock %}
