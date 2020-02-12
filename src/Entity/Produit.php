@@ -69,6 +69,18 @@ class Produit
      */
     private $taille;
 
+
+public function getTypeStr()
+{
+    $type = $this->getType();
+    if ($type == 0) { return 'homme'; }
+    elseif($type == 1) {return 'femme';}
+    elseif($type == 2) {return 'accesoire';}
+    else {return 'produits';}
+
+}
+
+
     public function getId(): ?int
     {
         return $this->id;
