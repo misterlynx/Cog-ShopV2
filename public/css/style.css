@@ -19,7 +19,9 @@
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {
     color: antiquewhite;
 }
-
+.linkedin{
+    color: #271d0b !important;
+}
 a:hover{
     color: #cb9d32 !important;
 }
@@ -78,3 +80,4 @@ h2{
     font-family: 'Playfair Display SC', serif;
     font-size: xx-large;
 }
+

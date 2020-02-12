@@ -13,7 +13,7 @@ class ShopController extends AbstractController
     /**
      * @Route("/shop/{type_str}", name="shop", requirements={"type_str"="homme|femme|accessoires|produits"})
      */
-    public function shop($type_str, Request $request, ProduitRepository $produitRepo, Produit $produit )
+    public function shop($type_str, Request $request, ProduitRepository $produitRepo )
     {
         $limit = 4; 
         $page = $request->query->get('page') ?? 1;
@@ -28,7 +28,6 @@ class ShopController extends AbstractController
         ); 
         
         return $this->render('shop/shop.html.twig', [
-            'produit' => $produit,
             'produits' => $produitRepo->findProductsByType($type_str),
             'type_str' => $type_str,
         ]);
