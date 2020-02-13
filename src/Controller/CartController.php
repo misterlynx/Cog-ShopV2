@@ -2,55 +2,39 @@
 
 namespace App\Controller;
 
-use App\Repository\ProduitRepository;
+use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartController extends AbstractController
 {
     /**
      * @Route("/panier", name="cart_index")
      */
-    public function index(SessionInterface $session, ProduitRepository $produitRepository)
+    public function index(CartService $cartService)
     {
-        $panier = $session->get('panier', []);
-
-        $panierWithData = [];
-
-        foreach ($panier as $id => $quantity) {
-            $panierWithData[] = [
-                'produit' => $produitRepository->find($id) ,
-                'quantity' => $quantity
-            ];
-        }
-
-        $total = 0;
-
-        foreach ($panierWithData as $item) {
-            $totalItem = $item['produit']->getprix()* $item['quantity'];
-            $total += $totalItem;
-        }
         return $this->render('cart/index.html.twig', [
-            'items' =>$panierWithData,
-            'total' => $total
+            'items' => $cartService->getFullCart(),
+            'total' => $cartService->getTotal()
         ] );
     }
     /**
      * @Route("/panier/add/{id}", name="cart_add")
      * 
      */
-    public function add($id, SessionInterface $session)
+    public function add($id, CartService $cartService)
     {
-        $panier = $session->get('panier', []);
+        $cartService->add($id);
 
-        if (!empty($panier[$id])) {
-            $panier[$id]++;
-        }else{
-             $panier[$id] = 1;
-        }
+        return $this->redirectToRoute("cart_index");
+    }
+    /**
+     * @Route("/panier/remove/{id}" , name="cart_remove")
+     */
+    public function remove( $id, CartService $cartService)
+    {
+        $cartService->remove($id);
 
-        $session->set('panier', $panier);
+        return $this->redirectToRoute("cart_index");
     }
 }

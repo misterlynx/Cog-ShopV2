@@ -3,30 +3,30 @@
 {% block title %}Hello CartController!{% endblock %}
 
 {% block body %}
-    <section class="container">
+    <section class="container-fluid text-light">
         <h1>Votre panier</h1>
 
         <div class="row">
-            <div class="col">
-            {% if items | lenght > 0  %}
-                <table>
-                    <thead>
+            <div class="col-6">
+            {% if items | length > 0  %}
+                <table >
+                    <thead class="border border-warning">
                         <tr>
-                            <th>Produit</th>
-                            <th>Prix</th>
-                            <th>Quantité</th>
-                            <th>Total</th>
+                            <th> Produit </th>
+                            <th> Prix </th>
+                            <th> Quantité </th>
+                            <th> Total </th>
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="border border-warning">
                         {% for item in items %}
                             <tr>
                                 <td>{{ item.produit.nom  }}</td>
                                 <td>{{ item.produit.prix  }}</td>
                                 <td>{{ item.quantity }}</td>
                                 <td>{{ item.produit.prix * item.quantity }}</td>
-                                <td><a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                <td><a href="{{ path('cart_remove', {'id' : item.produit.id}) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                         {% endfor %}
