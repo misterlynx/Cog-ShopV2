@@ -7,9 +7,9 @@
     <!-- You can use Open Graph tags to customize link previews.
     Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
     <meta property="og:url"           content="{{ absolute_url(path('produit_single', { type_str: produit.typeStr,  id: produit.id , slug: produit.slug  })) }}" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Cog-Shop-Produit" />
-    <meta property="og:description"   content="Your description" />
+    <meta property="og:type"          content="product" />
+    <meta property="og:title"         content="{{ produit.nom }}" />
+    <meta property="og:description"   content="{{produit.description}}" />
     <meta property="og:image"         content="{{asset('images/' ~ produit.img )}}" />
 {% endblock %}
 
