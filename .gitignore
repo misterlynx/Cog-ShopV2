@@ -7,7 +7,7 @@
 /var/
 /vendor/
 /Migrations/
-.env
+/.env/
 /config/
 ###< symfony/framework-bundle ###
 
