@@ -39,6 +39,16 @@ class CogShopController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/mentionsLegales", name="mentions")
+     */
+    public function mentionsLegales()
+    {
+        return $this->render('cog_shop/mentions.html.twig', [
+
+        ]);
+    }
+
     
     
 
