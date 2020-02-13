@@ -6,7 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UsersRepository;
 use Symfony\Component\HttpFoundation\Request;
-
+use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
+use Symfony\Component\HttpClient\HttpClient;
 
 class CogShopController extends AbstractController
 {
@@ -16,7 +17,6 @@ class CogShopController extends AbstractController
     public function accueil()
     {
         return $this->render('cog_shop/accueil.html.twig', [
-            
         ]);
     }
 
@@ -37,6 +37,16 @@ class CogShopController extends AbstractController
     {
         return $this->render('cog_shop/histoire.html.twig', [
             
+        ]);
+    }
+
+    /**
+     * @Route("/mentionsLegales", name="mentions")
+     */
+    public function mentionsLegales()
+    {
+        return $this->render('cog_shop/mentions.html.twig', [
+
         ]);
     }
 
@@ -77,6 +87,4 @@ class CogShopController extends AbstractController
         ]);
         }
 
-
-    
 }

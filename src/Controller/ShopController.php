@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Knp\Snappy\Pdf;
+use Symfony\Component\HttpFoundation\Response;
 
 class ShopController extends AbstractController
 {
@@ -69,5 +71,28 @@ class ShopController extends AbstractController
        
     }
 
-   
+    /**
+     * @Route("/pdf", name="_pdf")
+     * @return Response
+     */
+    public function pdfAction(\Knp\Snappy\Pdf $snappy)
+    {
+
+    $html = $this->renderView("pdf.html.twig", array(
+        "title" => "Awesome pdf Title",
+    ));
+
+    $filename = "custom_pdf_from-twig";
+
+     return new Response(
+         $snappy->generateFromHtml($html, 'pdflol.pdf'),
+         200,
+         array(
+             'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"'
+         )
+     );
+    }
+
+
 }
