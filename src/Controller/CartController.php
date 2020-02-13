@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class CartController extends AbstractController
 {
     /**
-     * @Route("/panier", name="cart_index")
+     * @Route("/panier", name="cart")
      */
     public function index(CartService $cartService)
     {
-        return $this->render('cart/index.html.twig', [
+        return $this->render('cart/cart.html.twig', [
             'items' => $cartService->getFullCart(),
             'total' => $cartService->getTotal()
         ] );
@@ -26,7 +26,7 @@ class CartController extends AbstractController
     {
         $cartService->add($id);
 
-        return $this->redirectToRoute("cart_index");
+        return $this->redirectToRoute("cart");
     }
     /**
      * @Route("/panier/remove/{id}" , name="cart_remove")
@@ -35,6 +35,6 @@ class CartController extends AbstractController
     {
         $cartService->remove($id);
 
-        return $this->redirectToRoute("cart_index");
+        return $this->redirectToRoute("cart");
     }
 }

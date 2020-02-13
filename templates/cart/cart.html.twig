@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
+{% block title %}Hello {% if app.user %} {{ user.prenom }} {% else %}
+    Inconnu {% endif %}!{% endblock %}
 
 {% block body %}
     <section class="container-fluid text-light">
@@ -43,7 +44,14 @@
                 
             {% endif %}
                 <p>
+                <a href="{% if app.user and app.user.roles('ROLE_MEMBRE') %}
+                   {{ path('contact') }} 
+                {% else %}
+                    {{ path('app_login') }}
                 
+                {% endif %}
+                
+                ">Payer ! </a>
                 </p>
             </div>
         </div>
