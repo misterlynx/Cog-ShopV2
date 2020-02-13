@@ -25,5 +25,4 @@ class AdministrationController extends AbstractController
             'inscrit' => $inscrit,
         ]);
     }
-
 }

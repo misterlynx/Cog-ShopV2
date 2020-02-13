@@ -10,7 +10,7 @@
   <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Paramêtres</a>
 </div>
 <div class="tab-content" id="v-pills-tabContent">
-  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+  <div class="tab-pane fade show active text-light" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
     <h1>Vos informations : <br>
         Nom : {{ app.user.nom }} <br>
         Prénom : {{ app.user.prenom }} <br>
@@ -19,57 +19,30 @@
         Ville : {{ app.user.ville }} <br>
         Email : {{ app.user.email }} <br>
   </div>
-
-<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-  <div class="card-header text-light"><i class="fas fa-table mr-1"></i>Historique de commandes
-    </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-bordered text-light" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-              <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-              </tr>
-            </thead>
+  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+  <div class="card-header text-light"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered text-light" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+            </tr>
+          </thead>
           {% for inscrit in inscrit %}
-        <tbody>
-          <tr>
-            <td>{{ inscrit.nom }}</td>
-            <td>{{ inscrit.prenom }}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>{{ inscrit.nom }}</td>
+              <td>{{ inscrit.prenom }}</td>
+            </tr>
           {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-    <div class="row">
-      <div class="col-6">
-        <form class="d-none d-md-inline-block form-inline mx-auto mr-0 mr-md-3 my-2 my-md-0" action="{{ path('shop', { type_str:'produits' }) }}" method="GET">
-          <div class="input-group">
-            <input type="number" placeholder="ici, mettez l'id du produit" name="id">
-            <input type="text" placeholder="ici, mettez le nom de l'image(avec son extension) du produit" name="img">
-            <input type="text" placeholder="ici, mettez le nom du produit" name="nom">
-            <input type="text" placeholder="ici, mettez la description du produit" name="desc">
-            <input type="color" placeholder="ici, mettez la couleur du produit" name="couleur">
-            <input type="number" placeholder="ici, mettez le prix du produit" name="prix">
-            <input type="number" placeholder="ici, mettez le nombre de stock du produit" name="stock">
-            <input type="number" placeholder="ici, mettez le numéro de stock du produit(0 ou 1)" name="active">
-            <input type="number" placeholder="ici, mettez le type de produit(0 = homme, 1 = femme, 2 = accessoire)" name="type">
-            <input type="text" placeholder="ici, mettez le nom du produit avec un tiret" name="slug">
-            <input type="text" placeholder="ici, mettez la taille du produit" name="taille">
-          <div class="input-group-append">
-            <button class="btn" id="searchButton" type="submit"><i class="fas fa-search"></i></button>
+          </tbody>
+          </table>
+            </div>
           </div>
-        </div>
-       </form>
-      </div>
-    </div>
   </div>
+  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
   <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
 </div>
-
 {% endblock %}

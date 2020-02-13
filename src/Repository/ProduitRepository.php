@@ -24,7 +24,7 @@ class ProduitRepository extends ServiceEntityRepository
             $type = 0;
         }elseif($type_str == 'femme'){
             $type = 1;
-        }elseif ($type_str == 'Produits') {
+        }elseif ($type_str == 'produits') {
             $type = array(0,1,2);
         }else {
             $type = 2;
