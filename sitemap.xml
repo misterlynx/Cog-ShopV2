@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://wf3cogshop.ovh/</loc>
+    <image:image>
+      <image:loc>https://wf3cogshop.ovh/CogShop.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://wf3cogshop.ovh/papissteampunk.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://wf3cogshop.ovh/lg-b-accessoire-steampunk.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://wf3cogshop.ovh/robe2.gif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://wf3cogshop.ovh/montre-gousset-steampunk-mécanique-bronze-spirale-face.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://wf3cogshop.ovh/robe.gif</image:loc>
+    </image:image>
+    
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/login</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/register</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/a-propos</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/histoire</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/homme</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/femme</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/accessoires</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/produits</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/contact</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/homme/7-gilet-insomnium-homme</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/homme/13-Manteau-assasin</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/homme/14-manteau-homme-cuir</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/homme/15-manteau-long-targaryen</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/homme/17-pantalon-harnais</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/homme/18-pantalon-kaki</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/homme/19-pantalon-patchwork</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/homme/25-vampire-victorian</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/homme/26-veste-chemise</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/homme/28-veston-steampunk</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/femme/3-corset-bordeaux</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/femme/5-corset-renaissance-pirate</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/femme/8-jupelongue-rouge</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/femme/9-jupe-post-apocalyptic-blanc</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/femme/10-leeguens-velours-marron</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/femme/20-robe-victorien</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/femme/21-robe-map</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/femme/23-corse-steampunk</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/femme/24-tunique-verte</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/femme/27-veste-carago-rouge</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/accesoire/1-bracelet-compas</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/accesoire/2-chapeau-cuir-rouge</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/accesoire/4-corset-imperiaux-blanc</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/accesoire/6-collier-engrenage</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/accesoire/11-lunette-steampunk-marron</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/accesoire/12-lunette-steampunk-vert</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/accesoire/16-noeud-papillon-bois</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wf3cogshop.ovh/shop/accesoire/22-sac-steampunk</loc>
+  <lastmod>2020-02-12T14:34:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

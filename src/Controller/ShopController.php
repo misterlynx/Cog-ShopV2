@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Spipu\Html2Pdf\Html2Pdf;
 
 class ShopController extends AbstractController
 {
@@ -68,5 +69,27 @@ class ShopController extends AbstractController
        
     }
 
-   
+    /**
+     * @Route("/pdf", name="_pdf")
+     * @return Response
+     */
+
+    public function pdfAction()
+    {
+        $produitcom = [
+            'titre' => 'Test1',
+        ];
+
+        $template = $this->renderView('pdf.html.twig', [
+            'produitcom' => $produitcom,
+        ]);
+
+        $html2pdf = new Html2Pdf('P', 'A4', 'fr');
+        $html2pdf->create('P', 'A4', 'fr', true, 'UTF8', array(10, 15, 10, 15));
+
+        return $html2pdf->generatePdf($template, "Facture");
+
+    }
+
+
 }
