@@ -72,9 +72,10 @@ main , body{
 #layoutAuthentication_content.backgroundLogin{
     background-image: url("../images/lock.jpg ");
 }
-/* #layoutAuthentication_content.backgroundContact{
-    background-image: url("../images/unnamed.jpg ");
-} */
+#layoutAuthentication_content.background404{
+    background-image: url("../images/lost.jpg ");
+    background-color: white;
+}
 
 h2{
     color:  antiquewhite;
