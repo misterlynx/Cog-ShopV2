@@ -7,7 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Spipu\Html2Pdf\Html2Pdf;
+use Knp\Snappy\Pdf;
+use Symfony\Component\HttpFoundation\Response;
 
 class ShopController extends AbstractController
 {
@@ -74,22 +75,23 @@ class ShopController extends AbstractController
      * @Route("/pdf", name="_pdf")
      * @return Response
      */
-
-    public function pdfAction()
+    public function pdfAction(\Knp\Snappy\Pdf $snappy)
     {
-        $produitcom = [
-            'titre' => 'Test1',
-        ];
 
-        $template = $this->renderView('pdf.html.twig', [
-            'produitcom' => $produitcom,
-        ]);
+    $html = $this->renderView("pdf.html.twig", array(
+        "title" => "Awesome pdf Title",
+    ));
 
-        $html2pdf = new Html2Pdf('P', 'A4', 'fr');
-        $html2pdf->create('P', 'A4', 'fr', true, 'UTF8', array(10, 15, 10, 15));
+    $filename = "custom_pdf_from-twig";
 
-        return $html2pdf->generatePdf($template, "Facture");
-
+     return new Response(
+         $snappy->generateFromHtml($html, 'pdflol.pdf'),
+         200,
+         array(
+             'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"'
+         )
+     );
     }
 
 
