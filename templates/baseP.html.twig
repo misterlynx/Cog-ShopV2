@@ -50,13 +50,7 @@
 
         {#Header#}
         {{ render(controller('App\\Controller\\CogShopController::headerP')) }}
-
-        <div id="layoutSidenav">
-        {#Sidebar#}
-        {{ render(controller('App\\Controller\\CogShopController::sidebarP')) }}
         
-         
-
             <div id="layoutSidenav_content">
                 <main>
                     {% block body %}{% endblock %}

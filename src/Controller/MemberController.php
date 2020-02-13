@@ -12,8 +12,8 @@ class MemberController extends AbstractController
      */
     public function index()
     {
-        return $this->render('member/index.html.twig', [
-            'controller_name' => 'MemberController',
+        return $this->render('member/member.html.twig', [
+           
         ]);
     }
 }

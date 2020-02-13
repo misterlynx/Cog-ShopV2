@@ -36,6 +36,9 @@
         <meta property="twitter:description" content="Cog-Shop, boutique en ligne Steampunk et Néo-victorien, vente en ligne de vêtements Steampunk en France métropolitaine..">
         <meta property="twitter:image" content="">
 
+         
+        {% block meta %}{% endblock %}
+
         <!-- Bootstrap CSS -->
         {% block stylesheets %}
             <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -47,14 +50,10 @@
     </head>
     
     <body class="sb-nav-fixed">
-
-        
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v6.0&appId=174919030507115&autoLogAppEvents=1"></script>
         {#Header#}
-        {% if app.user %}
             {{ render(controller('App\\Controller\\CogShopController::header')) }}
-        {% else %}
-            {{ render(controller('App\\Controller\\CogShopController::header2')) }}
-        {% endif %}
         
         {#Sidebar#}
         <div id="layoutSidenav">
@@ -66,7 +65,9 @@
 
             <div id="layoutSidenav_content">
                 <main>
-                    {% block body %}{% endblock %}
+                    {% block body %}
+                        
+                    {% endblock %}
                 </main>
 
                 {#Footer#}

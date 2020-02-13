@@ -52,6 +52,11 @@ main , body{
     font-family: 'Playfair Display SC', serif;
 }
 
+#card-text ,h2{
+    font-family: 'Playfair Display SC', serif;
+    font-size: xx-large;
+}
+
 #card-text ,h4{
     font-family: 'Playfair Display SC', serif;
     font-size: x-large;
@@ -61,6 +66,18 @@ main , body{
     background: url("../images/lightwall.jpg") no-repeat;
     background-size: 100%;
 }
+
+#layoutAuthentication_content.backgroundContact{
+    background-image: url("../images/unnamed.jpg ");
+}
+
+#layoutAuthentication_content.backgroundLogin{
+    background-image: url("../images/lock.jpg ");
+}
+/* #layoutAuthentication_content.backgroundContact{
+    background-image: url("../images/unnamed.jpg ");
+} */
+
 h2{
     color:  antiquewhite;
     font-family: 'Playfair Display SC', serif;
@@ -78,6 +95,9 @@ h2{
 }
 #psingleprix{
     font-family: 'Playfair Display SC', serif;
-    font-size: xx-large;
+}
+
+.linkedin{
+    color: #cb9d32 !important;
 }
 
