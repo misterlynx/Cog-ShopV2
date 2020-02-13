@@ -22,12 +22,12 @@
         <meta name="title" content="Cog-Shop">
         <meta name="description" content="Cog-Shop, boutique en ligne Steampunk et Néo-victorien, vente en ligne de vêtements Steampunk en France métropolitaine..">
 
-        <!-- Open Graph / Facebook -->
+        {# <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="http://wf3cogshop.ovh/">
         <meta property="og:title" content="Cog-Shop">
         <meta property="og:description" content="Cog-Shop, boutique en ligne Steampunk et Néo-victorien, vente en ligne de vêtements Steampunk en France métropolitaine..">
-        <meta property="og:image" content="">
+        <meta property="og:image" content=""> #}
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
@@ -35,6 +35,9 @@
         <meta property="twitter:title" content="Cog-Shop">
         <meta property="twitter:description" content="Cog-Shop, boutique en ligne Steampunk et Néo-victorien, vente en ligne de vêtements Steampunk en France métropolitaine..">
         <meta property="twitter:image" content="">
+
+         
+        {% block meta %}{% endblock %}
 
         <!-- Bootstrap CSS -->
         {% block stylesheets %}
@@ -47,7 +50,8 @@
     </head>
     
     <body class="sb-nav-fixed">
-
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v6.0&appId=174919030507115&autoLogAppEvents=1"></script>
         {#Header#}
         {% if app.user %}
             {{ render(controller('App\\Controller\\CogShopController::header')) }}
@@ -65,7 +69,9 @@
 
             <div id="layoutSidenav_content">
                 <main>
-                    {% block body %}{% endblock %}
+                    {% block body %}
+                        
+                    {% endblock %}
                 </main>
 
                 {#Footer#}
