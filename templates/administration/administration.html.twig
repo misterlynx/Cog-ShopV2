@@ -1,48 +1,127 @@
-{% extends "baseP.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block title %}Panel Admin{% endblock %}
 
 {% block body %}
-<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Infos</a>
-  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Historiques de commandes</a>
-  <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Modifier Produits</a>
-  <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Paramêtres</a>
-</div>
-<div class="tab-content" id="v-pills-tabContent">
-  <div class="tab-pane fade show active text-light" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-    <h1>Vos informations : <br>
-        Nom : {{ app.user.nom }} <br>
-        Prénom : {{ app.user.prenom }} <br>
-        Code Postal : {{ app.user.codepostal }} <br>
-        Adresse : {{ app.user.adresse }} <br>
-        Ville : {{ app.user.ville }} <br>
-        Email : {{ app.user.email }} <br>
+<section class="container-fluid mt-5" style="color: antiquewhite;">
+  <div class="row">
+    <div class="col">
+      <nav class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Infos</a>
+          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Historiques des commandes</a>
+          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Ajouter Produit</a>
+      </nav>
+    </div>
   </div>
-  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-  <div class="card-header text-light"><i class="fas fa-table mr-1"></i>DataTable Example</div>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered text-light" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>Nom</th>
-              <th>Prénom</th>
-            </tr>
-          </thead>
-          {% for inscrit in inscrit %}
-          <tbody>
-            <tr>
-              <td>{{ inscrit.nom }}</td>
-              <td>{{ inscrit.prenom }}</td>
-            </tr>
-          {% endfor %}
-          </tbody>
-          </table>
-            </div>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="jumbotron pt-1 bg-dark">
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade show active text-light" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <h2 class="text-center ">Vos informations : </h2>
+              <article class="py-3"><hr>
+              <div class="row text-center">
+                <div class="col-4"><h4 class=""> Nom :</h4> {{ app.user.nom }}</div>
+                <div class="col"><h4 class="">Prénom :</h4> {{ app.user.prenom }}</div>
+                <div class="col-4"><h4 class="">Email :</h4> {{ app.user.email }}</div>
+              </div><hr>
+              <div class="row text-center">
+                <div class="col-4"><h4 class="">Adresse :</h4> {{ app.user.adresse }}</div>
+                <div class="col"><h4 class="">Code Postal :</h4> {{ app.user.codepostal }}</div>
+                <div class="col-4"><h4 class="">Ville :</h4> {{ app.user.ville }}</div>
+              </div><hr>
+              </article>
           </div>
-  </div>
-  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-  <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-</div>
+
+          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+
+          <div class="card-header text-light"></div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered text-light" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>prix</th>
+                      <th>adresse utilisateur</th>
+                      <th>Statut de la commande</th>
+                      <th>Id de l'utilisateur</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for historiques in historique %}
+                    <tr>
+                      <td>{{ historiques.prix }}</td>
+                      <td>{{ historiques.adresseuser }}</td>
+                      <td>{{ historiques.status }}</td>
+                      <td>{{ historiques.user.id }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+          <article class="container">
+        <form method="POST" action="" class="jumbotron text-dark">
+        {{ form_start(ProduitForm) }}
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        {{ form_row(ProduitForm.nom) }}
+                    </div>
+                </div>
+                <div class="col-6">
+                     <div class="form-group">
+                        {{ form_row(ProduitForm.type) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_row(ProduitForm.description) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        {{ form_row(ProduitForm.couleur) }}
+                    </div>
+                </div>
+                <div class="col-4">
+                    {{ form_row(ProduitForm.taille) }}
+                </div>
+                <div class="col-4">
+                    <div class="form-group text-right">
+                        {{ form_row(ProduitForm.prix) }}
+                    </div>
+                </div>
+            </div>
+           <div class="row mt-5">
+               <div class="col-6 offset-lg-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                        <label class="custom-file-label" for="validatedCustomFile">Choisissez une image</label>
+                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                    </div>
+               </div>
+           </div>
+           <div class="row mt-3">
+               <div class="col-6 offset-lg-5">
+                   <button type="submit" class="btn-outline-success">mettre en ligne</button>
+               </div>
+           </div>
+        </form>
+        {{ form_end(ProduitForm) }}
+    </article>
+          </div>
+        </div>
+      </div>{# jumbotron#}
+    </div>{# col-8#}
+  </div>{# row#}
+</section>
+
+
 {% endblock %}

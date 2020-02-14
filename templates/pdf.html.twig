@@ -7,32 +7,48 @@
                 <br>Code Postal
                 <br>Pays
             </td>
-            <td class="text-right">
-                <b>Prénom Nom</b>
-                <br>Adresse
-                <br>Code Postal
-                <br>Pays
-            </td>
+        </tr>
+        <tr class="text-right">
+            <td>CogShop</td>
+            <td>204 ave de Colmar</td>
+            <td>67200</td>
+            <td>Strasbourg</td>
+            <td>www.wf3cogshop.ovh</td>
         </tr>
     </table>
     <div class="separator"></div>
-    <table class="content">
+    <table>
         <thead>
-        <tr>
-            <th class="text-left">Désignation</th>
-            <th class="text-center">Qté</th>
-            <th class="text-center">PU</th>
-            <th class="text-right">Total</th>
-        </tr>
+            <th>Nom : </th>
+            <th>Prenom : </th>
+            <th>Adresse : </th>
+        </thead>
+    </table>
+        <tbody>
+            <tr>
+                <td class="">{{user.nom}}</td>
+                <td class="">{{user.prenom}}</td>
+                <td class="">{{user.adresse}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <th>Produit : </th>
+            <th>Quantité : </th>
+            <th>Prix : </th>
         </thead>
         <tbody>
-            {% set total = 0 %}
-                <tr>
-                    <td class="text-left">Coucou</td>
-                    <td class="text-center">Coucou</td>
-                    <td class="text-center">Coucou</td>
-                    <td class="text-right">Coucou</td>
-                </tr>
-        <tr>
-            <td colspan="3" class="text-right"><b>TOTAL</b></td>
-        </tr>
+        {% for produit in produit %}
+            <td>{{ produit.nom }}</td>
+            <td>{{ produit.quantity }}</td>
+            <td>{{ produit.prix }}</td>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td clospan="8">Total : </td>
+                <td class="text-right">{{ produit.total }}</td>
+            </tr>
+        </tfoot>
+    </table>
