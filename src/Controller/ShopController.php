@@ -17,16 +17,37 @@ class ShopController extends AbstractController
      */
     public function shop($type_str, ProduitRepository $produitRepo, Request $request)
     {
+        $params=[
+            's' => false,
+            'p_min' => false,
+            'p_max' => false,
+            'ordre' => false,
+        ];
 
+        // ré&cupérer les 4 params dans l'URL
+        $p_min = $request->query->get('p_min');
+        $p_max= $request->query->get('p_max');
+        $ordre= $request->query->get('ordre');
         $s = $request->query->get('s');
-        if ($s) {
-            $produits = $produitRepo->findProducts($s);
+
+        if ( $s || $ordre || $p_min || $p_max) {
+
+            $params=[
+                's' => $s,
+                'p_min' => $p_min,
+                'p_max' => $p_max,
+                'ordre' => $ordre
+            ];
+
+            $produits = $produitRepo->findProducts($params);
         }else {
             $produits = $produitRepo->findProductsByType($type_str);
         }
+
         return $this->render('shop/shop.html.twig', [
             'produits' => $produits,
             'type_str' => $type_str,
+            'params' => $params,
         ]);
         
     }
@@ -94,5 +115,6 @@ class ShopController extends AbstractController
      );
     }
 
+    // w
 
 }
