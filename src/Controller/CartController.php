@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class CartController extends AbstractController
 {
@@ -36,5 +37,19 @@ class CartController extends AbstractController
         $cartService->remove($id);
 
         return $this->redirectToRoute("cart");
+    }
+
+    /**
+     * @Route("/panier/livraisons" , name="livraisons")
+     */
+    public function commandsPayement(Request $request)
+    {
+        $params = $request->query->get('nom')
+            ->query->get('prenom')
+            ->query->get('adresse')
+            ->query->get('ville')
+            ->query->get('cp');
+
+        dump($params); die;
     }
 }

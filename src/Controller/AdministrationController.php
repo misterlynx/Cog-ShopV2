@@ -5,18 +5,16 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\UsersRepository;
-use App\Repository\ProduitRepository;
+use App\Repository\CommandesRepository;
 
 class AdministrationController extends AbstractController
 {
     /**
      * @Route("/administration", name="administration")
      */
-    public function administration(UsersRepository $usersRepository, EntityManagerInterface $em)
+    public function administration(UsersRepository $usersRepository)
     {
-        $s = $request->query->get('s');
 
         $inscrit = $usersRepository->findAll();
 
