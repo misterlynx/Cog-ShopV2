@@ -32,13 +32,42 @@ class ProduitRepository extends ServiceEntityRepository
         return $type;
     }
 
-    public function findProducts($s)
+    public function findProducts($params)
     {
-        $produits = $this->createQueryBuilder("p")
-        ->where('p.nom LIKE :search')
-        ->setParameter('search', "%$s%")
-        ->getQuery()
-        ->getResult();
+        // dump($params); die;
+        
+        $query = $this->createQueryBuilder("p");
+
+        if($params['s']) {
+            $query->andWhere('p.nom LIKE :search')
+            ->setParameter('search', "%". $params['s'] ."%");
+        }
+        
+        if($params['p_min']){
+            $query->andWhere('p.prix >= :p_min')
+            ->setParameter('p_min', $params['p_min']);
+        }
+
+        if($params['p_max']){
+            $query->andWhere('p.prix <= :p_max')
+            ->setParameter('p_max', $params['p_max']);
+        }
+
+
+        $champ = 'p.id'; $ordre = 'DESC';
+        if ($params['ordre']) {
+            if ($params['ordre'] == 'croissant') {
+                $champ = 'p.prix'; $ordre = 'ASC';
+            }
+            if ($params['ordre'] == 'decroissant') {
+                $champ = 'p.prix'; $ordre = 'DESC';
+            }
+        }
+        $query->orderBy($champ, $ordre);
+
+         $produits = $query
+            ->getQuery()
+            ->getResult();
 
         return $produits;
         
@@ -51,6 +80,17 @@ class ProduitRepository extends ServiceEntityRepository
             'type' => $type,
             'active' => '1',
         ]);
+    }
+
+    public function produitsTrierPrix()
+    {
+        $tri = $this->createQueryBuilder("p")
+        ->orderBy('p.prix', '0')
+        ->getQuery()
+        ->getResult();
+
+        return $tri;
+        
     }
 
     // /**
