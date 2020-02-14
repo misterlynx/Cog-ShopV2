@@ -4,14 +4,18 @@
     Inconnu {% endif %}!{% endblock %}
 
 {% block body %}
-    <section class="container-fluid text-light">
-        <h1>Votre panier</h1>
+<a href="{{ path('shop', { type_str: 'produits' }) }}"><button type="button" class="btn border-warning text-white" id="payer" >
+    Back To The Future
+</button></a>
+    <section class="container text-light text-center">
+        <h1>Votre Panier</h1>   
+        <br>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-12 text-center">
             {% if items | length > 0  %}
-                <table >
-                    <thead class="border border-warning">
+                <table class="table table-bordered table-dark  border-warning text-warning" >
+                    <thead>
                         <tr>
                             <th> Produit </th>
                             <th> Prix </th>
@@ -20,7 +24,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody class="border border-warning">
+                    <tbody>
                         {% for item in items %}
                             <tr>
                                 <td>{{ item.produit.nom  }}</td>
@@ -47,15 +51,15 @@
             {% else %}
                 
             {% endif %}
-                <p>
+                <p id="payer" class="text-right pr-2">
+                    
                 <a href="{% if app.user and app.user.roles('ROLE_MEMBRE') %}
                    {{ path('contact') }} 
                 {% else %}
                     {{ path('app_login') }}
-                
                 {% endif %}
                 
-                ">Payer ! </a>
+                "><button type="button" class="btn btn-outline-warning btn-lg" >Payer <i class="fas fa-hand-holding-usd"></i></button></a>
                 </p>
             </div>
         </div>
