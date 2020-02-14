@@ -4,11 +4,11 @@ namespace App\Controller;
 
 use App\Service\Cart\CartService;
 use App\Entity\Commandes;
-use App\Repository\CommandesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CartController extends AbstractController
 {
@@ -45,20 +45,50 @@ class CartController extends AbstractController
     /**
      * @Route("/panier/livraisons" , name="livraisons")
      */
-    public function commandsPayement(Request $request, CartService $cartService, EntityManagerInterface $em, CommandesRepository $commandesRepository)
+    public function livraison(Request $request, CartService $cartService)
     {
-        $params = $request->query->all();
-        $commandes = new Commandes();
-        $commandes->setNomProduit($cartService->getFullCart('nom'))
-                    ->setNomUser($params['nom'])
-                    ->setAdresseuser($params['adresse'])
-                    ->setPrix($cartService->getFullCart('prix'))
+       $params = $request->request->all();
+       $info = [];
+
+       foreach ($params as $pa) {
+           $info[] = $pa['user'];
+       }
+       foreach ($params as $param) {
+           $info->getUser($param);
+       }
+       dump($info); die;
+    }
+
+    /**
+     * @Route("/panier/livraisons/payement" , name="payement")
+     */
+    public function commandsPayement(CartService $cartService, EntityManagerInterface $em)
+    {
+        $panier = $cartService->getFullCart();
+        $produits = [];
+        $total = 0;
+        foreach ($panier as $p) {
+            $produits[] = $p['produit'];
+            $total = $total + $p['produit']->getPrix() * $p['quantity'];
+        }
+
+        $commande = new Commandes();
+        $commande
+                    ->setUser($this->getUser())
+                    ->setAdresseuser('blabla')
+                    ->setPrix($total)
                     ->setStatus('0');
 
-        $em->persist($commandes);
+        foreach ($produits as $produit) {
+            $commande->addProduit($produit);
+        }
+
+        $em->persist($commande);
         $em->flush();
+
+        return $this->redirectToRoute('accueil');
+        $this->addFlash('success', "Votre payement à bien était pris en compte" );
     }
-    
     /**
      * @Route("/panier/decrement/{id}", name="cart_decrement")
      */
