@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Repository\ProduitRepository;
+use App\Repository\UsersRepository;
+use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
@@ -95,23 +97,26 @@ class ShopController extends AbstractController
      * @Route("/pdf", name="_pdf")
      * @return Response
      */
-    public function pdfAction(\Knp\Snappy\Pdf $snappy)
+    public function pdfAction(
+        \Knp\Snappy\Pdf $snappy
+        )
     {
 
-    $html = $this->renderView("pdf.html.twig", array(
-        "title" => "Awesome pdf Title",
-    ));
 
-    $filename = "custom_pdf_from-twig";
 
-     return new Response(
-         $snappy->generateFromHtml($html, 'pdflol.pdf'),
-         200,
-         array(
-             'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"'
-         )
-     );
+        $html = $this->renderView("pdf.html.twig", array(
+            'encoding' => 'utf-8',
+            "title" => "Awesome pdf Title"
+        ));
+
+        $filename = "custom_pdf_from-twig";
+
+        return new Response(
+            $snappy->generateFromHtml($html, 'pdflol.pdf'),
+            200, array(
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="'.$filename.'.pdf"'
+            ));
     }
 
     // w

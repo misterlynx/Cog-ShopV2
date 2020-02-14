@@ -15,7 +15,7 @@ class RedirectController extends AbstractController
     	if ($this->getUser()->hasRole('ROLE_ADMIN')) {
     		return $this->redirectToRoute('administration');
     	}else{
-            return $this->redirectToRoute('accueil');
+            return $this->redirectToRoute('member');
         }
     }
 }

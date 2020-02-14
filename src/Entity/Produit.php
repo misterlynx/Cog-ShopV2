@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -70,9 +72,14 @@ class Produit
     private $taille;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Commandes", inversedBy="produits")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Commandes", mappedBy="produits")
      */
     private $commandes;
+
+    public function __construct()
+    {
+        $this->commandes = new ArrayCollection();
+    }
 
 
 public function getTypeStr()
@@ -211,14 +218,30 @@ public function getTypeStr()
         return $this;
     }
 
-    public function getCommandes(): ?Commandes
+    /**
+     * @return Collection|Commandes[]
+     */
+    public function getCommandes(): Collection
     {
         return $this->commandes;
     }
 
-    public function setCommandes(?Commandes $commandes): self
+    public function addCommande(Commandes $commande): self
     {
-        $this->commandes = $commandes;
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->addProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commandes $commande): self
+    {
+        if ($this->commandes->contains($commande)) {
+            $this->commandes->removeElement($commande);
+            $commande->removeProduit($this);
+        }
 
         return $this;
     }

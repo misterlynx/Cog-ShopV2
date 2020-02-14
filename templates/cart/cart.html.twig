@@ -25,7 +25,11 @@
                             <tr>
                                 <td>{{ item.produit.nom  }}</td>
                                 <td>{{ item.produit.prix  }}</td>
-                                <td>{{ item.quantity }}</td>
+                                <td>
+                                <a href="{{ path('cart_decrement', {'id' :item.produit.id}) }}"><i class="fas fa-minus"></i></a> 
+                                    {{ item.quantity }} 
+                                <a href="{{ path('cart_add', {'id' : item.produit.id}) }}"><i class="fas fa-plus"></i></a> 
+                                </td>
                                 <td>{{ item.produit.prix * item.quantity }}</td>
                                 <td><a href="{{ path('cart_remove', {'id' : item.produit.id}) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                 </td>
@@ -44,14 +48,14 @@
                 
             {% endif %}
                 <p>
-                <a href="{% if app.user and app.user.roles('ROLE_MEMBRE') %}
-                   {{ path('contact') }} 
+                <a href="{% if app.user %}
+                   {{ path('livraisons') }} 
                 {% else %}
                     {{ path('app_login') }}
                 
                 {% endif %}
                 
-                ">Payer ! </a>
+                ">Acheter ! </a>
                 </p>
             </div>
         </div>
