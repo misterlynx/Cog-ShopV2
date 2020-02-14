@@ -86,8 +86,8 @@ class CartController extends AbstractController
         $em->persist($commande);
         $em->flush();
 
-        return $this->redirectToRoute('accueil');
         $this->addFlash('success', "Votre payement à bien était pris en compte" );
+        return $this->redirectToRoute('accueil');
     }
     /**
      * @Route("/panier/decrement/{id}", name="cart_decrement")

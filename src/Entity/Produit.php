@@ -81,6 +81,14 @@ class Produit
         $this->commandes = new ArrayCollection();
     }
 
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->prix;
+        // to show the id of the Category in the select
+        return $this->couleur;
+        return $this->stock;
+        return $this->active;
+    }
 
 public function getTypeStr()
 {
