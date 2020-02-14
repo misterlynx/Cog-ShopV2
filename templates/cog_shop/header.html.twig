@@ -14,12 +14,12 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            {% if app.user and app.user.roles('ROLE_MEMBRE') %}
+            {% if app.user and app.user.hasRole("ROLE_ADMIN") %}
+                <a class="dropdown-item" href="{{ path('administration') }}">Mon compte</a>
+                <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a> 
+            {% elseif app.user and app.user.hasRole("ROLE_MEMBRE") %}
                 <a class="dropdown-item" href="{{ path('member') }}">Mon compte</a>
                 <a class="dropdown-item" href="{{ path('cart') }}">Panier</a>
-                <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
-            {% elseif app.user and app.user.roles('ROLE_ADMIN') %}
-                <a class="dropdown-item" href="{{ path('administration') }}">Mon compte</a>
                 <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
             {% else %}
                 <a class="dropdown-item" href="{{ path('app_login') }}">Login</a>
