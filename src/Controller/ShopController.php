@@ -24,6 +24,7 @@ class ShopController extends AbstractController
             'p_min' => false,
             'p_max' => false,
             'ordre' => false,
+            'page' => 1
         ];
 
         // ré&cupérer les 4 params dans l'URL
@@ -31,14 +32,16 @@ class ShopController extends AbstractController
         $p_max= $request->query->get('p_max');
         $ordre= $request->query->get('ordre');
         $s = $request->query->get('s');
+        $page = $request->query->get('page') ?? 1;
 
-        if ( $s || $ordre || $p_min || $p_max) {
+        if ( $s || $ordre || $p_min || $p_max || $page) {
 
             $params=[
                 's' => $s,
                 'p_min' => $p_min,
                 'p_max' => $p_max,
-                'ordre' => $ordre
+                'ordre' => $ordre,
+                'page' => $page
             ];
 
             $produits = $produitRepo->findProducts($params);

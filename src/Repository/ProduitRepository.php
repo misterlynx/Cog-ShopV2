@@ -38,9 +38,20 @@ class ProduitRepository extends ServiceEntityRepository
         
         $query = $this->createQueryBuilder("p");
 
+        $userlessWords = [ 'au', 'de', 'le', 'à' ];
+
         if($params['s']) {
-            $query->andWhere('p.nom LIKE :search')
-            ->setParameter('search', "%". $params['s'] ."%");
+            $mots = explode( ' ', $params['s']);
+            // dump($mots);die;
+
+            foreach ($mots as $key => $mot) {
+                if (!in_array($mot, $userlessWords)) {
+                     $query->andWhere('p.nom LIKE :mot'.$key)
+                    ->setParameter('mot'.$key, "%". $mot ."%");
+                    // echo 'key : ' . $key . '  --- mot : ' . $mot . ' <br>';
+                } 
+            }
+            
         }
         
         if($params['p_min']){
@@ -65,7 +76,15 @@ class ProduitRepository extends ServiceEntityRepository
         }
         $query->orderBy($champ, $ordre);
 
+
+        // Pagination
+        $per_page = 8;
+        $page = $params['page'];
+        $offset = ($page - 1) * $per_page;
+
          $produits = $query
+            ->setFirstResult($offset)
+            ->setMaxResults($per_page)
             ->getQuery()
             ->getResult();
 
