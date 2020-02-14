@@ -37,10 +37,5 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute("cart");
     }
-    public function payer (){
-
-        return $this->redirectToRoute('accueil');
-        $this->addFlash('success', "Votre payement à bien était pris en compte" );
-    }
     
 }

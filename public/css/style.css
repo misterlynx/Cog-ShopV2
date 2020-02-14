@@ -93,9 +93,17 @@ h2,h1{
 }
 #psingleprix{
     font-family: 'Playfair Display SC', serif;
+    font-size: xx-large;
+    
 }
 
 .linkedin{
     color: #cb9d32 !important;
 }
-
+#h2com, #avis{
+    font-family: 'Playfair Display SC', serif;
+    color: #cb9d32 !important;
+}
+#client{
+    font-family: 'Playfair Display SC', serif;
+}
