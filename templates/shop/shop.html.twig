@@ -9,49 +9,51 @@
         <form method="GET">
 
             <div class="row">
+
                 <div class="col-lg-3">
                     <label for="search">Search : </label>
+                     <input class="form-control" type="text" placeholder="Search..." name="s" is="search" value="{{ params.s }}">
                 </div>
 
-                <div class="col-lg-1">
+                <div class="col-lg-2">
                 <label for="p_min">Prix min : </label>
+                 <input class="form-control" type="number" placeholder="Prix min" name="p_min" step="1" min="0" value="{{ params.p_min }}">
                 </div>
 
-                <div class="col-lg-1">
+                <div class="col-lg-2">
                 <label for="p_max">Prix max : </label>
+                 <input class="form-control" type="number" placeholder="Prix max" name="p_max" step="1" max="300" value="{{ params.p_max }}">
                 </div>
 
-                <div class="col-lg-1">
-                <label for="inputGroupSelect01"> Trier par : </label>
+                <div class="col-lg-2">
+                    <label for="inputGroupSelect01"> Trier par : </label>
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroupSelect01" name="ordre" >
+                            <option value="0">Choose...</option>
+                            <option value="nouveautes" {% if params.ordre == 'nouveautes' %}selected{% endif %}>Nouveautés</option>
+                            <option value="croissant" {% if params.ordre == 'croissant' %}selected{% endif %}>Croissant</option>
+                            <option value="decroissant" {{ params.ordre == 'decroissant' ? 'selected' }}>Décroissant</option>    
+                        </select>
+                    </div>
+                </div> 
+
+                <div class="col-md-1" id="btnSearch">
+                    <button class="btn btn-outline-warning my-3 ml-2 my-sm-0"  type="submit">Valider</button>
                 </div>
             </div>{# row #}
             <div class="row justify-content-end">
                 <div class="col-lg-3">
-                        
-                        <input class="form-control" type="text" placeholder="Search..." name="s" is="search" value="{{ params.s }}">
                     </div>
 
                     <div class="col-lg-1">
-                        <input class="form-control" type="number" placeholder="Prix min" name="p_min" step="1" min="0" value="{{ params.p_min }}">
+                    </div>
+
+                    <div class="col-lg-1"> 
                     </div>
 
                     <div class="col-lg-1">
-                        <input class="form-control" type="number" placeholder="Prix max" name="p_max" step="1" max="300" value="{{ params.p_max }}">
                     </div>
-
-                    <div class="col-lg-1">
-                        <div class="input-group mb-3">
-                            <select class="custom-select" id="inputGroupSelect01" name="ordre" >
-                                <option value="0">Choose...</option>
-                                <option value="nouveautes" {% if params.ordre == 'nouveautes' %}selected{% endif %}>Nouveautés</option>
-                                <option value="croissant" {% if params.ordre == 'croissant' %}selected{% endif %}>Croissant</option>
-                                <option value="decroissant" {{ params.ordre == 'decroissant' ? 'selected' }}>Décroissant</option>                          
-                            </select>
-                        </div>
-                    </div>
-                <div class="col-lg-6">
-                    <button class="btn btn-outline-warning my-2 ml-2 my-sm-0"  type="submit">Valider</button>
-                </div>
+                
             </div>     
         </form>
     </div>
