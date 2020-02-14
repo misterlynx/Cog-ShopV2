@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Service\Cart\CartService;
+use App\Entity\Commandes;
+use App\Repository\CommandesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 
 class CartController extends AbstractController
 {
@@ -42,14 +45,17 @@ class CartController extends AbstractController
     /**
      * @Route("/panier/livraisons" , name="livraisons")
      */
-    public function commandsPayement(Request $request)
+    public function commandsPayement(Request $request, CartService $cartService, EntityManagerInterface $em, CommandesRepository $commandesRepository)
     {
-        $params = $request->query->get('nom')
-            ->query->get('prenom')
-            ->query->get('adresse')
-            ->query->get('ville')
-            ->query->get('cp');
+        $params = $request->query->all();
+        $commandes = new Commandes();
+        $commandes->setNomProduit($cartService->getFullCart('nom'))
+                    ->setNomUser($params['nom'])
+                    ->setAdresseuser($params['adresse'])
+                    ->setPrix($cartService->getFullCart('prix'))
+                    ->setStatus('0');
 
-        dump($params); die;
+        $em->persist($commandes);
+        $em->flush();
     }
 }
