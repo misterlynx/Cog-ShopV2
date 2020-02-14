@@ -51,7 +51,6 @@ class ShopController extends AbstractController
         ]);
         
     }
-
     /**
      * @Route("/shop/{type_str}/{id}-{slug}", name="produit_single")
      */
