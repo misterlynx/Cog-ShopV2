@@ -107,3 +107,6 @@ h2,h1{
 #client{
     font-family: 'Playfair Display SC', serif;
 }
+#btnSearch{
+    padding-top: 30px;
+}
