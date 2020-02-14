@@ -18,11 +18,9 @@ class ProduitFormType extends AbstractType
             ->add('couleur')
             ->add('prix')
             ->add('stock')
-            ->add('active')
             ->add('type')
             ->add('slug')
             ->add('taille')
-            ->add('commandes')
         ;
     }
 
