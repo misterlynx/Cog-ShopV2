@@ -4,8 +4,11 @@
     Inconnu {% endif %}!{% endblock %}
 
 {% block body %}
+<a href="{{ path('shop', { type_str: 'produits' }) }}"><button type="button" class="btn border-warning text-white" id="payer" >
+    Back To The Future
+</button></a>
     <section class="container text-light text-center">
-        <h1>Votre Panier</h1>
+        <h1>Votre Panier</h1>   
         <br>
 
         <div class="row">

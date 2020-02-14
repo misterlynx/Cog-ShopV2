@@ -16,6 +16,9 @@
 
 {% block body %}
 <h1 class="text-light text-center" id="h1single"></h1>
+<a href="{{ path('shop', { type_str: 'produits' }) }}"><button type="button" class="btn border-warning text-white" id="payer" >
+    Back To The Future
+</button></a>
 
 <section class="container-fluid">
     <div class="container">
@@ -24,7 +27,7 @@
             <h2 id="h2single" class="text-center p-2">{{produit.nom}}: </h2>
             <div class="px-5"><p id="psingle" >Description: {{produit.description}}</p><br>
               <p id="psingleprix" class="text-center"> Prix: {{ produit.prix }} €
-              <a class="pl-5" href="#"><svg width="75" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><style>
+              <a class="pl-5" href="{{ path('cart_add', {'id': produit.id}) }}"><svg width="75" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><style>
      
                     .line-cart1 {animation:line-cart1-arrow 1s infinite;}
                     @keyframes line-cart1-arrow {
