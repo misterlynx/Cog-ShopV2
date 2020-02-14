@@ -24,6 +24,8 @@ security:
             security: false
         main:
             anonymous: lazy
+            form_login:
+                use_referer: true
             
             logout:
                 path: app_logout

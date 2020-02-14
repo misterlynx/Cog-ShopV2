@@ -35,7 +35,7 @@ class CartController extends AbstractController
     /**
      * @Route("/panier/remove/{id}" , name="cart_remove")
      */
-    public function remove( $id, CartService $cartService)
+    public function remove( $id, CartService $cartService )
     {
         $cartService->remove($id);
 
@@ -57,5 +57,15 @@ class CartController extends AbstractController
 
         $em->persist($commandes);
         $em->flush();
+    }
+    
+    /**
+     * @Route("/panier/decrement/{id}", name="cart_decrement")
+     */
+    public function decrement( $id, CartService $cartService )
+    {
+        $cartService->quantityMinus($id);
+
+        return $this->redirectToRoute("cart");
     }
 }
