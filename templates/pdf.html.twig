@@ -25,13 +25,11 @@
         </thead>
     </table>
         <tbody>
-            {% for inscrit in inscrits %}
             <tr>
-                <td class="">{{inscrit.nom}}</td>
-                <td class="">{{inscrit.prenom}}</td>
-                <td class="">{{inscrit.adresse}}</td>
+                <td class="">{{user.nom}}</td>
+                <td class="">{{user.prenom}}</td>
+                <td class="">{{user.adresse}}</td>
             </tr>
-            {% endfor %}
         </tbody>
     </table>
     <table>
@@ -41,7 +39,7 @@
             <th>Prix : </th>
         </thead>
         <tbody>
-        {% for produit in produits %}
+        {% for produit in produit %}
             <td>{{ produit.nom }}</td>
             <td>{{ produit.quantity }}</td>
             <td>{{ produit.prix }}</td>

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ProduitRepository;
 use App\Repository\UsersRepository;
+use App\Service\Cart\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
@@ -76,16 +77,16 @@ class ShopController extends AbstractController
      * @Route("/pdf", name="_pdf")
      * @return Response
      */
-    public function pdfAction(\Knp\Snappy\Pdf $snappy, UsersRepository $usersRepository, ProduitRepository $produitRepo )
+    public function pdfAction(
+        \Knp\Snappy\Pdf $snappy
+        )
     {
-        $inscrit = $usersRepository->findAll();
-        $produit = $produitRepo->findAll();
+
+
 
         $html = $this->renderView("pdf.html.twig", array(
             'encoding' => 'utf-8',
-            "title" => "Awesome pdf Title",
-            'inscrits' => $inscrit,
-            'produits'=> $produit,
+            "title" => "Awesome pdf Title"
         ));
 
         $filename = "custom_pdf_from-twig";
