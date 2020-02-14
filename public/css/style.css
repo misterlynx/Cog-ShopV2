@@ -76,7 +76,7 @@ main , body{
     background-image: url("../images/unnamed.jpg ");
 } */
 
-h2{
+h2,h1{
     color:  antiquewhite;
     font-family: 'Playfair Display SC', serif;
 }
@@ -87,7 +87,7 @@ h2{
 #h1single{
     font-family: 'Playfair Display SC', serif;
 }
-#psingle{
+#psingle, th, #payer{
     font-family: 'Playfair Display SC', serif;
     font-size: large;
 }
