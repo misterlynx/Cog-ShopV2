@@ -53,6 +53,7 @@
     <body class="sb-nav-fixed">
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v6.0&appId=174919030507115&autoLogAppEvents=1"></script>
+        
         {#Header#}
             {{ render(controller('App\\Controller\\CogShopController::header', { header_s: app.request.query.get('s') })) }}
         
