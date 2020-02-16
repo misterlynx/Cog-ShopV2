@@ -69,6 +69,11 @@ class Produit
      */
     private $taille;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Commandes", inversedBy="produits")
+     */
+    private $commandes;
+
 
 public function getTypeStr()
 {
@@ -202,6 +207,18 @@ public function getTypeStr()
     public function setTaille(string $taille): self
     {
         $this->taille = $taille;
+
+        return $this;
+    }
+
+    public function getCommandes(): ?Commandes
+    {
+        return $this->commandes;
+    }
+
+    public function setCommandes(?Commandes $commandes): self
+    {
+        $this->commandes = $commandes;
 
         return $this;
     }
