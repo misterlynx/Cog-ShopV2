@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Service\Cart\CartService;
 use App\Entity\Commandes;
+use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Dompdf\Dompdf;
 
 class CartController extends AbstractController
 {
@@ -60,7 +62,7 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("/panier/livraisons/payement" , name="payement")
+     * @Route("/panier/payement" , name="payement")
      */
     public function commandsPayement(CartService $cartService, EntityManagerInterface $em)
     {
@@ -74,7 +76,8 @@ class CartController extends AbstractController
 
         $commande = new Commandes();
         $commande
-                    ->setUser($this->getUser())
+                    ->getProduits()
+                    ->getUser()
                     ->setAdresseuser('blabla')
                     ->setPrix($total)
                     ->setStatus('0');
@@ -97,5 +100,18 @@ class CartController extends AbstractController
         $cartService->quantityMinus($id);
 
         return $this->redirectToRoute("cart");
+    }
+
+    public function pdfCreator(UsersRepository $usersRepository)
+    {
+        $user = $usersRepository->findAll();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($this->renderView('pdf.html.twig'));
+        $dompdf->render();
+        $dompdf->stream("test.pdf");
+        
+        return $this->render('pdf.html.twig', [
+            'user' =>$user,
+        ] );
     }
 }
