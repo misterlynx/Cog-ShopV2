@@ -17,6 +17,7 @@ class AdministrationController extends AbstractController
      */
     public function administration(CommandesRepository $commandesRepository, Request $request)
     {
+
         $produits = new Produit();
         
         $form = $this->createForm(ProduitFormType::class, $produits);
@@ -31,7 +32,7 @@ class AdministrationController extends AbstractController
             $em->flush();
             
             $this->addFlash('success', "Le formulaire ete bien envoyé!");
-            return $this->redirectToRoute('administration');
+            return $this->redirectToRoute('admjnistration');
         }
 
 

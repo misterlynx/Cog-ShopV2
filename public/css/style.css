@@ -79,7 +79,7 @@ main , body{
     background-color: white;
 }
 
-h2{
+h2,h1{
     color:  antiquewhite;
     font-family: 'Playfair Display SC', serif;
 }
@@ -90,15 +90,36 @@ h2{
 #h1single{
     font-family: 'Playfair Display SC', serif;
 }
-#psingle{
+#psingle, th, #payer{
     font-family: 'Playfair Display SC', serif;
     font-size: large;
 }
 #psingleprix{
     font-family: 'Playfair Display SC', serif;
+    font-size: xx-large;
+    
 }
 
 .linkedin{
     color: #cb9d32 !important;
 }
+#h2com, #avis{
+    font-family: 'Playfair Display SC', serif;
+    color: #cb9d32 !important;
+}
+#client{
+    font-family: 'Playfair Display SC', serif;
+}
+#btnSearch{
+    padding-top: 30px;
+}
 
+.page-item.active .page-link {
+    color: black;
+    background-color: #cb9d32;
+    border-color: #cb9d32;
+}
+
+.page-link{
+    color: black;
+}

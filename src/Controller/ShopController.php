@@ -7,7 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Spipu\Html2Pdf\Html2Pdf;
+use Symfony\Component\DomCrawler\Form;
+use App\Form\AvisType;
+use app\Entity\Comment;
+use App\Repository\CommentRepository;
 
 class ShopController extends AbstractController
 {
@@ -38,28 +42,31 @@ class ShopController extends AbstractController
                 'p_min' => $p_min,
                 'p_max' => $p_max,
                 'ordre' => $ordre,
-                'page' => $page
+                'page' => $page,
+                'type_str' => $type_str
             ];
 
-            $produits = $produitRepo->findProducts($params);
-        }else {
-            $produits = $produitRepo->findProductsByType($type_str);
+            $data = $produitRepo->findProducts($params);
+            // dump($data);die;
         }
 
         return $this->render('shop/shop.html.twig', [
-            'produits' => $produits,
+            'produits' => $data['produits'],
             'type_str' => $type_str,
             'params' => $params,
+            'nbPages' => $data['nbPages'],
+            'page' => $page
         ]);
         
     }
     /**
      * @Route("/shop/{type_str}/{id}-{slug}", name="produit_single")
      */
-    public function produit_single($type_str, $id, $slug, ProduitRepository $produitRepo, EntityManagerInterface $em)
+    public function produit_single($type_str, $id, $slug, ProduitRepository $produitRepo, EntityManagerInterface $em, Request $request, CommentRepository $commentRepository)
     {
         $produit = $produitRepo->find($id);
-       
+        $comment = new Comment();
+        $form = $this->createForm(AvisType::class, $comment);
 
         // Si pas de produits, rediriger vers une autre page avec un msg : Produit non existant
             // if (!$produit) {
@@ -86,9 +93,31 @@ class ShopController extends AbstractController
                     'type_str' => $produit->getTypeStr()
                 ));               
             }
+
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+                $data = $form->getData();
+                $data->setDate(new \DateTime());
+                $data->setProduit($produit);
+                $data->setUser($this->getUser());
+                //dump($comment);die;
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($comment);
+                $em->flush();
+
+                return $this->redirectToRoute('produit_single', array(
+                    'id' => $id,
+                    'slug' => $produit->getSlug(),
+                    'type_str' => $produit->getTypeStr()
+                ));               
+            }
+
+          
+
         
         return $this->render('shop/produit_single.html.twig', [
-            'produit' => $produit
+            'produit' => $produit,
+            'form' =>$form->createView(),
         ]);
        
     }

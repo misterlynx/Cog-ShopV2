@@ -20,15 +20,15 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
-    public function getType($type_str) {
+    public function getTypeArray($type_str) {
         if ($type_str == 'homme') {
-            $type = 0;
+            $type = array(0);
         }elseif($type_str == 'femme'){
-            $type = 1;
-        }elseif ($type_str == 'produits') {
-            $type = array(0,1,2);
+            $type = array(1);
+        }elseif ($type_str == 'accessoires') {
+            $type = array(2);
         }else {
-            $type = 2;
+            $type = array(0,1,2);
         }
         return $type;
     }
@@ -37,7 +37,13 @@ class ProduitRepository extends ServiceEntityRepository
     {
         // dump($params); die;
         
-        $query = $this->createQueryBuilder("p");
+        $type = $this->getTypeArray($params['type_str']);
+      
+
+        $query = $this->createQueryBuilder("p")
+            ->andWhere('p.type IN (:type)')
+            ->setParameter('type' , $type);
+
 
         $userlessWords = [ 'au', 'de', 'le', 'à' ];
 
@@ -77,30 +83,43 @@ class ProduitRepository extends ServiceEntityRepository
         }
         $query->orderBy($champ, $ordre);
 
-
-        // Pagination
+        //Compteur des pages
+        $nbProduits = $query->select('COUNT(p.id)')->getQuery()->getSingleScalarResult();
         $per_page = 8;
+        $nbPages = floor($nbProduits / $per_page);
+        if ($nbProduits % $per_page > 0) {
+            $nbPages ++;
+        } 
+        // dump($nbPages);die;
+        
+        // Pagination
         $page = $params['page'];
         $offset = ($page - 1) * $per_page;
 
          $produits = $query
+            ->select('p')
             ->setFirstResult($offset)
             ->setMaxResults($per_page)
             ->getQuery()
             ->getResult();
 
-        return $produits;
+            // dump($produits);die;
+        return [
+            'nbProduits' => $nbProduits,
+            'produits' => $produits,
+            'nbPages' => $nbPages
+        ];
         
     }
 
-    public function findProductsByType($type_str)
-    {
-        $type = $this->getType($type_str);
-        return $this->findBy([
-            'type' => $type,
-            'active' => '1',
-        ]);
-    }
+    // public function findProductsByType($type_str)
+    // {
+    //     $type = $this->getType($type_str);
+    //     return $this->findBy([
+    //         'type' => $type,
+    //         'active' => '1',
+    //     ]);
+    // }
 
     public function produitsTrierPrix()
     {
