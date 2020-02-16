@@ -51,16 +51,9 @@
             {% else %}
                 
             {% endif %}
-<<<<<<< HEAD
                 <p>
                 <a href="{% if app.user %}
                    {{ path('payement') }} 
-=======
-                <p id="payer" class="text-right pr-2">
-                    
-                <a href="{% if app.user and app.user.roles('ROLE_MEMBRE') %}
-                   {{ path('contact') }} 
->>>>>>> origin/test
                 {% else %}
                     {{ path('app_login') }}
                 {% endif %}
