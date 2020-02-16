@@ -47,15 +47,15 @@
                       <th>Id de l'utilisateur</th>
                     </tr>
                   </thead>
-                  {% for historiques in historique %}
                   <tbody>
+                  {% for historiques in historique %}
                     <tr>
                       <td>{{ historiques.prix }}</td>
                       <td>{{ historiques.adresseuser }}</td>
                       <td>{{ historiques.status }}</td>
                       <td>{{ historiques.user.id }}</td>
                     </tr>
-                  {% endfor %}
+                    {% endfor %}
                   </tbody>
                   </table>
                 </div>
@@ -68,13 +68,11 @@
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="formGroupExampleInput">nom du produit</label>
                         {{ form_row(ProduitForm.nom) }}
                     </div>
                 </div>
                 <div class="col-6">
                      <div class="form-group">
-                        <label for="exampleFormControlSelect1">Selectionnez la catégorie</label>
                         {{ form_row(ProduitForm.type) }}
                     </div>
                 </div>
@@ -82,7 +80,6 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Entrez une description</label>
                         {{ form_row(ProduitForm.description) }}
                     </div>
                 </div>
@@ -90,17 +87,14 @@
             <div class="row">
                 <div class="col-4">
                     <div class="form-group">
-                        <label for="exampleFormColor">Selectionnez la couleur</label> <br>
                         {{ form_row(ProduitForm.couleur) }}
                     </div>
                 </div>
                 <div class="col-4">
-                    <label  for="form-check-inline" class="form-check-inline-label">Sa taille :</label> <br>
                     {{ form_row(ProduitForm.taille) }}
                 </div>
                 <div class="col-4">
                     <div class="form-group text-right">
-                        <label for="tentacles">Prix du produit :</label>
                         {{ form_row(ProduitForm.prix) }}
                     </div>
                 </div>
@@ -116,7 +110,7 @@
            </div>
            <div class="row mt-3">
                <div class="col-6 offset-lg-5">
-                   <button type="button" class="btn-outline-success" [disabled]="!form.form.valid">mettre en ligne</button>
+                   <button type="submit" class="btn-outline-success">mettre en ligne</button>
                </div>
            </div>
         </form>
