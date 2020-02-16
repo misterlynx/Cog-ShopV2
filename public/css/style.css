@@ -110,3 +110,18 @@ h2,h1{
 #btnSearch{
     padding-top: 30px;
 }
+#fb , #tw, #contactcacher{
+    position: absolute;
+    top: 75.5%;
+    left: 19.5%;
+        transform: translate(-50%,-50%);
+        color: rgba(0, 0, 0, 0)!important;
+        
+}
+
+#fb{
+    left: 28.5%;
+}
+#contactcacher{
+    left: 40.5%;
+}
