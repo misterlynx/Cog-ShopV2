@@ -14,7 +14,7 @@ class ShopController extends AbstractController
     /**
      * @Route("/shop/{type_str}", name="shop", requirements={"type_str"="homme|femme|accessoires|produits"})
      */
-    public function shop($type_str, ProduitRepository $produitRepo, Request $request)
+    public function shop($type_str, ProduitRepository $produitRepo, Request $request    )
     {
         $params=[
             's' => false,
