@@ -16,15 +16,18 @@
 
 {% block body %}
 <h1 class="text-light text-center" id="h1single"></h1>
+<a href="{{ path('shop', { type_str: 'produits' }) }}"><button type="button" class="btn border-warning text-white" id="payer" >
+    Back To The Future
+</button></a>
 
 <section class="container-fluid">
     <div class="container">
        <div class="row">
-        <div class="col-md-6 border border-dark bg-light">
+        <div class="col-md-6 border border-2 border-warning bg-light">
             <h2 id="h2single" class="text-center p-2">{{produit.nom}}: </h2>
             <div class="px-5"><p id="psingle" >Description: {{produit.description}}</p><br>
               <p id="psingleprix" class="text-center"> Prix: {{ produit.prix }} €
-              <a class="pl-5" href="#"><svg width="75" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><style>
+              <a class="pl-5" href="{{ path('cart_add', {'id': produit.id}) }}"><svg width="75" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><style>
      
                     .line-cart1 {animation:line-cart1-arrow 1s infinite;}
                     @keyframes line-cart1-arrow {
@@ -39,11 +42,52 @@
 
             </div>
           </div>
-              <div class="col-md-6 border border-dark bg-light p-2">  
+              <div class="col-md-6 border border-2 border-warning bg-light p-2">  
                 <img src="{{asset('images/' ~ produit.img )}}"  alt="imageDuProduit" width="100%" >
            </div>  
         </div>  
     </div>
+    {% if produit.comments| length %}
+    <div class="container mt-3"  >
+        <div class="row justify-content-center mt-3">
+            
+            <div class="col-md-6 mt-3">
+                <div class="card shadow-lg rounded-lg mt-3 mb-3  border-2 border-warning ">
+                    <div class="card-header">
+                        
+                        <h2 class="text-center font-weight-light my-4" id="h2com">Avis client</h2></div>
+                        <div class="card-body">
+                            
+                            
+
+                            {% for comment in produit.comments %}
+                            <p class="h5" id="client">Avis publié par : {{ comment.user.nom }} {{ comment.user.prenom }} le {{ comment.date|date('d/m/Y') }}</p>
+                            <p class="h6" id="avis">{{comment.commentaire }}</p> 
+                            {% endfor %}
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   {% endif %}
+            <div class="container mt-3"  >
+                <div class="row justify-content-center mt-3">
+                    <div class="col-md-6 mt-3">
+                        <div class="card shadow-lg  rounded-lg mt-3 mb-3  border border-warning">
+                            <div class="card-header"><h2 class="text-center font-weight-light my-4" id="h2com">Avis</h2></div>
+                                <div class="card-body">
+                                    {{ form_start(form)}}
+                                        {{ form_widget(form) }}
+                                        <button type="submit" class="btn border-warning" id="payer">
+                                            Laisser Votre Avis
+                                        </button>
+                                    {{ form_end(form)}}
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
    
 </section>
 {% endblock %}

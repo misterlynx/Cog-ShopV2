@@ -19,10 +19,7 @@ class ContactController extends AbstractController
     public function contact(Request $request, ContactRepository $contactRepo, EmailService $emailService)
     {
         $contact = new Contact();
-            
-        $nouveau = true;
         
-       
         $form = $this->createForm(ContactFormType::class, $contact);
 
         $form->handleRequest($request);
@@ -44,6 +41,7 @@ class ContactController extends AbstractController
 
         return $this->render('contact/contact.html.twig', [
             'form' => $form->createView(),
+            
         ]);
     }
 

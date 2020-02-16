@@ -16,7 +16,6 @@ class AdministrationController extends AbstractController
      */
     public function administration(UsersRepository $usersRepository, EntityManagerInterface $em)
     {
-        $s = $request->query->get('s');
 
         $inscrit = $usersRepository->findAll();
 

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200213083417 extends AbstractMigration
+final class Version20200214085507 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,8 +22,9 @@ final class Version20200213083417 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE commandes (id INT AUTO_INCREMENT NOT NULL, nomproduit VARCHAR(255) NOT NULL, prix VARCHAR(255) NOT NULL, nomuser VARCHAR(255) NOT NULL, adresseuser VARCHAR(255) NOT NULL, status SMALLINT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE produit CHANGE type type SMALLINT NOT NULL');
+        $this->addSql('ALTER TABLE comment ADD produit_id INT NOT NULL');
+        $this->addSql('ALTER TABLE comment ADD CONSTRAINT FK_9474526CF347EFB FOREIGN KEY (produit_id) REFERENCES produit (id)');
+        $this->addSql('CREATE INDEX IDX_9474526CF347EFB ON comment (produit_id)');
     }
 
     public function down(Schema $schema) : void
@@ -31,7 +32,8 @@ final class Version20200213083417 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE commandes');
-        $this->addSql('ALTER TABLE produit CHANGE type type SMALLINT NOT NULL COMMENT \'0 = homme  1 = femme 2 = accessoires\'');
+        $this->addSql('ALTER TABLE comment DROP FOREIGN KEY FK_9474526CF347EFB');
+        $this->addSql('DROP INDEX IDX_9474526CF347EFB ON comment');
+        $this->addSql('ALTER TABLE comment DROP produit_id');
     }
 }

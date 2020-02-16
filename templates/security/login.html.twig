@@ -35,12 +35,16 @@
 
                                 <button class="btn btn-lg btn-warning btn-block text-center mt-4" type="submit">Se Connecter !</button>
                             </form>
+                            
 
                             <div class="mt-4">
                                 {# <a href="{{ path('password_forgotten') }}">Mot de passe oublié ?</a> #}
                             </div>
 
                         </div>{# </card-body> #}
+                        <div class="card-footer text-center text-warning">
+                                <div class="small"><a href="{{ path('app_register') }}" class="text-dark">Si vous n'avez pas encore de compte? Vous devez en créer un. </a></div>
+                            </div>
                     </div>  {# </card> #}
                 </div> {# </col-md-7> #} 
             </div>{# </row> #}

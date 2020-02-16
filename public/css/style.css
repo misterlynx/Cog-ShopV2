@@ -74,11 +74,12 @@ main , body{
 #layoutAuthentication_content.backgroundLogin{
     background-image: url("../images/lock.jpg ");
 }
-/* #layoutAuthentication_content.backgroundContact{
-    background-image: url("../images/unnamed.jpg ");
-} */
+#layoutAuthentication_content.background404{
+    background-image: url("../images/lost.jpg ");
+    background-color: white;
+}
 
-h2{
+h2,h1{
     color:  antiquewhite;
     font-family: 'Playfair Display SC', serif;
 }
@@ -89,15 +90,26 @@ h2{
 #h1single{
     font-family: 'Playfair Display SC', serif;
 }
-#psingle{
+#psingle, th, #payer{
     font-family: 'Playfair Display SC', serif;
     font-size: large;
 }
 #psingleprix{
     font-family: 'Playfair Display SC', serif;
+    font-size: xx-large;
+    
 }
 
 .linkedin{
     color: #cb9d32 !important;
 }
-
+#h2com, #avis{
+    font-family: 'Playfair Display SC', serif;
+    color: #cb9d32 !important;
+}
+#client{
+    font-family: 'Playfair Display SC', serif;
+}
+#btnSearch{
+    padding-top: 30px;
+}

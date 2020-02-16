@@ -53,9 +53,9 @@ class CogShopController extends AbstractController
     
     
 
-    public function header(){
+    public function header($header_s){
         return $this->render('cog_shop/header.html.twig' , [
-            
+            'header_s' => $header_s
         ]);
         }
 
