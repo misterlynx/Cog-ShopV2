@@ -10,6 +10,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Dompdf\Dompdf;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\SentMessage;
 
 class CartController extends AbstractController
 {
@@ -128,4 +131,20 @@ class CartController extends AbstractController
         //     'produits' => $produits,
         // ]);
     }
+
+    public function sendEmail(MailerInterface $mailer, SentMessage $sentEmail)
+    {
+        $email = (new Email())
+            ->from('alexandrehainy12@gmail.com')
+            ->to($this->getUser()->getEmail())
+            ->subject('Validation de votre commande!')
+            ->text($this->renderView('emails/validcommande.html.twig', [
+            ]));
+
+        $sentEmail = $mailer->send($email);
+        // $messageId = $sentEmail->getMessageId();
+
+        // ...
+    }
+
 }
