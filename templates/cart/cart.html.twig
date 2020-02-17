@@ -51,14 +51,9 @@
             {% else %}
                 
             {% endif %}
-                <p id="payer" class="text-right pr-2">
-                    
-                <a href="{% if app.user and app.user.roles('ROLE_MEMBRE') %}
-                   {{ path('contact') }} 
-                {% else %}
-                    {{ path('app_login') }}
-                {% endif %}
-                
+                <p>
+                <a href="
+                   {{ path('payement') }} 
                 "><button type="button" class="btn btn-outline-warning btn-lg" >Payer <i class="fas fa-hand-holding-usd"></i></button></a>
                 </p>
             </div>

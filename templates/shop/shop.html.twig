@@ -3,104 +3,56 @@
 {% block title %}CogShop Vetements {{ type_str }} {% endblock %}
 
 {% block body %}
+
+
+    {# Recherche de produit #}
     <h2 class="text-light text-center py-5">{{ type_str|title }}</h2>
-    <div class="container-fluid text-light pb-5">
+
+    <div class="container-fluid text-light pb-5 justify-content-center">
         <form method="GET">
+
             <div class="row">
                 <div class="col-lg-3">
-                    <label for="search">Search : </label>
-                     <input class="form-control" type="text" placeholder="Search..." name="s" is="search" value="{{ params.s }}">
-                </div>
-                <div class="col-lg-2">
-                <label for="p_min">Prix min : </label>
-                 <input class="form-control" type="number" placeholder="Prix min" name="p_min" step="1" min="0" value="{{ params.p_min }}">
+                    
+                    <input class="form-control" type="text" placeholder="Search..." name="s" is="search" value="{{ params.s }}">
                 </div>
 
-                <div class="col-lg-2">
-                <label for="p_max">Prix max : </label>
-                 <input class="form-control" type="number" placeholder="Prix max" name="p_max" step="1" max="300" value="{{ params.p_max }}">
+                <div class="col-lg-1">
+                    <input class="form-control" type="number" placeholder="Prix min" name="p_min" step="1" min="0" value="{{ params.p_min }}">
                 </div>
-                <div class="col-lg-2">
-                    <label for="inputGroupSelect01"> Trier par : </label>
+
+                <div class="col-lg-1">
+                    <input class="form-control" type="number" placeholder="Prix max" name="p_max" step="1" max="300" value="{{ params.p_max }}">
+                </div>
+                <div class="col-lg-1">
                     <div class="input-group mb-3">
                         <select class="custom-select" id="inputGroupSelect01" name="ordre" >
                             <option value="0">Choose...</option>
                             <option value="nouveautes" {% if params.ordre == 'nouveautes' %}selected{% endif %}>Nouveautés</option>
                             <option value="croissant" {% if params.ordre == 'croissant' %}selected{% endif %}>Croissant</option>
-                            <option value="decroissant" {{ params.ordre == 'decroissant' ? 'selected' }}>Décroissant</option>    
+                            <option value="decroissant" {{ params.ordre == 'decroissant' ? 'selected' }}>Décroissant</option>                          
                         </select>
                     </div>
-                </div> 
-                <div class="col-md-1" id="btnSearch">
-                    <button class="btn btn-outline-warning my-3 ml-2 my-sm-0"  type="submit">Valider</button>
                 </div>
-            </div>{# row #}
-            <div class="row justify-content-end">
-                <div class="col-lg-3">
-                    </div>
 
-                    <div class="col-lg-1">
-                    </div>
-
-                    <div class="col-lg-1"> 
-                    </div>
-
-                    <div class="col-lg-1">
-                    </div>
-                
-            </div>     
+                <div class="col-lg-1">
+                    <button class="btn btn-outline-warning my-2 ml-2 my-sm-0"  type="submit">Valider</button>
+                </div>
+            </div>
         </form>
+        
     </div>
+
+    
+
+
+
+
+
     <section class="container-fluid">  
         <div class="row">
-            <div class="col-lg-3">
-                <label for="search">Search : </label>
-                 <input class="form-control" type="text" placeholder="Search..." name="s" is="search" value="{{ params.s }}">
-            </div>
-            <div class="col-lg-2">
-            <label for="p_min">Prix min : </label>
-             <input class="form-control" type="number" placeholder="Prix min" name="p_min" step="1" min="0" value="{{ params.p_min }}">
-            </div>
-
-            <div class="col-lg-2">
-            <label for="p_max">Prix max : </label>
-             <input class="form-control" type="number" placeholder="Prix max" name="p_max" step="1" max="300" value="{{ params.p_max }}">
-            </div>
-            <div class="col-lg-2">
-                <label for="inputGroupSelect01"> Trier par : </label>
-                <div class="input-group mb-3">
-                    <select class="custom-select" id="inputGroupSelect01" name="ordre" >
-                        <option value="0">Choose...</option>
-                        <option value="nouveautes" {% if params.ordre == 'nouveautes' %}selected{% endif %}>Nouveautés</option>
-                        <option value="croissant" {% if params.ordre == 'croissant' %}selected{% endif %}>Croissant</option>
-                        <option value="decroissant" {{ params.ordre == 'decroissant' ? 'selected' }}>Décroissant</option>    
-                    </select>
-                </div>
-            </div> 
-            <div class="col-md-1" id="btnSearch">
-                <button class="btn btn-outline-warning my-3 ml-2 my-sm-0"  type="submit">Valider</button>
-            </div>
-        </div>{# row #}
-        <div class="row justify-content-end">
-            <div class="col-lg-3">
-                </div>
-
-                <div class="col-lg-1">
-                </div>
-
-                <div class="col-lg-1"> 
-                </div>
-
-                <div class="col-lg-1">
-                </div>
-            
-        </div>     
-    </form>
-</div>
-<section class="container-fluid">
-    <div class="row">
-                {% for produit in produits  %}
-                    <div class=" col-sm-12 col-md-6 col-lg-3 mb-3">
+            {% for produit in produits  %}
+                <div class=" col-sm-12 col-md-6 col-lg-3 mb-3">
                     <div class="card" id="shop" name="shop">
                         <img src="{{ asset('images/' ~ produit.img ) }}" class="card-img-top border border-dark" alt="image produit">
                         <div class="card-body ">
@@ -121,8 +73,25 @@
                             <!-- fin du panier qui bouge -->
                         </div>
                     </div>
-                    </div>
-                    {% endfor %}
-                    </div>
-            </section>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <br>
+    {# Pagination #}
+    <nav aria-label="...">
+        <ul class="pagination justify-content-center pb-3">
+            <li class="page-item {{ page == 1 ? 'disabled' }}">
+                <a class="page-link" href="{{ path('shop', params | merge ({ page:page - 1 }) ) }}" tabindex="-1">Previous</a>
+            </li>
+            {% for p in 1..nbPages %}
+                <li class="page-item {{ p == page ? 'active'}}"><a class="page-link" href="{{ path('shop', params | merge ({ page:p })) }}">{{ p }}</a></li>
+            {% endfor %}
+            
+            <li class="page-item {{ page == nbPages ? 'disabled' }}">
+                <a class="page-link" href="{{ path('shop',  params | merge ({ page:page + 1 }) ) }}">Next</a>
+            </li>
+        </ul>
+    </nav>
+
 {% endblock %}

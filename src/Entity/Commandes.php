@@ -21,16 +21,6 @@ class Commandes
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nomproduit;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nomuser;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $adresseuser;
 
     /**
@@ -39,18 +29,18 @@ class Commandes
     private $status;
 
     /**
-     * @ORM\Column(type="decimal", precision=7, scale=2)
-     */
-    private $prix;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="commandes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Produit", mappedBy="commandes")
+     * @ORM\Column(type="decimal", precision=7, scale=2)
+     */
+    private $prix;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Produit", inversedBy="commandes")
      */
     private $produits;
 
@@ -62,30 +52,6 @@ class Commandes
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getNomproduit(): ?string
-    {
-        return $this->nomproduit;
-    }
-
-    public function setNomproduit(string $nomproduit): self
-    {
-        $this->nomproduit = $nomproduit;
-
-        return $this;
-    }
-
-    public function getNomuser(): ?string
-    {
-        return $this->nomuser;
-    }
-
-    public function setNomuser(string $nomuser): self
-    {
-        $this->nomuser = $nomuser;
-
-        return $this;
     }
 
     public function getAdresseuser(): ?string
@@ -112,18 +78,6 @@ class Commandes
         return $this;
     }
 
-    public function getPrix(): ?string
-    {
-        return $this->prix;
-    }
-
-    public function setPrix(string $prix): self
-    {
-        $this->prix = $prix;
-
-        return $this;
-    }
-
     public function getUser(): ?Users
     {
         return $this->user;
@@ -132,6 +86,18 @@ class Commandes
     public function setUser(?Users $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPrix(): ?string
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(string $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }
@@ -148,7 +114,6 @@ class Commandes
     {
         if (!$this->produits->contains($produit)) {
             $this->produits[] = $produit;
-            $produit->setCommandes($this);
         }
 
         return $this;
@@ -158,12 +123,19 @@ class Commandes
     {
         if ($this->produits->contains($produit)) {
             $this->produits->removeElement($produit);
-            // set the owning side to null (unless already changed)
-            if ($produit->getCommandes() === $this) {
-                $produit->setCommandes(null);
-            }
         }
 
         return $this;
     }
+
+    /**
+    * toString
+    * @return string
+    */
+   public function __toString()
+   {
+           return $this->getPrix();
+           return $this->getAdresseuser();
+           return $this->getUser();
+   }
 }

@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UsersRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 use Symfony\Component\HttpClient\HttpClient;
 
 class CogShopController extends AbstractController
