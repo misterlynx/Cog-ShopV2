@@ -53,7 +53,7 @@
                   {% for historique in historiques %}
                     <tr>
                       <td>{{ historique.prix }}</td>
-                      <td>{{ historique.adresseuser }}</td>
+                      <td>{{ historique.adresseuser }}, {{ historique.villeuser }}, {{ historique.codepostal }}</td>
                       <td>{{ historique.status }}</td>
                       <td>{{ historique.user.id }}</td>
                       <td>
