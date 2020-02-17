@@ -122,7 +122,7 @@ class CartController extends AbstractController
         $dompdf->render();
         // $dompdf->stream("document.pdf", array("Attachment" => false));
         $output = $dompdf->output();
-        
+        file_put_contents('../private/facture/facture.pdf', $output);
             die;
         // return $this->render('pdf.html.twig', [
         //     'produits' => $produits,
