@@ -83,8 +83,7 @@ class CartController extends AbstractController
             ->setCodepostal($this->getUser()->getCodepostal())
             ->setAdresseuser($this->getUser()->getAdresse())
             ->setPrix($total)
-            ->setStatus(0)
-            ->setNomproduit('test');
+            ->setStatus(0);
 
         foreach ($produits as $produit) {
             $commande->addProduit($produit);

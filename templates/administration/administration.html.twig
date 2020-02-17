@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-12">
       <div class="jumbotron pt-1 bg-dark">
         <div class="tab-content" id="v-pills-tabContent">
           <div class="tab-pane fade show active text-light" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -46,15 +46,21 @@
                       <th>adresse utilisateur</th>
                       <th>Statut de la commande</th>
                       <th>Id de l'utilisateur</th>
+                      <th>Produits</th>
                     </tr>
                   </thead>
                   <tbody>
-                  {% for historiques in historique %}
+                  {% for historique in historiques %}
                     <tr>
-                      <td>{{ historiques.prix }}</td>
-                      <td>{{ historiques.adresseuser }}</td>
-                      <td>{{ historiques.status }}</td>
-                      <td>{{ historiques.user.id }}</td>
+                      <td>{{ historique.prix }}</td>
+                      <td>{{ historique.adresseuser }}, {{ historique.villeuser }}, {{ historique.codepostal }}</td>
+                      <td>{{ historique.status }}</td>
+                      <td>{{ historique.user.id }}</td>
+                      <td>
+                        {% for produit in historique.produits %}
+                          - <a href="{{ path('produit_single', produit.link) }}" target="_blank">{{ produit.nom }}</a> <br>
+                        {% endfor %}
+                      </td>
                     </tr>
                     {% endfor %}
                   </tbody>

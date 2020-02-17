@@ -54,11 +54,6 @@ class Commandes
      */
     private $codepostal;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nomproduit;
-
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -178,15 +173,4 @@ class Commandes
        return $this;
    }
 
-   public function getNomproduit(): ?string
-   {
-       return $this->nomproduit;
-   }
-
-   public function setNomproduit(string $nomproduit): self
-   {
-       $this->nomproduit = $nomproduit;
-
-       return $this;
-   }
 }

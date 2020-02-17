@@ -32,7 +32,7 @@ class AdministrationController extends AbstractController
             $em->flush();
             
             $this->addFlash('success', "Le formulaire ete bien envoyé!");
-            return $this->redirectToRoute('admjnistration');
+            return $this->redirectToRoute('administration');
         }
 
 
@@ -40,7 +40,7 @@ class AdministrationController extends AbstractController
 
         return $this->render('administration/administration.html.twig', [
             'ProduitForm' => $form->createView(),
-            'historique' => $historique,
+            'historiques' => $historique,
         ]);
     }
 }
