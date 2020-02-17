@@ -123,6 +123,15 @@ h2,h1{
 .page-link{
     color: black;
 }
+#fb , #tw, #contactcacher{
+    position: absolute;
+    top: 75.5%;
+    left: 19.5%;
+        transform: translate(-50%,-50%);
+        color: rgba(0, 0, 0, 0)!important;
+        
+}
+
 #fb{
     left: 28.5%;
 }

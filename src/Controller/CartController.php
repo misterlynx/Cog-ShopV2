@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Service\Cart\CartService;
 use App\Entity\Commandes;
+use App\Entity\Produit;
+use App\Entity\Users;
+use App\Repository\CommandesRepository;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -66,6 +69,11 @@ class CartController extends AbstractController
      */
     public function commandsPayement(CartService $cartService, EntityManagerInterface $em)
     {
+
+        $user = new Users();
+
+        $user->getId();
+
         $panier = $cartService->getFullCart();
         $produits = [];
         $total = 0;
@@ -75,12 +83,12 @@ class CartController extends AbstractController
         }
 
         $commande = new Commandes();
-        $commande
-                    ->getProduits()
-                    ->getUser()
-                    ->setAdresseuser('blabla')
-                    ->setPrix($total)
-                    ->setStatus('0');
+        $commande->getProduits();
+        $commande->getUser();
+        $commande->setAdresseuser('blabla');
+        $commande->setPrix($total);
+        $commande->setStatus('0');
+        $commande->getId($user);
 
         foreach ($produits as $produit) {
             $commande->addProduit($produit);
