@@ -78,13 +78,13 @@ class CartController extends AbstractController
         }
 
         $commande = (new Commandes())
-        ->setUser($this->getUser())
-        ->setVilleuser($this->getUser()->getVille())
-        ->setCodepostal($this->getUser()->getCodepostal())
-        ->setAdresseuser($this->getUser()->getAdresse())
-        ->setPrix($total)
-        ->setStatus(0)
-        ->setNomproduit('test');
+            ->setUser($this->getUser())
+            ->setVilleuser($this->getUser()->getVille())
+            ->setCodepostal($this->getUser()->getCodepostal())
+            ->setAdresseuser($this->getUser()->getAdresse())
+            ->setPrix($total)
+            ->setStatus(0)
+            ->setNomproduit('test');
 
         foreach ($produits as $produit) {
             $commande->addProduit($produit);

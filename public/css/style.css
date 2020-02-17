@@ -79,12 +79,12 @@ main , body{
     background-color: white;
 }
 
-h2,h1{
+h2,h1,h3,h4{
     color:  antiquewhite;
     font-family: 'Playfair Display SC', serif;
 }
 #h2single{
-    color: black;
+    color: black !important;
     font-family: 'Playfair Display SC', serif;
 }
 #h1single{
@@ -137,4 +137,7 @@ h2,h1{
 }
 #contactcacher{
     left: 40.5%;
+}
+#h3n{
+    color: black;
 }

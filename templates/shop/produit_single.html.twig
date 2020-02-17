@@ -15,8 +15,9 @@
 
 
 {% block body %}
+<!-- card produit -->
 <h1 class="text-light text-center" id="h1single"></h1>
-<a href="{{ path('shop', { type_str: 'produits' }) }}"><button type="button" class="btn border-warning text-white" id="payer" >
+<a href="{{ path('shop', { type_str: 'produits' }) }}"><button type="button" class="btn border-warning text-white mb-5" id="payer" >
     Back To The Future
 </button></a>
 
@@ -48,28 +49,26 @@
         </div>  
     </div>
     {% if produit.comments| length %}
+    <!-- avis produit -->
     <div class="container mt-3"  >
-        <div class="row justify-content-center mt-3">
-            
+        <div class="row justify-content-center mt-3">           
             <div class="col-md-6 mt-3">
                 <div class="card shadow-lg rounded-lg mt-3 mb-3  border-2 border-warning ">
                     <div class="card-header">
-                        
-                        <h2 class="text-center font-weight-light my-4" id="h2com">Avis client</h2></div>
-                        <div class="card-body">
-                            
-                            
-
+                        <h2 class="text-center font-weight-light my-4" id="h2com">Avis client</h2>
+                    </div>
+                    <div class="card-body">
                             {% for comment in produit.comments %}
-                            <p class="h5" id="client">Avis publié par : {{ comment.user.nom }} {{ comment.user.prenom }} le {{ comment.date|date('d/m/Y') }}</p>
-                            <p class="h6" id="avis">{{comment.commentaire }}</p> 
+                        <p class="h5" id="client">Avis publié par : {{ comment.user.nom }} {{ comment.user.prenom }} le {{ comment.date|date('d/m/Y') }}</p>
+                        <p class="h6" id="avis">{{comment.commentaire }}</p> 
                             {% endfor %}
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
    {% endif %}
+   <!-- form avis -->
             <div class="container mt-3"  >
                 <div class="row justify-content-center mt-3">
                     <div class="col-md-6 mt-3">
@@ -82,8 +81,7 @@
                                             Laisser Votre Avis
                                         </button>
                                     {{ form_end(form)}}
-                                </div>
-                            
+                                </div> 
                         </div>
                     </div>
                 </div>
