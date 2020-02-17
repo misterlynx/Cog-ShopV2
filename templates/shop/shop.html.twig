@@ -56,7 +56,7 @@
                     <div class="card" id="shop" name="shop">
                         <img src="{{ asset('images/' ~ produit.img ) }}" class="card-img-top border border-dark" alt="image produit">
                         <div class="card-body ">
-                            <h4 class="card-title text-center">{{ produit.nom }}</h4>
+                            <h4 class="card-title text-center" id="h2single">{{ produit.nom }}</h4>
                             <p class="card-text text-right" id="card-text">{{ produit.prix }} €</p>
                             <a href="{{ path('produit_single', { type_str: produit.typeStr, id:produit.id, slug:produit.slug}) }}" class="btn btn" id="btnshop">Détail du produit</a>
                             <!-- panier qui bouge  -->

@@ -36,10 +36,10 @@ a:hover{
 }
 
 #robe{
-    position: absolute;
-    top: 68.5%;
-    left: 16.5%;
-    transform: translate(-50%,-50%);
+        position: absolute;
+        top: 68.5%;
+        left: 16.5%;
+        transform: translate(-50%,-50%);
 }
 
 main , body{
@@ -79,12 +79,12 @@ main , body{
     background-color: white;
 }
 
-h2,h1{
+h2,h1,h3,h4{
     color:  antiquewhite;
     font-family: 'Playfair Display SC', serif;
 }
 #h2single{
-    color: black;
+    color: black !important;
     font-family: 'Playfair Display SC', serif;
 }
 #h1single{
@@ -113,6 +113,8 @@ h2,h1{
 #btnSearch{
     padding-top: 30px;
 }
+<<<<<<< HEAD
+=======
 
 .page-item.active .page-link {
     color: black;
@@ -123,6 +125,7 @@ h2,h1{
 .page-link{
     color: black;
 }
+>>>>>>> theo
 #fb , #tw, #contactcacher{
     position: absolute;
     top: 75.5%;
@@ -137,4 +140,10 @@ h2,h1{
 }
 #contactcacher{
     left: 40.5%;
+<<<<<<< HEAD
+=======
+}
+#h3n{
+    color: black;
+>>>>>>> theo
 }
