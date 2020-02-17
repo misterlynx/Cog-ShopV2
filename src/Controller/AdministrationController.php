@@ -3,26 +3,44 @@
 
 namespace App\Controller;
 
+use App\Form\ProduitFormType;
+use App\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\UsersRepository;
-use App\Repository\ProduitRepository;
+use App\Repository\CommandesRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 class AdministrationController extends AbstractController
 {
     /**
      * @Route("/administration", name="administration")
      */
-    public function administration(UsersRepository $usersRepository, EntityManagerInterface $em)
+    public function administration(CommandesRepository $commandesRepository, Request $request)
     {
-        $s = $request->query->get('s');
 
-        $inscrit = $usersRepository->findAll();
+        $produits = new Produit();
+        
+        $form = $this->createForm(ProduitFormType::class, $produits);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $contact = $form->getData();
+      
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
+            
+            $this->addFlash('success', "Le formulaire ete bien envoyé!");
+            return $this->redirectToRoute('administration');
+        }
+
+
+        $historique = $commandesRepository->findAll();
 
         return $this->render('administration/administration.html.twig', [
-            'controller_name' => 'AdministrationController',
-            'inscrit' => $inscrit,
+            'ProduitForm' => $form->createView(),
+            'historique' => $historique,
         ]);
     }
 }

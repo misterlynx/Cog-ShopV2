@@ -75,6 +75,9 @@
     "doctrine/reflection": {
         "version": "v1.1.0"
     },
+    "dompdf/dompdf": {
+        "version": "v0.8.4"
+    },
     "easycorp/easy-log-handler": {
         "version": "1.0",
         "recipe": {
@@ -93,11 +96,20 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
-    "knplabs/knp-components": {
-        "version": "v2.3.2"
+    "knplabs/knp-snappy": {
+        "version": "v1.2.1"
     },
-    "knplabs/knp-paginator-bundle": {
-        "version": "v5.1.1"
+    "knplabs/knp-snappy-bundle": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.5",
+            "ref": "c81bdcf4a9d4e7b1959071457f9608631865d381"
+        },
+        "files": [
+            "./config/packages/knp_snappy.yaml"
+        ]
     },
     "monolog/monolog": {
         "version": "2.0.2"
@@ -110,6 +122,12 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.2.3"
+    },
+    "phenx/php-font-lib": {
+        "version": "0.5.1"
+    },
+    "phenx/php-svg-lib": {
+        "version": "v0.3.3"
     },
     "php": {
         "version": "7.2"
@@ -137,6 +155,9 @@
     },
     "psr/log": {
         "version": "1.1.2"
+    },
+    "sabberworm/php-css-parser": {
+        "version": "8.3.0"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",

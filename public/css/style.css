@@ -19,7 +19,9 @@
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {
     color: antiquewhite;
 }
-
+.linkedin{
+    color: #271d0b !important;
+}
 a:hover{
     color: #cb9d32 !important;
 }
@@ -72,16 +74,17 @@ main , body{
 #layoutAuthentication_content.backgroundLogin{
     background-image: url("../images/lock.jpg ");
 }
-/* #layoutAuthentication_content.backgroundContact{
-    background-image: url("../images/unnamed.jpg ");
-} */
+#layoutAuthentication_content.background404{
+    background-image: url("../images/lost.jpg ");
+    background-color: white;
+}
 
-h2,h1{
+h2,h1,h3,h4{
     color:  antiquewhite;
     font-family: 'Playfair Display SC', serif;
 }
 #h2single{
-    color: black;
+    color: black !important;
     font-family: 'Playfair Display SC', serif;
 }
 #h1single{
@@ -110,6 +113,19 @@ h2,h1{
 #btnSearch{
     padding-top: 30px;
 }
+<<<<<<< HEAD
+=======
+
+.page-item.active .page-link {
+    color: black;
+    background-color: #cb9d32;
+    border-color: #cb9d32;
+}
+
+.page-link{
+    color: black;
+}
+>>>>>>> theo
 #fb , #tw, #contactcacher{
     position: absolute;
     top: 75.5%;
@@ -124,4 +140,10 @@ h2,h1{
 }
 #contactcacher{
     left: 40.5%;
+<<<<<<< HEAD
+=======
+}
+#h3n{
+    color: black;
+>>>>>>> theo
 }

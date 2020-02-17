@@ -66,4 +66,26 @@ class CartService {
 
         return $total;
     }
+
+    public function quantityMinus(int $id)
+    {
+        $panier = $this->session->get('panier', []);
+
+        if (!empty($panier[$id])) {
+            $panier[$id]-- ;
+        }else{
+            $panier[$id] = 0;
+        }
+
+        return $this->session->set('panier', $panier);
+    }
+
+    /**
+    * toString
+    * @return string
+    */
+   public function __toString()
+   {
+           return $this->getTotal();
+   }
 }

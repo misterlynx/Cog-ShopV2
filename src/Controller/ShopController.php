@@ -18,14 +18,14 @@ class ShopController extends AbstractController
     /**
      * @Route("/shop/{type_str}", name="shop", requirements={"type_str"="homme|femme|accessoires|produits"})
      */
-    public function shop($type_str, ProduitRepository $produitRepo, Request $request)
+    public function shop($type_str, ProduitRepository $produitRepo, Request $request    )
     {
-
         $params=[
             's' => false,
             'p_min' => false,
             'p_max' => false,
             'ordre' => false,
+            'page' => 1
         ];
 
         // ré&cupérer les 4 params dans l'URL
@@ -33,25 +33,29 @@ class ShopController extends AbstractController
         $p_max= $request->query->get('p_max');
         $ordre= $request->query->get('ordre');
         $s = $request->query->get('s');
+        $page = $request->query->get('page') ?? 1;
 
-        if ( $s || $ordre || $p_min || $p_max) {
+        if ( $s || $ordre || $p_min || $p_max || $page) {
 
             $params=[
                 's' => $s,
                 'p_min' => $p_min,
                 'p_max' => $p_max,
-                'ordre' => $ordre
+                'ordre' => $ordre,
+                'page' => $page,
+                'type_str' => $type_str
             ];
 
-            $produits = $produitRepo->findProducts($params);
-        }else {
-            $produits = $produitRepo->findProductsByType($type_str);
+            $data = $produitRepo->findProducts($params);
+            // dump($data);die;
         }
 
         return $this->render('shop/shop.html.twig', [
-            'produits' => $produits,
+            'produits' => $data['produits'],
             'type_str' => $type_str,
             'params' => $params,
+            'nbPages' => $data['nbPages'],
+            'page' => $page
         ]);
         
     }
@@ -117,28 +121,4 @@ class ShopController extends AbstractController
         ]);
        
     }
-
-    // /**
-    //  * @Route("/pdf", name="_pdf")
-    //  * @return Response
-    //  */
-
-    // public function pdfAction()
-    // {
-    //     $produitcom = [
-    //         'titre' => 'Test1',
-    //     ];
-
-    //     $template = $this->renderView('pdf.html.twig', [
-    //         'produitcom' => $produitcom,
-    //     ]);
-
-    //     $html2pdf = new Html2Pdf('P', 'A4', 'fr');
-    //     $html2pdf->create('P', 'A4', 'fr', true, 'UTF8', array(10, 15, 10, 15));
-
-    //     return $html2pdf->generatePdf($template, "Facture");
-
-    // }
-
-
 }

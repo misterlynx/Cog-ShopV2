@@ -12,10 +12,10 @@ class RedirectController extends AbstractController
      * @Route("/redirect", name="redirect")
      */
     public function admin_dispatch() {
-    	if ($this->getUser()->hasRole('ROLE_ADMIN')) {
+    	if ($this->getUser()->hasRole("ROLE_ADMIN")) {
     		return $this->redirectToRoute('administration');
     	}else{
-            return $this->redirectToRoute('accueil');
+            return $this->redirectToRoute('member');
         }
     }
 }
