@@ -22,6 +22,7 @@ class CartController extends AbstractController
             'total' => $cartService->getTotal()
         ] );
     }
+
     /**
      * @Route("/panier/add/{id}", name="cart_add")
      * 
@@ -32,6 +33,7 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute("cart");
     }
+
     /**
      * @Route("/panier/remove/{id}" , name="cart_remove")
      */
@@ -89,6 +91,7 @@ class CartController extends AbstractController
         $this->addFlash('success', "Votre payement à bien était pris en compte" );
         return $this->redirectToRoute('accueil');
     }
+    
     /**
      * @Route("/panier/decrement/{id}", name="cart_decrement")
      */
