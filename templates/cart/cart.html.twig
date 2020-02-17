@@ -4,7 +4,7 @@
     Inconnu {% endif %}!{% endblock %}
 
 {% block body %}
-<a href="{{ path('shop', { type_str: 'produits' }) }}"><button type="button" class="btn border-warning text-white" id="payer" >
+<a href="{{ path('shop', { type_str: 'produits' }) }}"><button type="button" class="btn border-warning text-white mb-5" id="payer" >
     Back To The Future
 </button></a>
     <section class="container text-light text-center">
@@ -52,14 +52,17 @@
                 
             {% endif %}
                 <p>
-                <a href="{% if app.user %}
-                   {{ path('payement') }} 
-                {% else %}
-                    {{ path('app_login') }}
-                {% endif %}
-                
-                "><button type="button" class="btn btn-outline-warning btn-lg" >Payer <i class="fas fa-hand-holding-usd"></i></button></a>
+                {% if app.user %}
+                <a href="
+                   {{ (path('payement')) }}
+                "><button type="button" class="btn btn-outline-warning btn-lg" >Payer {{total}} € <i class="fas fa-hand-holding-usd"></i></button></a>
                 </p>
+                {% else %}
+                     <a href="
+                   {{ (path('app_login')) }}
+                "><button type="button" class="btn btn-outline-warning btn-lg" >Se connecter pour payer<i class="fas fa-hand-holding-usd"></i></button></a>
+                </p>
+                {% endif %}
             </div>
         </div>
 

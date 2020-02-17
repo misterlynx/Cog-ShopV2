@@ -1,54 +1,62 @@
-<page backtop="20mm" backright="10mm" backbottom="20mm" backleft="10mm">
-    <table class="header">
-        <tr>
-            <td class="text-left">
-                <b>Prénom Nom</b>
-                <br>Adresse
-                <br>Code Postal
-                <br>Pays
-            </td>
-        </tr>
-        <tr class="text-right">
-            <td>CogShop</td>
-            <td>204 ave de Colmar</td>
-            <td>67200</td>
-            <td>Strasbourg</td>
-            <td>www.wf3cogshop.ovh</td>
-        </tr>
-    </table>
-    <div class="separator"></div>
-    <table>
-        <thead>
-            <th>Nom : </th>
-            <th>Prenom : </th>
-            <th>Adresse : </th>
-        </thead>
-    </table>
-        <tbody>
-            <tr>
-                <td class="">{{user.nom}}</td>
-                <td class="">{{user.prenom}}</td>
-                <td class="">{{user.adresse}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <table>
-        <thead>
-            <th>Produit : </th>
-            <th>Quantité : </th>
-            <th>Prix : </th>
-        </thead>
-        <tbody>
-        {% for produit in produit %}
-            <td>{{ produit.nom }}</td>
-            <td>{{ produit.quantity }}</td>
-            <td>{{ produit.prix }}</td>
-        {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td clospan="8">Total : </td>
-                <td class="text-right">{{ produit.total }}</td>
-            </tr>
-        </tfoot>
-    </table>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Facture de {{ app.user.nom }} {{ app.user.prenom }}</h1>
+                <h6 class="text-left" style="padding-top:10px;">Nom: {{ app.user.nom }}</h6>
+                <h6 class="text-left">Prénom: {{ app.user.prenom }}</h6>
+                <h6 class="text-left">Adresse: {{ app.user.adresse }} {{ app.user.ville }} {{ app.user.codepostal }}</h6>
+                <h6 class="text-left">Email: {{ app.user.email }}</h6>
+                <h6 class="text-right" style="padding-top:10px;">Entreprise: Cogshop</h6>
+                <h6 class="text-right">Adresse: 204 Avenue de Colmar</h6>
+                <h6 class="text-right">Email: cogshop@gmail.com</h6>
+                <br>
+                <p class="text-left">Api2Pdf is a powerful PDF generation API with no rate limits or file size constraints. Generate PDFs from
+                    HTML, URLs, images, office documents, and more. Merge PDFs together. Api2Pdf runs on AWS Lambda, a serverless
+                    architecture powered by Amazon to scale to millions of requests while being up to 90% cheaper than alternatives.
+                    The REST API provides endpoints for WKHTMLTOPDF, Headless Chrome, LibreOffice, and Merge PDFs. Learn
+                    more at
+                </p>
+            </div>
+        </div>
+        <hr/>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Produits</th>
+                    <th scope="col">Adresse de livraisons</th>
+                    <th scope="col">Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                    {% for produit in command.produits %}
+                    {{ produit.nom }}<br>
+                    {% endfor %}
+                    </td>
+                    <td>{{ command.adresseuser }}, {{ command.villeuser }}, {{ command.codepostal}}</td>
+                    <td>{{ command.prix }}€</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-faded">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel mi sed est imperdiet tempus. Praesent ac ipsum lectus. In vel posuere nulla, eget mattis mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus nec ex sed risus feugiat sagittis. Vivamus egestas id neque auctor vulputate. Donec tincidunt, leo ut malesuada mattis, felis dolor lacinia enim, sit amet fermentum est turpis id augue. Vivamus rutrum aliquam ornare. Proin leo dolor, porta ut libero nec, ultricies tincidunt elit. Vivamus pharetra lacus augue, ut sagittis velit pellentesque vitae.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

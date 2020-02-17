@@ -4,12 +4,11 @@ namespace App\Controller;
 
 use App\Service\Cart\CartService;
 use App\Entity\Commandes;
-use App\Repository\UsersRepository;
+use App\Repository\CommandesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Dompdf\Dompdf;
 
 class CartController extends AbstractController
@@ -24,6 +23,7 @@ class CartController extends AbstractController
             'total' => $cartService->getTotal()
         ] );
     }
+
     /**
      * @Route("/panier/add/{id}", name="cart_add")
      * 
@@ -34,6 +34,7 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute("cart");
     }
+
     /**
      * @Route("/panier/remove/{id}" , name="cart_remove")
      */
@@ -66,6 +67,7 @@ class CartController extends AbstractController
      */
     public function commandsPayement(CartService $cartService, EntityManagerInterface $em)
     {
+
         $panier = $cartService->getFullCart();
         $produits = [];
         $total = 0;
@@ -74,13 +76,13 @@ class CartController extends AbstractController
             $total = $total + $p['produit']->getPrix() * $p['quantity'];
         }
 
-        $commande = new Commandes();
-        $commande
-                    ->getProduits()
-                    ->getUser()
-                    ->setAdresseuser('blabla')
-                    ->setPrix($total)
-                    ->setStatus('0');
+        $commande = (new Commandes())
+            ->setUser($this->getUser())
+            ->setVilleuser($this->getUser()->getVille())
+            ->setCodepostal($this->getUser()->getCodepostal())
+            ->setAdresseuser($this->getUser()->getAdresse())
+            ->setPrix($total)
+            ->setStatus(0);
 
         foreach ($produits as $produit) {
             $commande->addProduit($produit);
@@ -90,8 +92,9 @@ class CartController extends AbstractController
         $em->flush();
 
         $this->addFlash('success', "Votre payement à bien était pris en compte" );
-        return $this->redirectToRoute('accueil');
+        return $this->redirectToRoute('pdf', [ 'id' =>  $commande->getId() ]);
     }
+    
     /**
      * @Route("/panier/decrement/{id}", name="cart_decrement")
      */
@@ -102,16 +105,27 @@ class CartController extends AbstractController
         return $this->redirectToRoute("cart");
     }
 
-    public function pdfCreator(UsersRepository $usersRepository)
+    /**
+     * @Route("/pdf/{id}", name="pdf")
+     */
+    public function pdfCreator($id, CommandesRepository $commandesRepository)
     {
-        $user = $usersRepository->findAll();
+
+        $command = $commandesRepository->find($id);
+
         $dompdf = new Dompdf();
-        $dompdf->loadHtml($this->renderView('pdf.html.twig'));
-        $dompdf->render();
-        $dompdf->stream("test.pdf");
+        $dompdf->loadHtml($this->renderView('pdf.html.twig', [
+            'command' => $command,
+        ]));
         
-        return $this->render('pdf.html.twig', [
-            'user' =>$user,
-        ] );
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        // $dompdf->stream("document.pdf", array("Attachment" => false));
+        $output = $dompdf->output();
+        file_put_contents('../private/facture/facture.pdf', $output);
+            die;
+        // return $this->render('pdf.html.twig', [
+        //     'produits' => $produits,
+        // ]);
     }
 }

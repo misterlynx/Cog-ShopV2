@@ -10,11 +10,12 @@
           <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Infos</a>
           <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Historiques des commandes</a>
           <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Ajouter Produit</a>
+          <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Paramêtres</a>
       </nav>
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-12">
       <div class="jumbotron pt-1 bg-dark">
         <div class="tab-content" id="v-pills-tabContent">
           <div class="tab-pane fade show active text-light" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -45,15 +46,21 @@
                       <th>adresse utilisateur</th>
                       <th>Statut de la commande</th>
                       <th>Id de l'utilisateur</th>
+                      <th>Produits</th>
                     </tr>
                   </thead>
                   <tbody>
-                  {% for historiques in historique %}
+                  {% for historique in historiques %}
                     <tr>
-                      <td>{{ historiques.prix }}</td>
-                      <td>{{ historiques.adresseuser }}</td>
-                      <td>{{ historiques.status }}</td>
-                      <td>{{ historiques.user.id }}</td>
+                      <td>{{ historique.prix }}</td>
+                      <td>{{ historique.adresseuser }}, {{ historique.villeuser }}, {{ historique.codepostal }}</td>
+                      <td>{{ historique.status }}</td>
+                      <td>{{ historique.user.id }}</td>
+                      <td>
+                        {% for produit in historique.produits %}
+                          - <a href="{{ path('produit_single', produit.link) }}" target="_blank">{{ produit.nom }}</a> <br>
+                        {% endfor %}
+                      </td>
                     </tr>
                     {% endfor %}
                   </tbody>
@@ -117,6 +124,9 @@
         {{ form_end(ProduitForm) }}
     </article>
           </div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+      <button type="submit" class="btn-success"><a href="{{ path('password_update') }}">Changer votre mot de passe</a></button> 
+      </div>
         </div>
       </div>{# jumbotron#}
     </div>{# col-8#}

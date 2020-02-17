@@ -25,14 +25,13 @@ class AdministrationController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
 
-            $contact = $form->getData();
+            $form->getData();
       
             $em = $this->getDoctrine()->getManager();
-            $em->persist($contact);
             $em->flush();
             
             $this->addFlash('success', "Le formulaire ete bien envoyé!");
-            return $this->redirectToRoute('admjnistration');
+            return $this->redirectToRoute('administration');
         }
 
 
@@ -40,7 +39,7 @@ class AdministrationController extends AbstractController
 
         return $this->render('administration/administration.html.twig', [
             'ProduitForm' => $form->createView(),
-            'historique' => $historique,
+            'historiques' => $historique,
         ]);
     }
 }

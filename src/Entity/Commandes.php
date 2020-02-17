@@ -44,6 +44,16 @@ class Commandes
      */
     private $produits;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $villeuser;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $codepostal;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -127,4 +137,40 @@ class Commandes
 
         return $this;
     }
+
+    /**
+    * toString
+    * @return string
+    */
+   public function __toString()
+   {
+           return $this->getPrix();
+           return $this->getAdresseuser();
+           return $this->getUser();
+   }
+
+   public function getVilleuser(): ?string
+   {
+       return $this->villeuser;
+   }
+
+   public function setVilleuser(string $villeuser): self
+   {
+       $this->villeuser = $villeuser;
+
+       return $this;
+   }
+
+   public function getCodepostal(): ?int
+   {
+       return $this->codepostal;
+   }
+
+   public function setCodepostal(int $codepostal): self
+   {
+       $this->codepostal = $codepostal;
+
+       return $this;
+   }
+
 }

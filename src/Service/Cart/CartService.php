@@ -79,4 +79,13 @@ class CartService {
 
         return $this->session->set('panier', $panier);
     }
+
+    /**
+    * toString
+    * @return string
+    */
+   public function __toString()
+   {
+           return $this->getTotal();
+   }
 }
