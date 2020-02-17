@@ -12,14 +12,12 @@ class ProduitFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('img')
             ->add('nom')
             ->add('description')
             ->add('couleur')
             ->add('prix')
             ->add('stock')
             ->add('type')
-            ->add('slug')
             ->add('taille')
         ;
     }

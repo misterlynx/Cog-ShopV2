@@ -3,7 +3,7 @@
         <div class="sb-sidenav-menu text-center">
             <div class="nav pb-5">
                 <img src="{{ asset('images/CogShop.png') }}" alt="Logo" style="width: 80%; " class="mx-auto">
-                {% if app.user.hasRole('ROLE_ADMIN') %}
+                {% if app.user and app.user.hasRole('ROLE_ADMIN') %}
                     <a class="nav-link mx-auto pt-5" href="{{ path('accueil') }}"> Accueil</a>
                     <a class="nav-link mx-auto" href="{{ path('administration', { '_fragment': 'v-pills-home' }) }}">Infos</a>
                     <a class="nav-link mx-auto" href="{{ path('administration', { '_fragment': 'v-pills-profile' }) }}">Historiques des récents membres</a>
