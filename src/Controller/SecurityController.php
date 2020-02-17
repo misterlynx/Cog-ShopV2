@@ -138,5 +138,15 @@ class SecurityController extends AbstractController
         throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
     }
 
+    /**
+     * @Route("/штампы", name="hack")
+     */
+    public function hack()
+    {
+        return $this->render('security/hack.html.twig', [
+
+            ]);
+    }
+
     
 }
