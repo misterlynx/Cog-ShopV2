@@ -91,7 +91,7 @@ class CartController extends AbstractController
         $em->persist($commande);
         $em->flush();
 
-        $this->addFlash('success', "Votre payement à bien était pris en compte" );
+        
         return $this->redirectToRoute('pdf', [ 'id' =>  $commande->getId() ]);
     }
     
@@ -122,8 +122,10 @@ class CartController extends AbstractController
         $dompdf->render();
         // $dompdf->stream("document.pdf", array("Attachment" => false));
         $output = $dompdf->output();
-        file_put_contents('../private/facture/facture.pdf', $output);
-            die;
+        file_put_contents('../private/facture/facture.pdf', $output); 
+        
+        return $this->redirectToRoute('accueil');
+       
         // return $this->render('pdf.html.twig', [
         //     'produits' => $produits,
         // ]);
