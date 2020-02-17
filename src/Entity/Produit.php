@@ -97,6 +97,15 @@ public function getTypeStr()
 
 }
 
+public function getLink()
+{
+    return array(
+        'type_str' => $this->getTypeStr(),
+        'id' => $this->getId(),
+        'slug' => $this->getSlug()
+    );
+}
+
 
     public function getId(): ?int
     {
