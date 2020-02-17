@@ -59,13 +59,22 @@
         
         {#Sidebar#}
         <div id="layoutSidenav">
-
-        
+  
         {{ render(controller('App\\Controller\\CogShopController::sidebar')) }}
         
          
 
             <div id="layoutSidenav_content">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{label}} alert-dismissible fade show" role="alert">
+                      {{message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}  
                 <main>
                     {% block body %}
                         

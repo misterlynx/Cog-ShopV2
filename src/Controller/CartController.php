@@ -126,11 +126,15 @@ class CartController extends AbstractController
         // $dompdf->stream("document.pdf", array("Attachment" => false));
         $output = $dompdf->output();
         file_put_contents('../private/facture/facture.pdf', $output);
-            die;
+
+        $this->addFlash('success', "Votre payement à bien était pris en compte" );
+        return $this->redirectToRoute('redirect');
+        
         // return $this->render('pdf.html.twig', [
         //     'produits' => $produits,
         // ]);
     }
+<<<<<<< HEAD
 
     public function sendEmail(MailerInterface $mailer, SentMessage $sentEmail)
     {
@@ -147,4 +151,14 @@ class CartController extends AbstractController
         // ...
     }
 
+=======
+    /**
+     * @Route("/success", name="success")
+     */
+    public function Pigeon()
+    {
+        return $this->render('cart/Success.html.twig', [
+        ] );
+    }
+>>>>>>> e47eed4804208a130465751d8c68d20f8de60a37
 }
