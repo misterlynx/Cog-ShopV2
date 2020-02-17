@@ -8,11 +8,15 @@
 <body>
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center">Api2Pdf</h1>
+                <h1 class="text-center">Facture de {{ app.user.nom }} {{ app.user.prenom }}</h1>
                 <h6 class="text-left" style="padding-top:10px;">Nom: {{ app.user.nom }}</h6>
                 <h6 class="text-left">Prénom: {{ app.user.prenom }}</h6>
                 <h6 class="text-left">Adresse: {{ app.user.adresse }} {{ app.user.ville }} {{ app.user.codepostal }}</h6>
                 <h6 class="text-left">Email: {{ app.user.email }}</h6>
+                <h6 class="text-right" style="padding-top:10px;">Entreprise: Cogshop</h6>
+                <h6 class="text-right">Adresse: 204 Avenue de Colmar</h6>
+                <h6 class="text-right">Email: cogshop@gmail.com</h6>
+                <br>
                 <p class="text-left">Api2Pdf is a powerful PDF generation API with no rate limits or file size constraints. Generate PDFs from
                     HTML, URLs, images, office documents, and more. Merge PDFs together. Api2Pdf runs on AWS Lambda, a serverless
                     architecture powered by Amazon to scale to millions of requests while being up to 90% cheaper than alternatives.
