@@ -69,10 +69,6 @@ class CartController extends AbstractController
     public function commandsPayement(CartService $cartService, EntityManagerInterface $em)
     {
 
-        $user = new Users();
-
-        $user->getId();
-
         $panier = $cartService->getFullCart();
         $produits = [];
         $total = 0;
@@ -81,13 +77,14 @@ class CartController extends AbstractController
             $total = $total + $p['produit']->getPrix() * $p['quantity'];
         }
 
-        $commande = new Commandes();
-        $commande->getProduits();
-        $commande->getUser();
-        $commande->setAdresseuser('blabla');
-        $commande->setPrix($total);
-        $commande->setStatus('0');
-        $commande->getId($user);
+        $commande = (new Commandes())
+            ->setUser($this->getUser())
+            ->setVilleuser($this->getUser()->getVille())
+            ->setCodepostal($this->getUser()->getCodepostal())
+            ->setAdresseuser($this->getUser()->getAdresse())
+            ->setPrix($total)
+            ->setStatus(0)
+            ->setNomproduit('test');
 
         foreach ($produits as $produit) {
             $commande->addProduit($produit);
