@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Repository\UsersRepository;
 use App\Form\RegistrationFormType;
+use App\Service\EmailService;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends AbstractController
@@ -27,7 +29,11 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        
+        return $this->render('security/login.html.twig', [
+            'last_username' => $lastUsername, 
+            'error' => $error
+            ]);
     }
 
     /**
@@ -82,6 +88,44 @@ class SecurityController extends AbstractController
 
         return $this->render('security/password_update.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/password-forgotten", name="password_forgotten")
+     */
+    public function password_forgotten(Request $request, UsersRepository $usersRepo, EmailService $emailService)
+    {
+
+       
+        if($request->isMethod('POST')) {
+
+            // dump($request->request->all());
+
+            $email = $request->request->get('email');
+            $user = $usersRepo->findOneBy(array('email' => $email) );
+          
+            if(!$user) {
+                $this->addFlash('danger', 'Votre addresse ne correspond pas a aucun compte');
+            }else{
+                
+
+                $em = $this->getDoctrine()->getManager();
+                $em ->flush();
+
+                $link = $this->generateUrl('password_update', ['email'=>$user->getEmail()], UrlGeneratorInterface::ABSOLUTE_URL);
+                // dump($link);die;
+
+                $emailService->password_forgotten($user,$link);
+
+                $this->addFlash('success', 'Nous vous avons envoyer un email content un lien pour modifier votre mot de passe.');
+                return $this->redirectToRoute('password_forgotten', ['send' =>'ok']);
+            }
+
+        }
+        //Redirect vers login avec flash
+        return $this->render('security/password_forgotten.html.twig', [
+
         ]);
     }
 

@@ -127,4 +127,15 @@ class Commandes
 
         return $this;
     }
+
+    /**
+    * toString
+    * @return string
+    */
+   public function __toString()
+   {
+           return $this->getPrix();
+           return $this->getAdresseuser();
+           return $this->getUser();
+   }
 }

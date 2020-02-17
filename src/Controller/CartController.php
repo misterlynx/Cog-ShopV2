@@ -4,11 +4,16 @@ namespace App\Controller;
 
 use App\Service\Cart\CartService;
 use App\Entity\Commandes;
+use App\Entity\Produit;
+use App\Entity\Users;
+use App\Repository\CommandesRepository;
+use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Dompdf\Dompdf;
 
 class CartController extends AbstractController
 {
@@ -62,10 +67,15 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("/panier/livraisons/payement" , name="payement")
+     * @Route("/panier/payement" , name="payement")
      */
     public function commandsPayement(CartService $cartService, EntityManagerInterface $em)
     {
+
+        $user = new Users();
+
+        $user->getId();
+
         $panier = $cartService->getFullCart();
         $produits = [];
         $total = 0;
@@ -75,11 +85,12 @@ class CartController extends AbstractController
         }
 
         $commande = new Commandes();
-        $commande
-                    ->setUser($this->getUser())
-                    ->setAdresseuser('blabla')
-                    ->setPrix($total)
-                    ->setStatus('0');
+        $commande->getProduits();
+        $commande->getUser();
+        $commande->setAdresseuser('blabla');
+        $commande->setPrix($total);
+        $commande->setStatus('0');
+        $commande->getId($user);
 
         foreach ($produits as $produit) {
             $commande->addProduit($produit);
@@ -100,5 +111,18 @@ class CartController extends AbstractController
         $cartService->quantityMinus($id);
 
         return $this->redirectToRoute("cart");
+    }
+
+    public function pdfCreator(UsersRepository $usersRepository)
+    {
+        $user = $usersRepository->findAll();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($this->renderView('pdf.html.twig'));
+        $dompdf->render();
+        $dompdf->stream("test.pdf");
+        
+        return $this->render('pdf.html.twig', [
+            'user' =>$user,
+        ] );
     }
 }

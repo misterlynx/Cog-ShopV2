@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UsersRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 use Symfony\Component\HttpClient\HttpClient;
 
 class CogShopController extends AbstractController
@@ -53,9 +52,9 @@ class CogShopController extends AbstractController
     
     
 
-    public function header(){
+    public function header($header_s){
         return $this->render('cog_shop/header.html.twig' , [
-            
+            'header_s' => $header_s
         ]);
         }
 

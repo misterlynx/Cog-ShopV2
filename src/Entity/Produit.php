@@ -76,19 +76,16 @@ class Produit
      */
     private $commandes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="produit", orphanRemoval=true)
+     */
+    private $comments;
+
     public function __construct()
     {
-        $this->commandes = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
-    public function __toString(){
-        // to show the name of the Category in the select
-        return $this->prix;
-        // to show the id of the Category in the select
-        return $this->couleur;
-        return $this->stock;
-        return $this->active;
-    }
 
 public function getTypeStr()
 {
@@ -249,6 +246,37 @@ public function getTypeStr()
         if ($this->commandes->contains($commande)) {
             $this->commandes->removeElement($commande);
             $commande->removeProduit($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getProduit() === $this) {
+                $comment->setProduit(null);
+            }
         }
 
         return $this;

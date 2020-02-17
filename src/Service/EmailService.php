@@ -52,37 +52,6 @@ class EmailService{
     }
 
 
-    
-
-    public function contact_pro($nom, $prenom, $societe, $sujet, $email, $message){
-
-
-        $mail = ( new Email() )
-        ->from($email)
-        ->to($this->mon_email)
-        ->replyTo($email)
-        ->subject( '[KARLA]' )
-        
-        ->text($message);
-
-        $this->mailer->send($mail);
-
-
-
-        
-        $replyEmail = (new Email())
-        ->from($this->mon_email)
-        ->to($email)
-        // ->replyTo($email)
-        ->subject('Reply')
-        
-        ->text('Le mail etait bien recu');
-
-        $this->mailer->send($replyEmail);
-
-
-    }
-
     public function contact($contact) {
 
        $data = array(

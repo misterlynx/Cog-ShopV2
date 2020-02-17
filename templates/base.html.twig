@@ -42,6 +42,7 @@
         <!-- Bootstrap CSS -->
         {% block stylesheets %}
             <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+            <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet"> 
             <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC&display=swap" rel="stylesheet"> 
             <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -52,8 +53,9 @@
     <body class="sb-nav-fixed">
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v6.0&appId=174919030507115&autoLogAppEvents=1"></script>
+        
         {#Header#}
-            {{ render(controller('App\\Controller\\CogShopController::header')) }}
+            {{ render(controller('App\\Controller\\CogShopController::header', { header_s: app.request.query.get('s') })) }}
         
         {#Sidebar#}
         <div id="layoutSidenav">
